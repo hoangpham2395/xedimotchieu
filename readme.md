@@ -1,71 +1,96 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# My base
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## SYSTEM REQUIREMENT
 
-## About Laravel
+* DB: MySQL 5.6 
+* Apache: 2.4 
+* PHP: 7.0
+* Laravel: 5.7 
+* Composer: 1.4.1
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## TEMPLATE
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Admin LTE 2.4.5
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## VENDOR
 
-## Learning Laravel
+* Bootstrap 3.3.7 
+* Fontawesome 4.7
+* Jquery 3
+* Jasny bootstrap
+* Bootstrap datepicker 1.6.4
+* iCheck
+* Google font
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## SETUP
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+* Clone
+```bash
+git clone https://github.com/hoangpham2395/mybase.git
+```
 
-## Laravel Sponsors
+* Permission
+```bash
+chmod -R 777 public/images
+chmod -R 777 public/media
+chmod -R 777 public/tmp_uploads
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+* Run
+```bash
+composer install
+cp .env.example .env (CMD: copy .env.example .env)
+php artisan key:generate
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
+* Open file .env and config database
+```bash
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+```
 
-## Contributing
+* Delete cache
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Install Form collective 5.4.0
+```bash
+composer require "laravelcollective/html":"^5.4.0"
+```
 
-## Security Vulnerabilities
+* Install L5-Repository (Prettus)
+```bash
+composer require prettus/l5-repository
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## CONFIG URL
 
-## License
+* C:\Windows\System32\drivers\etc\hosts
+```bash 
+127.0.0.1 dev.mybase.vn
+```
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* C:\xampp\apache\conf\extra\httpd-vhosts.conf
+```bash 
+<VirtualHost *:80>
+    DocumentRoot "{LOCAL_HTDOCS}\mybase\public"
+    ServerName dev.mybase.vn
+</VirtualHost>
+<VirtualHost *:443>
+    DocumentRoot "{LOCAL_HTDOCS}\mybase\public"
+    ServerName dev.mybase.vn
+    SSLEngine on
+    SSLCertificateFile "C:\xampp\apache\conf\ssl.crt\server.crt"
+    SSLCertificateKeyFile "C:\xampp\apache\conf\ssl.key\server.key"
+</VirtualHost>
+```
+
+## RUN IN BROWSER
+
+```bash 
+dev.mybase.vn
+```
