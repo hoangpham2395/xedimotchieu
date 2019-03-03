@@ -5,5 +5,13 @@ Route::get('/', function () {
 });
 
 Route::prefix('management')->group(function () {
-	Route::resource('admin', 'Backend\AdminController');
+	Route::get('login', 'Auth\LoginController@getLogin');
+	Route::post('login', ['as' => 'admin.login', 'uses' => 'Auth\LoginController@postLogin']);
+	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Auth\LoginController@logout']);
+
+	Route::middleware(['isAdmin'])->group(function () {
+		Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
+		Route::get('/', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
+		Route::resource('admin', 'Backend\AdminController');
+	});
 });

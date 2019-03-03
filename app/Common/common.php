@@ -2,7 +2,7 @@
 
 function getConstant($key, $default = null)
 {
-    return config('constant.' . $key, $default);
+	return config('constant.' . $key, $default);
 }
 
 function getMessaage($key) 
@@ -20,9 +20,14 @@ function getCurrentAdmin()
 	return Auth::user();
 }
 
+function getCurrentAdminId() 
+{
+	return Auth::user()->id;
+}
+
 function getAvatarDefault()
 {
-    return asset(getConfig('avatar_default'));
+	return asset(getConfig('avatar_default'));
 }
 
 function getNoImage() 
@@ -43,4 +48,27 @@ function getMediaUrl($alias = null)
 	}
 	return $url . '/' . $alias;
 }
-?>
+
+function getCurrentUser() 
+{
+	return Auth::user();
+}
+
+function getTitle($key)
+{
+	return trans('model.' . $key);
+}
+
+function getBreadcrumb($key) 
+{
+	return trans('breadcrumb.' . $key);
+}
+
+function logError($message, array $context = [])
+{
+	// try {
+	// 	ChannelLog::error('error', $message, $context);
+	// } catch (\Exception $e) {
+
+	// }
+}

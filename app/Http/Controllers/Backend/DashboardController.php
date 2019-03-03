@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 /**
  * 
  */
-class AdminController extends BackendController
+class DashboardController extends BackendController
 {
 	public function __construct(
 		AdminRepository $adminRepository, 
@@ -22,5 +22,10 @@ class AdminController extends BackendController
 		$this->setValidator($adminValidator);
 		$this->setAlias($admin->getTable());
 		parent::__construct();
+	}
+
+	public function index() 
+	{
+		return view('backend.dashboard.index');
 	}
 }
