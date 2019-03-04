@@ -11,5 +11,5 @@ return [
         1 => 'Super admin',
         2 => 'Admin',
     ],
+    'super_admin_type' => 1,
 ];
-?>

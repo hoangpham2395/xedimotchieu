@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Model\Scopes\Base\BaseScope;
 use Illuminate\Support\Facades\Hash;
 use App\Model\Base\BaseAuth;
+use App\Model\Presenters\PAdmin;
 
 /**
  * 
@@ -14,10 +15,11 @@ use App\Model\Base\BaseAuth;
 class Admin extends BaseAuth
 {
 	use Notifiable;
+	use PAdmin;
 
 	protected $table = 'admin';
 	protected $primaryKey = 'id';
-	protected $fillable = ['email', 'password', 'role_type', 'del_flag'];
+	protected $fillable = ['username', 'email', 'password', 'role_type', 'del_flag'];
 	protected $_alias = 'admin';
 
 	// Add global scope

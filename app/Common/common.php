@@ -15,14 +15,24 @@ function getConfig($key, $default = null)
 	return config('config.' . $key, $default);
 }
 
+function backendGuard() 
+{
+	return Auth::guard('web');
+}
+
+function frontendGuard() 
+{
+	return Auth::guard('frontend');
+}
+
 function getCurrentAdmin() 
 {
-	return Auth::user();
+	return backendGuard()->user();
 }
 
 function getCurrentAdminId() 
 {
-	return Auth::user()->id;
+	return backendGuard()->user()->id;
 }
 
 function getAvatarDefault()
@@ -59,7 +69,7 @@ function getTitle($key)
 	return trans('model.' . $key);
 }
 
-function getBreadcrumb($key) 
+function transb($key) 
 {
 	return trans('breadcrumb.' . $key);
 }
@@ -73,12 +83,7 @@ function logError($message, array $context = [])
 	// }
 }
 
-function backendGuard() 
+function transa($key) 
 {
-	return Auth::guard('web');
-}
-
-function frontendGuard() 
-{
-	return Auth::guard('frontend');
+	return trans('action.' . $key);
 }
