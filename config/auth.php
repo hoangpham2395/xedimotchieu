@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'frontend' => [
+            'driver' => 'session',
+            'provider' => 'frontend',
+        ],
     ],
 
     /*
@@ -71,10 +76,10 @@ return [
             'model' => App\Model\Entities\Admin::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'frontend' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Entities\User::class,
+        ],
     ],
 
     /*
@@ -95,6 +100,11 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'frontend' => [
+            'provider' => 'frontend',
             'table' => 'password_resets',
             'expire' => 60,
         ],

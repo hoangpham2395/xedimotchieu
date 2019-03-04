@@ -72,3 +72,13 @@ function logError($message, array $context = [])
 
 	// }
 }
+
+function backendGuard() 
+{
+	return Auth::guard('web');
+}
+
+function frontendGuard() 
+{
+	return Auth::guard('frontend');
+}

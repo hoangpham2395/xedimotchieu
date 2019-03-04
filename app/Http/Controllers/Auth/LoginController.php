@@ -43,7 +43,7 @@ class LoginController extends Controller
 
     public function getLogin() 
     {
-        if (Auth::check()) {
+        if (Auth::guard('web')->check()) {
             return redirect()->route('dashboard');
         }
         return view('backend.auth.login');
@@ -68,7 +68,7 @@ class LoginController extends Controller
         }
 
         $rememberMe = ($request->input('remember_me')) ? true : false;
-        if (Auth::attempt($data, $rememberMe)) {
+        if (Auth::guard('web')->attempt($data, $rememberMe)) {
             return redirect()->route('dashboard');
         } 
         // Login Fail
@@ -78,7 +78,7 @@ class LoginController extends Controller
 
     public function logout() 
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         return redirect()->route('admin.login');
     }
 }
