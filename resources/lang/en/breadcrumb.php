@@ -6,4 +6,7 @@ return [
 		'edit' => 'Cập nhật thông tin admin',
 		'delete' => 'Xóa admin',
 	],
+    'users' => [
+        'index' => 'Danh sách khách hàng',
+    ],
 ];

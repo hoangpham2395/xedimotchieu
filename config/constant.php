@@ -12,5 +12,7 @@ return [
     'SORT_FIELD' => 'id',
     'SORT_TYPE' => 'DESC',
     'FILE_INPUT_NAME' => 'file_input',
+    'OPEN_FLAG_ACTIVE' => 1,
+    'OPEN_FLAG_NO_ACTIVE' => 0,
 ];
 ?>

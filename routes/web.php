@@ -13,5 +13,6 @@ Route::prefix('management')->group(function () {
 		Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::get('/', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
+		Route::resource('users', 'Backend\UsersController');
 	});
 });
