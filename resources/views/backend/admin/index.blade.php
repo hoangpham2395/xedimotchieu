@@ -81,21 +81,21 @@
                                         <td>{{ $entity->username }}</td>
                                         <td>{{ $entity->email }}</td>
                                         <td>{{ $entity->getRoleType() }}</td>
-                                        @if ($entity->allowEdit())
-	                                        <td class="text-center">
+                                        <td class="text-center">
+                                            @if ($entity->allowEdit())
 	                                            <a href="{{route('admin.edit', $entity->id)}}" class="btn btn-sm btn-primary">
 	                                                <i class="fa fa-pencil"></i>
 	                                            </a>
-	                                        </td>
-                                        @endif
+                                            @endif
+                                        </td>
                                         @if ($entity->allowDelete())
-	                                        <td class="text-center">
+                                            <td class="text-center">
 	                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
 	                                                    data-target="#modal_del_{{$entity->id}}">
 	                                                <i class="fa fa-trash"></i>
 	                                            </button>
 	                                        </td>
-                                        {!! Form::open(['route' => ['admin.destroy', $entity->id], 'method' => 'DELETE']) !!}
+                                            {!! Form::open(['route' => ['admin.destroy', $entity->id], 'method' => 'DELETE']) !!}
                                             <!-- Modal -->
                                             <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel">
@@ -117,9 +117,11 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        {!! Form::close() !!}
+                                            {!! Form::close() !!}
+                                        @else
+                                            <td></td>
                                         @endif
-                                    </tr>
+                                        </tr>
                                 @endforeach
                                 </tbody>
                             </table>

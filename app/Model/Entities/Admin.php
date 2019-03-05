@@ -2,15 +2,16 @@
 
 namespace App\Model\Entities;
 
-use App\Model\Presenters\AdminPresenter;
 use Illuminate\Notifications\Notifiable;
 use App\Model\Scopes\Base\BaseScope;
 use Illuminate\Support\Facades\Hash;
 use App\Model\Base\BaseAuth;
 use App\Model\Presenters\PAdmin;
 
+
 /**
- * 
+ * Class Admin
+ * @package App\Model\Entities
  */
 class Admin extends BaseAuth
 {
