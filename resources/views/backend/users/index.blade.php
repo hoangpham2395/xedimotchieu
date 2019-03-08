@@ -23,9 +23,28 @@
                     </div>
                     <div class="box-body">
                         {!! Form::open(['route' => 'users.index', 'method' => 'GET']) !!}
-
-                        <div class="margin-top"></div>
-                        @include('layouts.backend.btn_search')
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('name', getTitle('users.name')) !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {!! Form::text('name', Request::input('name'), ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('email', getTitle('users.email')) !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                        {!! Form::text('email', Request::input('email'), ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin-top"></div>
+                            @include('layouts.backend.btn_search')
                         {!! Form::close() !!}
                     </div>
                 </div>
@@ -43,38 +62,30 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                <th width="50">{{getTitle('users.id')}}</th>
-                                <th>{{getTitle('users.name')}}</th>
-                                <th>{{getTitle('user.email')}}</th>
-                                <th>{{getTitle('users.fb_id')}}</th>
-                                <th>{{getTitle('users.gg_id')}}</th>
-                                <th>{{getTitle('users.open_flag')}}</th>
-                                <th width="50" class="text-center">Edit</th>
-                                <th width="50" class="text-center">Delete</th>
+                                    <th width="50">{{getTitle('users.id')}}</th>
+                                    <th>{{getTitle('users.name')}}</th>
+                                    <th>{{getTitle('users.email')}}</th>
+                                    <th>{{getTitle('users.fb_id')}}</th>
+                                    <th>{{getTitle('users.gg_id')}}</th>
+                                    <th>{{getTitle('users.open_flag')}}</th>
+                                    <th width="50" class="text-center">{{ transa('delete') }}</th>
                                 </thead>
                                 <tbody>
                                 @foreach ($entities as $entity)
-                                    <tr>
+                                    <tr class="item-{{ $entity->id }}">
                                         <td>{{ $entity->id }}</td>
                                         <td>{{ $entity->name }}</td>
                                         <td>{{ $entity->email }}</td>
                                         <td>{{ $entity->fb_id }}</td>
                                         <td>{{ $entity->gg_id }}</td>
-                                        <td>{{ $entity->gg_id }}</td>
-                                        <td>{{ $entity->getOpenFlag() }}</td>
+                                        <td class="text-center">{!! $entity->getOpenFlag() !!}</td>
                                         <td class="text-center">
-                                            <a href="{{route('admin.edit', $entity->id)}}" class="btn btn-sm btn-primary">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                                                    data-target="#modal_del_{{$entity->id}}">
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_del_{{$entity->id}}">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>
-                                        {!! Form::open(['route' => ['admin.destroy', $entity->id], 'method' => 'DELETE']) !!}
-                                        <!-- Modal -->
+                                        {!! Form::open(['route' => ['users.destroy', $entity->id], 'method' => 'DELETE']) !!}
+                                            <!-- Modal -->
                                             <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog" role="document">

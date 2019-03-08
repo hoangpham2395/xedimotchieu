@@ -18,6 +18,6 @@ class User extends Base
     protected static function boot()
     {
         parent::boot();
-        staticaddGlobalScope(new BaseScope());
+        static::addGlobalScope(new BaseScope());
     }
 }
