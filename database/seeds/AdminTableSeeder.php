@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AdminSeeder extends Seeder
+class AdminTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +16,12 @@ class AdminSeeder extends Seeder
 
         // Init data
         $admin = [
+            'username' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
             'role_type' => 1,
+            'created_at' => new DateTime,
+            'del_flag' => 0,
         ];
 
         // Insert DB
