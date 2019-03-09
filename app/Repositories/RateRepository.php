@@ -1,13 +1,13 @@
 <?php
 namespace App\Repositories;
 
-use App\Model\Entities\Post;
+use App\Model\Entities\Rate;
 use App\Repositories\Base\CustomRepository;
 
-class PostRepository extends CustomRepository
+class RateRepository extends CustomRepository
 {
     public function model()
     {
-        return Post::class;
+        return Rate::class;
     }
 }
