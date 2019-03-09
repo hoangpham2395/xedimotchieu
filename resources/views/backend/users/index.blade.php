@@ -2,12 +2,12 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Users
-            <small>{!! transb('users.index') !!}</small>
+            {{transb('users.name')}}
+            <small>{{transb('users.index')}}</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-user"></i> Users</a></li>
-            <li class="active">{!! transb('users.index') !!}</li>
+            <li class="active">{{transb('users.index')}}</li>
         </ol>
     </section>
 
@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! Form::label('name', getTitle('users.name')) !!}
+                                        {!! Form::label('name', transm('users.name')) !!}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! Form::label('email', getTitle('users.email')) !!}
+                                        {!! Form::label('email', transm('users.email')) !!}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -62,12 +62,12 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                    <th width="50">{{getTitle('users.id')}}</th>
-                                    <th>{{getTitle('users.name')}}</th>
-                                    <th>{{getTitle('users.email')}}</th>
-                                    <th>{{getTitle('users.fb_id')}}</th>
-                                    <th>{{getTitle('users.gg_id')}}</th>
-                                    <th>{{getTitle('users.open_flag')}}</th>
+                                    <th width="50">{{transm('users.id')}}</th>
+                                    <th>{{transm('users.name')}}</th>
+                                    <th>{{transm('users.email')}}</th>
+                                    <th>{{transm('users.fb_id')}}</th>
+                                    <th>{{transm('users.gg_id')}}</th>
+                                    <th>{{transm('users.open_flag')}}</th>
                                     <th width="50" class="text-center">{{ transa('delete') }}</th>
                                 </thead>
                                 <tbody>

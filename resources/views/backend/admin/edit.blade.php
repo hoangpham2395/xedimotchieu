@@ -2,11 +2,11 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Admin
+            {{transb('admin.name')}}
             <small>{!! transb('admin.edit') !!}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="fa fa-user"></i> Admin</a></li>
+            <li><a href="{{route('admin.index')}}"><i class="fa fa-user"></i> {{transb('admin.name')}}</a></li>
             <li class="active">{!! transb('admin.edit') !!}</li>
         </ol>
     </section>

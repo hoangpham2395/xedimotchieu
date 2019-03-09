@@ -2,11 +2,11 @@
 @section('content')
 	<section class="content-header">
         <h1>
-            Admin
+            {{transb('admin.name')}}
             <small>{!! transb('admin.index') !!}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
+            <li><a href="#"><i class="fa fa-user"></i> {{transb('admin.name')}}</a></li>
             <li class="active">{!! transb('admin.index') !!}</li>
         </ol>
     </section>
@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! Form::label('email', getTitle('admin.email')) !!}
+                                        {!! Form::label('email', transm('admin.email')) !!}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        {!! Form::label('role_type', getTitle('admin.role_type')) !!}
+                                        {!! Form::label('role_type', transm('admin.role_type')) !!}
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
@@ -61,18 +61,18 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-12 text-right padding-bottom">
-                                <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add new admin</a>
+                                <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transb('admin.create')}}</a>
                             </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>
-                                <th width="50">{{getTitle('admin.id')}}</th>
-                                <th>{{getTitle('admin.username')}}</th>
-                                <th>{{getTitle('admin.email')}}</th>
-                                <th>{{getTitle('admin.role_type')}}</th>
-                                <th width="50" class="text-center">Edit</th>
-                                <th width="50" class="text-center">Delete</th>
+                                <th width="50">{{transm('admin.id')}}</th>
+                                <th>{{transm('admin.username')}}</th>
+                                <th>{{transm('admin.email')}}</th>
+                                <th>{{transm('admin.role_type')}}</th>
+                                <th width="50" class="text-center">{{transa('edit')}}</th>
+                                <th width="50" class="text-center">{{transa('delete')}}</th>
                                 </thead>
                                 <tbody>
                                 @foreach ($entities as $entity)

@@ -64,7 +64,7 @@ function getCurrentUser()
 	return Auth::user();
 }
 
-function getTitle($key)
+function transm($key)
 {
 	return trans('model.' . $key);
 }
