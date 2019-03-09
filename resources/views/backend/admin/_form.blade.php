@@ -25,9 +25,12 @@
             {!! Form::label('role_type', transm('admin.role_type')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-eye"></i></span>
-                {!! Form::select('role_type', $params['role_type'], null, ['class' => 'form-control', 'placeholder' => '--- Select role type ---']) !!}
+                {!! Form::select('role_type', $params['role_type'], null, ['class' => 'form-control', 'placeholder' => getConfig('select_default'), 'disabled' => getCurrentAdmin()->isSuperAdmin() ? false : true]) !!}
             </div>
         </div>
+        @if (!getCurrentAdmin()->isSuperAdmin() && !empty($entity))
+            {!! Form::hidden('role_type', $entity->role_type) !!}
+        @endif
     </div>
 </div>
 
