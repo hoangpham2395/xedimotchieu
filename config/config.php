@@ -19,6 +19,7 @@ return [
         1 => 'Chủ xe',
         2 => 'Hành khách',
     ],
+    'user_type_car_owner' => 1,
     'open_flag' => [
         1 => 'On',
         0 => 'Off',

@@ -16,4 +16,9 @@ trait PUser
     {
     	return getConfig('user_type.' . $this->user_type);
     }
+
+    public function isCarOwner() 
+    {
+        return $this->user_type == getConfig('user_type_car_owner');
+    }
 }

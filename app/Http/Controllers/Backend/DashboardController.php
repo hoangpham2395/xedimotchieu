@@ -69,12 +69,14 @@ class DashboardController extends BackendController
 
 	public function index() 
 	{
-		$users = $this->getUserRepository()->getList();
+		$users = $this->getUserRepository()->getCount();
 		$posts = $this->getPostRepository()->getList();
 		$cars = $this->getCarRepository()->getList();
 
 		$params = [
-			'users' => count($users),
+			'users' => array_get($users, 'users'),
+			'car_owner' => array_get($users, 'car_owner'),
+			'passenger' => array_get($users, 'passenger'),
 			'cars' => count($cars),
 			'posts' => count($posts),
 		];

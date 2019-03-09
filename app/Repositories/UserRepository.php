@@ -10,4 +10,21 @@ class UserRepository extends CustomRepository
     {
         return User::class;
     }
+
+    public function getCount() 
+    {
+    	$users = $this->all();
+    	$carOwner = 0;
+    	foreach ($users as $user) {
+    		if ($user->isCarOwner()) {
+    			$carOwner ++;
+    		}
+    	}
+
+    	return [
+    		'users' => count($users),
+    		'car_owner' => $carOwner,
+    		'passenger' => count($users) - $carOwner,
+    	];
+    }
 }

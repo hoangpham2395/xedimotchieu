@@ -7,7 +7,7 @@
     	<!-- Info boxes -->
       	<div class="row">
 	      	<div class="col-md-3 col-sm-6 col-xs-12">
-	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_users', ['users' => array_get($params, 'users'), 'car_owner' => 1000, 'passenger' => 1000])}}">
+	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_users', ['users' => array_get($params, 'users'), 'car_owner' => array_get($params, 'car_owner'), 'passenger' => array_get($params, 'passenger')])}}">
 	      			<span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
 
 	      			<div class="info-box-content">
