@@ -10,8 +10,8 @@ Route::prefix('management')->group(function () {
 	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Auth\LoginController@logout']);
 
 	Route::middleware(['isAdmin'])->group(function () {
-		Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
-		Route::get('/', ['as' => 'dashboard', 'uses' => 'Backend\DashboardController@index']);
+		Route::get('dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
+		Route::get('/', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
 		Route::resource('users', 'Backend\UsersController');
 	});

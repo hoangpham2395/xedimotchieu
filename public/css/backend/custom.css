@@ -72,6 +72,14 @@
     padding-left: 2px;
 }
 
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
 /* Sidebar */
 .sidebar-custom {
     background-color: #1a2226 !important;

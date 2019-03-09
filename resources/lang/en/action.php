@@ -5,4 +5,6 @@ return [
 	'delete' => 'Xóa',
 	'search' => 'Tìm kiếm',
 	'reset' => 'Làm mới',
+	'login' => 'Đăng nhập',
+	'logout' => 'Đăng xuất',
 ];

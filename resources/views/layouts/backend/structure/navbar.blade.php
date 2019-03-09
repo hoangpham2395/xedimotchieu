@@ -23,26 +23,20 @@
                         <li class="user-header">
                             <img src="{{getAvatarDefault()}}" class="img-circle" alt="User Image">
                             <p>
-                                Admin - Admin of <strong>{{getConstant('APP_NAME')}}</strong>
-                                <small>Super admin</small>
+                                {{getCurrentAdmin()->username}} - Admin of <strong>{{getConstant('APP_NAME')}}</strong>
+                                <small>{{getCurrentAdmin()->getRoleType()}}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
                         <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <a href="#">Change password</a>
-                                </div>
-                            </div>
-                            <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{route('admin.edit', ['id' => getCurrentAdmin()->id])}}" class="btn btn-default btn-flat">{{transa('edit')}}</a>
                             </div>
                             <div class="pull-right">
-                                <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{{route('admin.logout')}}" class="btn btn-default btn-flat">{{transa('logout')}}</a>
                             </div>
                         </li>
                     </ul>

@@ -1,5 +1,7 @@
 <?php
 return [
+	'dashboard' => 'Dashboard',
+	'management' => 'Quản lý',
 	'admin' => [
 		'name' => 'Admin',
 		'index' => 'Danh sánh admin',

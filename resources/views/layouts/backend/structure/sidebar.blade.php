@@ -13,41 +13,29 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li id="dashboard">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <li class="header text-uppercase">{{transb('dashboard')}}</li>
+            <li id="item-1">
+                <a href="{{route('backend.dashboard')}}">
+                    <i class="fa fa-dashboard"></i> <span>{{transb('dashboard')}}</span>
                 </a>
             </li>
-            <li class="header">EMPLOYEES</li>
-            <li id="employees" class="treeview">
+            <li class="header text-uppercase">{{transb('management')}}</li>
+            <li id="item-2" class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span>Employees</span>
+                    <i class="fa fa-user"></i> <span>{{transb('admin.name')}}</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-list-ul"></i> List of Employees</a></li>
-                    <li><a href="#"><i class="fa fa-plus"></i> Add new employees</a></li>
+                    <li><a href="{{route('admin.index')}}"><i class="fa fa-list-ul"></i> {{transb('admin.index')}}</a></li>
+                    <li><a href="{{route('admin.create')}}"><i class="fa fa-plus"></i> {{transb('admin.create')}}</a></li>
                 </ul>
             </li>
-            <li id="jobs">
-                <a href="#">
-                    <i class="fa fa-suitcase"></i> <span>Jobs</span>
+            <li id="item-3">
+                <a href="{{route('users.index')}}">
+                    <i class="fa fa-users"></i> <span>{{transb('users.name')}}</span>
                 </a>
-            </li>
-            <li class="header">ADMIN</li>
-            <li id="admin" class="treeview">
-                <a href="#">
-                    <i class="fa fa-user"></i> <span>Admin</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{route('admin.index')}}"><i class="fa fa-list-ul"></i> List of Admin</a></li>
-                    <li><a href="{{route('admin.create')}}"><i class="fa fa-plus"></i> Add new admin</a></li>
-                </ul>
             </li>
         </ul>
     </section>
