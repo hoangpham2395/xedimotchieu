@@ -50,63 +50,71 @@
                         <h3 class="box-title">{!! transb('users.index') !!}</h3>
                     </div>
                     <div class="box-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <th width="50">{{transm('users.id')}}</th>
-                                    <th>{{transm('users.name')}}</th>
-                                    <th>{{transm('users.email')}}</th>
-                                    <th>{{transm('users.fb_id')}}</th>
-                                    <th>{{transm('users.gg_id')}}</th>
-                                    <th>{{transm('users.open_flag')}}</th>
-                                    <th width="50" class="text-center">{{ transa('delete') }}</th>
-                                </thead>
-                                <tbody>
-                                @foreach ($entities as $entity)
-                                    <tr class="item-{{ $entity->id }}">
-                                        <td>{{ $entity->id }}</td>
-                                        <td>{{ $entity->name }}</td>
-                                        <td>{{ $entity->email }}</td>
-                                        <td>{{ $entity->fb_id }}</td>
-                                        <td>{{ $entity->gg_id }}</td>
-                                        <td class="text-center">{!! $entity->getOpenFlag() !!}</td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_del_{{$entity->id}}">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                        {!! Form::open(['route' => ['users.destroy', $entity->id], 'method' => 'DELETE']) !!}
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel">Delete</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Are you sure?
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                        @if (!empty($entities) && $entities->total() > 0) 
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <th width="50">{{transm('users.id')}}</th>
+                                        <th>{{transm('users.name')}}</th>
+                                        <th>{{transm('users.email')}}</th>
+                                        <th>{{transm('users.fb_id')}}</th>
+                                        <th>{{transm('users.gg_id')}}</th>
+                                        <th>{{transm('users.open_flag')}}</th>
+                                        <th width="50" class="text-center">{{ transa('delete') }}</th>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($entities as $entity)
+                                        <tr class="item-{{ $entity->id }}">
+                                            <td>{{ $entity->id }}</td>
+                                            <td>{{ $entity->name }}</td>
+                                            <td>{{ $entity->email }}</td>
+                                            <td>{{ $entity->fb_id }}</td>
+                                            <td>{{ $entity->gg_id }}</td>
+                                            <td class="text-center">{!! $entity->getOpenFlag() !!}</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_del_{{$entity->id}}">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                            {!! Form::open(['route' => ['users.destroy', $entity->id], 'method' => 'DELETE']) !!}
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
+                                                     aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                <h4 class="modal-title" id="myModalLabel">Delete</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Are you sure?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        {!! Form::close() !!}
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-5">Showing 1 to 10 of 10 entities</div>
-                            <div class="col-sm-7">{{ $entities->links() }}</div>
-                        </div>
+                                            {!! Form::close() !!}
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} khách hàng.</div>
+                                <div class="col-sm-7">{{ $entities->links() }}</div>
+                            </div>
+                        @else 
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có khách hàng nào.</span>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
