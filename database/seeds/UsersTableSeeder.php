@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
         foreach (range(1, 20) as $index) {
         	$users[] = [
         		'name' => $faker->name,
+                'user_type' => rand(1,2),
         		'email' => $faker->email,
         		'fb_id' => str_random(8),
                 'gg_id' => str_random(8),

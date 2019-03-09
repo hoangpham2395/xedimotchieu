@@ -16,12 +16,29 @@ class AdminTableSeeder extends Seeder
 
         // Init data
         $admin = [
-            'username' => 'admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin123'),
-            'role_type' => 1,
-            'created_at' => new DateTime,
-            'del_flag' => 0,
+            [
+                'username' => 'admin',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('admin123'),
+                'role_type' => 1,
+                'created_at' => new DateTime,
+                'del_flag' => 0,
+            ],
+            [
+                'username' => 'user',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('admin123'),
+                'role_type' => 2,
+                'created_at' => new DateTime,
+                'del_flag' => 0,
+            ], [
+                'username' => 'Hoang Pham',
+                'email' => 'hoangpham2395@gmail.com',
+                'password' => bcrypt('admin123'),
+                'role_type' => 1,
+                'created_at' => new DateTime,
+                'del_flag' => 0,
+            ],
         ];
 
         // Insert DB
