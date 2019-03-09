@@ -87,3 +87,8 @@ function transa($key)
 {
 	return trans('action.' . $key);
 }
+
+function getBackendAlias() 
+{
+	return env('BACKEND_ALIAS', 'management');
+}

@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/management';
 
     /**
      * Create a new controller instance.
@@ -44,7 +44,7 @@ class LoginController extends Controller
     public function getLogin() 
     {
         if (Auth::guard('web')->check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('backend.dashboard');
         }
         return view('backend.auth.login');
     }
@@ -69,7 +69,7 @@ class LoginController extends Controller
 
         $rememberMe = ($request->input('remember_me')) ? true : false;
         if (Auth::guard('web')->attempt($data, $rememberMe)) {
-            return redirect()->route('dashboard');
+            return redirect()->route('backend.dashboard');
         } 
         // Login Fail
         $errors = new MessageBag(['errorLogin' => 'Email or password is incorrect.']);
