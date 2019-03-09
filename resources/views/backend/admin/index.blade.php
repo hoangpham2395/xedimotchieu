@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                        {!! Form::select('role_type', $params['role_type'], Request::input('role_type'), ['class' => 'form-control', 'placeholder' => '--- Select role type ---']) !!}
+                                        {!! Form::select('role_type', $params['role_type'], Request::input('role_type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
                                     </div>
                                 </div>
                             </div>
