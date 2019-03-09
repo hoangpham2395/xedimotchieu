@@ -11,8 +11,9 @@ return [
     'users' => [
         'id' => 'ID',
         'name' => 'Tên',
-        'fb_id' => 'Facebook',
-        'gg_id' => 'Google',
+        'user_type' => 'Kiểu người dùng',
+        'fb_id' => 'Facebook ID',
+        'gg_id' => 'Google ID',
         'email' => 'Email',
         'password' => 'Mật khẩu',
         'open_flag' => 'Mở tài khoản',

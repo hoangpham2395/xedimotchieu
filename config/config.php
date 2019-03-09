@@ -13,4 +13,14 @@ return [
         2 => 'Admin',
     ],
     'super_admin_type' => 1,
+
+    // User
+    'user_type' => [
+        1 => 'Chủ xe',
+        2 => 'Hành khách',
+    ],
+    'open_flag' => [
+        1 => 'On',
+        0 => 'Off',
+    ],
 ];

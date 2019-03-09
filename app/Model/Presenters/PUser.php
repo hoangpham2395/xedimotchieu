@@ -11,4 +11,9 @@ trait PUser
 
     	return '<button type="button" class="btn btn-sm btn-'. $class .'" data-id="'. $this->id .'" data-open-flag="' . $this->open_flag . '" onclick="UsersController.changeOpenFlag(this)">'. $text .'</button>';
     }
+
+    public function getUserType() 
+    {
+    	return getConfig('user_type.' . $this->user_type);
+    }
 }

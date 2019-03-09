@@ -11,7 +11,7 @@ class User extends Base
 
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'fb_id', 'gg_id', 'email', 'password','open_flag', 'del_flag'];
+    protected $fillable = ['name', 'user_type', 'fb_id', 'gg_id', 'email', 'password','open_flag', 'del_flag'];
     protected $_alias = 'users';
 
     // Add global scope

@@ -35,6 +35,27 @@
                                 </div>
                             </div>
                             <div class="margin-top"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('user_type', transm('users.user_type')) !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {!! Form::select('user_type', getConfig('user_type'), Request::input('user_type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {!! Form::label('open_flag', transm('users.open_flag')) !!}
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {!! Form::select('open_flag', getConfig('open_flag'), Request::input('open_flag'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin-top"></div>
                             @include('layouts.backend.btn_search')
                         {!! Form::close() !!}
                     </div>
@@ -56,10 +77,11 @@
                                     <thead>
                                         <th width="50">{{transm('users.id')}}</th>
                                         <th>{{transm('users.name')}}</th>
+                                        <th>{{transm('users.user_type')}}</th>
                                         <th>{{transm('users.email')}}</th>
                                         <th>{{transm('users.fb_id')}}</th>
                                         <th>{{transm('users.gg_id')}}</th>
-                                        <th>{{transm('users.open_flag')}}</th>
+                                        <th class="text-center">{{transm('users.open_flag')}}</th>
                                         <th width="50" class="text-center">{{ transa('delete') }}</th>
                                     </thead>
                                     <tbody>
@@ -67,6 +89,7 @@
                                         <tr class="item-{{ $entity->id }}">
                                             <td>{{ $entity->id }}</td>
                                             <td>{{ $entity->name }}</td>
+                                            <td>{{ $entity->getUserType() }}</td>
                                             <td>{{ $entity->email }}</td>
                                             <td>{{ $entity->fb_id }}</td>
                                             <td>{{ $entity->gg_id }}</td>
