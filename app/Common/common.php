@@ -5,9 +5,14 @@ function getConstant($key, $default = null)
 	return config('constant.' . $key, $default);
 }
 
-function getMessaage($key) 
+function getMessaage($key, $params = []) 
 {
-	return trans('messages.' . $key);
+	return trans('messages.' . $key, $params);
+}
+
+function getMessage($key, $params = []) 
+{
+	return trans('messages.' . $key, $params);
 }
 
 function getConfig($key, $default = null) 

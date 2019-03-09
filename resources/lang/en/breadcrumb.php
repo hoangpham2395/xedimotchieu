@@ -1,6 +1,9 @@
 <?php
 return [
-	'dashboard' => 'Dashboard',
+	'dashboard' => [
+		'name' => 'Dashboard',
+		'index' => 'Index',
+	],
 	'management' => 'Quản lý',
 	'admin' => [
 		'name' => 'Admin',
@@ -12,5 +15,14 @@ return [
     'users' => [
     	'name' => 'Users',
         'index' => 'Danh sách khách hàng',
+    ],
+    'posts' => [
+    	'name' => 'Posts',
+    ],
+    'cars' => [
+    	'name' => 'Cars',
+    ],
+    'cities' => [
+    	'name' => 'Cities',
     ],
 ];

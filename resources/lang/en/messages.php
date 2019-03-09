@@ -21,5 +21,11 @@ return [
     'system_error' => 'system error has occurred.',
 
     'id_invalid' => 'ID is invalid.',
-    'permission' => 'Bạn không có quyền truy cập.'
+    'permission' => 'Bạn không có quyền truy cập.',
+
+    // Message of dashboard
+    'dashboard_users' => 'Hiện tại hệ thống có :users thành viên, bao gồm :car_owner chủ xe và :passenger hành khách đăng ký tham gia vào hệ thống.', 
+    'dashboard_posts' => 'Hệ thống đã có :posts bài được đăng lên.',
+    'dashboard_cars' => 'Hệ thống hiện có :cars chiếc xe đã được đăng ký.',
+    'dashboard_cities' => 'Hiện tại hệ thống đã có xe ở :cities tỉnh và thành phố trên cả nước.',
 ];

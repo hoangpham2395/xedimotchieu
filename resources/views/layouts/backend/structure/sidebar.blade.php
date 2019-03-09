@@ -13,10 +13,10 @@
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header text-uppercase">{{transb('dashboard')}}</li>
+            <li class="header text-uppercase">{{transb('dashboard.name')}}</li>
             <li id="item-1">
                 <a href="{{route('backend.dashboard')}}">
-                    <i class="fa fa-dashboard"></i> <span>{{transb('dashboard')}}</span>
+                    <i class="fa fa-dashboard"></i> <span>{{transb('dashboard.name')}}</span>
                 </a>
             </li>
             <li class="header text-uppercase">{{transb('management')}}</li>
