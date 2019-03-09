@@ -21,4 +21,5 @@ return [
     'system_error' => 'system error has occurred.',
 
     'id_invalid' => 'ID is invalid.',
+    'permission' => 'Bạn không có quyền truy cập.'
 ];

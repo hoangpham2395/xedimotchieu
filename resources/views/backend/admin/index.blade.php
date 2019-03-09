@@ -50,11 +50,13 @@
                         <h3 class="box-title">{!! transb('admin.index') !!}</h3>
                     </div>
                     <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12 text-right padding-bottom">
-                                <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transb('admin.create')}}</a>
+                        @if (getCurrentAdmin()->isSuperAdmin())
+                            <div class="row">
+                                <div class="col-md-12 text-right padding-bottom">
+                                    <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transb('admin.create')}}</a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         @if (!empty($entities) || $entities > 0)
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">

@@ -18,6 +18,8 @@ class VAdmin extends BaseValidator {
             'username' => 'required',
             'email'  => 'required|email|unique:admin,email, :id',
             'role_type' => 'required',
+            'password'=> 'nullable|min:6|max:8',
+            'confirm_password' => 'bail|nullable|required_with:password|same:password|min:6|max:8',
         ]
    ];
 }
