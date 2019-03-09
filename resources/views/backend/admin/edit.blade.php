@@ -1,21 +1,12 @@
 @extends('layouts.backend.structure.main')
 @section('content')
-    <section class="content-header">
-        <h1>
-            {{transb('admin.name')}}
-            <small>{!! transb('admin.edit') !!}</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{route('admin.index')}}"><i class="fa fa-user"></i> {{transb('admin.name')}}</a></li>
-            <li class="active">{!! transb('admin.edit') !!}</li>
-        </ol>
-    </section>
+    @include('layouts.backend.breadcrumb', ['object' => 'admin', 'action' => 'edit'])
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="box box-info">
+                <div class="box box-danger">
                     <div class="box-header">
                         <h3 class="box-title">{!! transb('admin.edit') !!}</h3>
                     </div>

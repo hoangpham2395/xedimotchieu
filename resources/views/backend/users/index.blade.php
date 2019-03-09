@@ -1,15 +1,6 @@
 @extends('layouts.backend.structure.main')
 @section('content')
-    <section class="content-header">
-        <h1>
-            {{transb('users.name')}}
-            <small>{{transb('users.index')}}</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-user"></i> Users</a></li>
-            <li class="active">{{transb('users.index')}}</li>
-        </ol>
-    </section>
+    @include('layouts.backend.breadcrumb', ['object' => 'users', 'action' => 'index'])
 
     @include('layouts.backend.notify')
 
