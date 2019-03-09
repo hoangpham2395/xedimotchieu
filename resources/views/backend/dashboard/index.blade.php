@@ -7,12 +7,12 @@
     	<!-- Info boxes -->
       	<div class="row">
 	      	<div class="col-md-3 col-sm-6 col-xs-12">
-	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_users', ['users' => 2000, 'car_owner' => 1000, 'passenger' => 1000])}}">
+	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_users', ['users' => array_get($params, 'users'), 'car_owner' => 1000, 'passenger' => 1000])}}">
 	      			<span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
 
 	      			<div class="info-box-content">
 	      				<span class="info-box-text">{{transb('users.name')}}</span>
-	      				<span class="info-box-number">2000</span>
+	      				<span class="info-box-number">{{ array_get($params, 'users') }}</span>
 	      			</div>
 	      			<!-- /.info-box-content -->
 	      		</div>
@@ -20,12 +20,12 @@
 	      	</div>
       		<!-- /.col -->
 	      	<div class="col-md-3 col-sm-6 col-xs-12">
-	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_posts', ['posts' => '41,410'])}}">
+	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_posts', ['posts' => array_get($params, 'posts')])}}">
 	      			<span class="info-box-icon bg-red"><i class="fa fa-comment"></i></span>
 
 	      			<div class="info-box-content">
 	      				<span class="info-box-text">{{transb('posts.name')}}</span>
-	      				<span class="info-box-number">41,410</span>
+	      				<span class="info-box-number">{{ array_get($params, 'posts') }}</span>
 	      			</div>
 	      			<!-- /.info-box-content -->
 	      		</div>
@@ -37,12 +37,12 @@
 	      	<div class="clearfix visible-sm-block"></div>
 
 	      	<div class="col-md-3 col-sm-6 col-xs-12">
-	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_cars', ['cars' => 760])}}">
+	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_cars', ['cars' => array_get($params, 'cars')])}}">
 	      			<span class="info-box-icon bg-green"><i class="fa fa-car"></i></span>
 
 	      			<div class="info-box-content">
 	      				<span class="info-box-text">{{transb('cars.name')}}</span>
-	      				<span class="info-box-number">760</span>
+	      				<span class="info-box-number">{{ array_get($params, 'cars') }}</span>
 	      			</div>
 	      			<!-- /.info-box-content -->
 	      		</div>
