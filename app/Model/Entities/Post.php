@@ -18,4 +18,44 @@ class Post extends Base
         parent::boot();
         static::addGlobalScope(new BaseScope());
     }
+
+    public function user() 
+    {
+    	return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function rates() 
+    {
+    	return $this->hasMany(Rate::class, 'post_id', 'id');
+    }
+
+    public function car() 
+    {
+    	return $this->belongsTo(Car::class, 'car_id', 'id');
+    }
+
+    public function comments() 
+    {
+    	return $this->hasMany(Comment::class, 'post_id', 'id');
+    }
+
+    public function cityForm() 
+    {
+    	return $this->belongsTo(City::class, 'city_from_id', 'id');
+    }
+
+    public function cityTo() 
+    {
+    	return $this->belongsTo(City::class, 'city_to_id', 'id');
+    }
+
+    public function districtForm() 
+    {
+    	return $this->belongsTo(District::class, 'district_from_id', 'id');
+    }
+
+    public function districtTo() 
+    {
+    	return $this->belongsTo(District::class, 'district_to_id', 'id');
+    }
 }

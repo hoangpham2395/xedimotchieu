@@ -17,4 +17,14 @@ class Car extends Base
         parent::boot();
         static::addGlobalScope(new BaseScope());
     }
+
+    public function user() 
+    {
+    	return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function posts() 
+    {
+    	return $this->hasMany(Post::class, 'car_id', 'id');
+    }
 }

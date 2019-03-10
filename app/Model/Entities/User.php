@@ -20,4 +20,29 @@ class User extends Base
         parent::boot();
         static::addGlobalScope(new BaseScope());
     }
+
+    public function cars() 
+    {
+        return $this->hasMany(Car::class, 'user_id', 'id');
+    }
+
+    public function posts() 
+    {
+        return $this->hasMany(Post::class, 'user_id', 'id');
+    }
+
+    public function rates() 
+    {
+        return $this->hasMany(Rate::class, 'user_id', 'id');
+    }
+
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class, 'user_id', 'id');
+    }
+
+    public function feedbacks() 
+    {
+        return $this->hasMany(Feedback::class, 'user_id', 'id');
+    }
 }

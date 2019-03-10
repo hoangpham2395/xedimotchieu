@@ -17,4 +17,19 @@ class City extends Base
         parent::boot();
         static::addGlobalScope(new BaseScope());
     }
+
+    public function districts() 
+    {
+    	return $this->hasMany(District::class, 'city_id', 'id');
+    }
+
+    public function postFrom() 
+    {
+    	return $this->hasMany(Post::class, 'city_form_id', 'id');
+    }
+
+    public function postTo() 
+    {
+    	return $this->hasMany(Post::class, 'city_to_id', 'id');
+    }
 }
