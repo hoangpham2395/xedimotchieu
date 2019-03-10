@@ -50,12 +50,12 @@
 	      	</div>
 	      	<!-- /.col -->
 	      	<div class="col-md-3 col-sm-6 col-xs-12">
-	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_cities', ['cities' => 60])}}">
+	      		<div class="info-box" data-toggle="tooltip" data-placement="bottom" title="{{getMessage('dashboard_cities', ['cities' => array_get($params, 'cities')])}}">
 	      			<span class="info-box-icon bg-yellow"><i class="glyphicon glyphicon-road"></i></span>
 
 	      			<div class="info-box-content">
 	      				<span class="info-box-text">{{transb('cities.name')}}</span>
-	      				<span class="info-box-number">60</span>
+	      				<span class="info-box-number">{{ array_get($params, 'cities') }}</span>
 	      			</div>
 	      			<!-- /.info-box-content -->
 	      		</div>

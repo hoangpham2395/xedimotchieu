@@ -10,4 +10,25 @@ class PostRepository extends CustomRepository
     {
         return Post::class;
     }
+
+    public function getCount() 
+    {
+    	$posts = $this->all();
+    	$cities = [];
+
+    	foreach($posts as $post) {
+    		if (!in_array($post->city_from_id, $cities)) {
+    			array_push($cities, $post->city_from_id);
+    		}
+
+    		if (!in_array($post->city_to_id, $cities)) {
+    			array_push($cities, $post->city_to_id);
+    		}
+    	}
+
+    	return [
+    		'posts' => count($posts),
+    		'cities' => count($cities),
+    	];
+    }
 }

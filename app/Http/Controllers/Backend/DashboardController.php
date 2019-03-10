@@ -70,7 +70,7 @@ class DashboardController extends BackendController
 	public function index() 
 	{
 		$users = $this->getUserRepository()->getCount();
-		$posts = $this->getPostRepository()->getList();
+		$posts = $this->getPostRepository()->getCount();
 		$cars = $this->getCarRepository()->getList();
 
 		$params = [
@@ -78,7 +78,8 @@ class DashboardController extends BackendController
 			'car_owner' => array_get($users, 'car_owner'),
 			'passenger' => array_get($users, 'passenger'),
 			'cars' => count($cars),
-			'posts' => count($posts),
+			'posts' => array_get($posts, 'posts'),
+			'cities' => array_get($posts, 'cities'),
 		];
 		return view('backend.dashboard.index', compact('params'));
 	}

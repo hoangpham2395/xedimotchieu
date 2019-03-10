@@ -24,4 +24,22 @@ return [
         1 => 'On',
         0 => 'Off',
     ],
+
+    // Post
+    'post_type' => [
+        1 => 'Xe tìm khách',
+        2 => 'Khách tìm xe',
+    ],
+
+    // Car
+    'car_type' => [
+        1 => '4 chỗ',
+        2 => '5 chỗ',
+        3 => '7 chỗ',
+        4 => '12 chỗ',
+        5 => '16 chỗ',
+        6 => '24 chỗ',
+        7 => '30 chỗ',
+        8 => 'Trên 30 chỗ',
+    ],
 ];
