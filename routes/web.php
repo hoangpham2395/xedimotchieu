@@ -1,9 +1,12 @@
 <?php
-
+// Frontend
 Route::get('/', function () {
-    return view('layouts.backend.structure.main');
+    return view('welcome');
 });
+Route::get('login', 'Frontend\Auth\LoginController@getLogin');
+Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
 
+// Backend
 Route::prefix(getBackendAlias())->group(function () {
 	Route::get('login', 'Auth\LoginController@getLogin');
 	Route::post('login', ['as' => 'admin.login', 'uses' => 'Auth\LoginController@postLogin']);

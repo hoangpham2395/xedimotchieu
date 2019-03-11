@@ -1,12 +1,14 @@
 <?php
 namespace App\Model\Entities;
 
-use App\Model\Base\Base;
+use App\Model\Base\BaseAuth;
 use App\Model\Presenters\PUser;
 use App\Model\Scopes\Base\BaseScope;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Base
+class User extends BaseAuth
 {
+    use Notifiable;
     use PUser;
 
     protected $table = 'users';

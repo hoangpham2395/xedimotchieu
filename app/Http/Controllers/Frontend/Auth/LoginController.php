@@ -2,8 +2,58 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Base\FrontendController;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 
 class LoginController extends FrontendController
 {
+    use AuthenticatesUsers;
 
+    protected $redirectTo = '/';
+
+    public function __construct()
+    {
+
+    }
+
+    public function getLogin()
+    {
+        return view('frontend.auth.login');
+    }
+
+    public function postLogin(Request $request)
+    {
+        $rules = [
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ];
+
+        $data = $data = [
+            'email' => $request->input('email'),
+            'password' => $request->input('password')
+        ];
+
+        // Check validate
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $rememberMe = ($request->input('remember_me')) ? true : false;
+        if (Auth::guard('frontend')->attempt($data, $rememberMe)) {
+            return redirect('/');
+        }
+        // Login Fail
+        $errors = new MessageBag(['errorLogin' => getMessage('error_login')]);
+        return redirect()->back()->withErrors($errors)->withInput();
+    }
+
+    public function logout()
+    {
+        Auth::guard('frontend')->logout();
+        return redirect()->route('frontend.login');
+    }
 }

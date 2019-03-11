@@ -7,4 +7,5 @@ return [
 	'reset' => 'Làm mới',
 	'login' => 'Đăng nhập',
 	'logout' => 'Đăng xuất',
+    'remember_me' => 'Giữ cho tôi đăng nhập',
 ];
