@@ -26,4 +26,8 @@ return [
     'cities' => [
     	'name' => 'Cities',
     ],
+    'feedbacks' => [
+        'name' => 'Feedbacks',
+        'index' => 'Danh sách phản hồi',
+    ],
 ];

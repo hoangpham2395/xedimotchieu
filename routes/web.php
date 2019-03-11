@@ -23,5 +23,9 @@ Route::prefix(getBackendAlias())->group(function () {
 			'as' => 'users.update_open_flag', 
 			'uses' => 'Backend\UsersController@updateOpenFlag'
 		]);
+		Route::get('feedbacks', [
+			'as' => 'feedbacks.index',
+			'uses' => 'Backend\FeedbacksController@index'
+		]);
 	});
 });

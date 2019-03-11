@@ -49,7 +49,7 @@ return [
     'feedbacks' => [
         'id' => 'ID',
         'user_id' => 'Người phản hồi',
-        'feedback' => 'Phản hồi',
+        'content' => 'Nội dung phản hồi',
     ],
     'cities' => [
         'id' => 'ID',
