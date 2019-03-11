@@ -51,35 +51,7 @@ class AdminController extends BackendController
     		return $this->_redirectToIndex();
     	}
 
-    	$data = $request->all();
-
-        // Upload file to tmp folder if exist
-        $this->_uploadToTmpIfExist($request);
-
-        // Validate
-        $valid = $this->getValidator()->validateCreate($data);
-        if (!$valid) {
-            return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
-        }
-
-        // Create
-        $data = array_merge($data, $this->_prepareStore());
-        DB::beginTransaction();
-        try {
-            $this->getRepository()->create($data);
-            // Move file to medias if exist
-            $this->_moveToMediasIfExist($data);
-            DB::commit();
-
-            Session::flash('success', getMessaage('create_success'));
-            return redirect()->route($this->getAlias() . '.index');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            logError($e);
-        }
-        // Create failed
-        $this->_deleteFileInTmpIfExist();
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['create_failed' => getMessaage('create_failed')]);
+    	return parent::store($request);
     }
 
     public function edit($id) 
@@ -89,7 +61,7 @@ class AdminController extends BackendController
 
         // Check id
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
 
         // Check permission
@@ -105,7 +77,7 @@ class AdminController extends BackendController
         // Check id
         $entity = $this->getRepository()->findById($id);
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
 
         // Check permission
@@ -132,7 +104,7 @@ class AdminController extends BackendController
             // Move file to medias if exist
             $this->_moveToMediasIfExist($data);
             DB::commit();
-            Session::flash('success', getMessaage('update_success'));
+            Session::flash('success', getMessage('update_success'));
             return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -140,7 +112,7 @@ class AdminController extends BackendController
         }
         // Update failed
         $this->_deleteFileInTmpIfExist();
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['update_failed' => getMessaage('update_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
     }
 
     public function destroy($id) 
@@ -148,7 +120,7 @@ class AdminController extends BackendController
         // Check id
         $entity = $this->getRepository()->findById($id);
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
 
         // Check permission
@@ -164,14 +136,14 @@ class AdminController extends BackendController
             $this->getRepository()->update($data, $id);
             //$this->_deleteFileIfExist();
             DB::commit();
-            Session::flash('success', getMessaage('delete_success'));
+            Session::flash('success', getMessage('delete_success'));
             return redirect()->route($this->getAlias() . '.index');
         } catch(\Exception $e) {
             DB::rollBack();
             logError($e);
         }
         // Delete failed
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessaage('delete_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 
     protected function _checkPermission() 
@@ -181,6 +153,6 @@ class AdminController extends BackendController
 
     protected function _redirectToIndex() 
     {
-    	return redirect()->route('admin.index')->withErrors(['permission' => getMessaage('permission')]);
+    	return redirect()->route('admin.index')->withErrors(['permission' => getMessage('permission')]);
     }
 }

@@ -85,7 +85,7 @@ class FrontendController extends BaseController
         $entity = $this->getRepository()->findById($id);
         // Check id
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
         return view('backend.' . $this->getAlias() . '.show', compact('entity', 'params'));
     }
@@ -102,7 +102,7 @@ class FrontendController extends BaseController
         $entity = $this->getRepository()->findById($id);
         // Check id
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
         return view('backend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
@@ -129,7 +129,7 @@ class FrontendController extends BaseController
             $this->_moveToMediasIfExist($data);
             DB::commit();
 
-            Session::flash('success', getMessaage('create_success'));
+            Session::flash('success', getMessage('create_success'));
             return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -137,7 +137,7 @@ class FrontendController extends BaseController
         }
         // Create failed
         $this->_deleteFileInTmpIfExist();
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['create_failed' => getMessaage('create_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['create_failed' => getMessage('create_failed')]);
     }
 
     public function update(Request $request, $id)
@@ -145,7 +145,7 @@ class FrontendController extends BaseController
         // Check id
         $entity = $this->getRepository()->findById($id);
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
 
         $data = $request->all();
@@ -167,7 +167,7 @@ class FrontendController extends BaseController
             // Move file to medias if exist
             $this->_moveToMediasIfExist($data);
             DB::commit();
-            Session::flash('success', getMessaage('update_success'));
+            Session::flash('success', getMessage('update_success'));
             return redirect()->route($this->getAlias() . '.index');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -175,7 +175,7 @@ class FrontendController extends BaseController
         }
         // Update failed
         $this->_deleteFileInTmpIfExist();
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['update_failed' => getMessaage('update_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
     }
 
     public function destroy($id)
@@ -183,7 +183,7 @@ class FrontendController extends BaseController
         // Check id
         $entity = $this->getRepository()->findById($id);
         if (empty($entity)) {
-            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessaage('id_invalid')]);
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
         // Delete
         $data['del_flag'] = getConstant('DEL_FLAG.DELETED', 1);
@@ -193,14 +193,14 @@ class FrontendController extends BaseController
             $this->getRepository()->update($data, $id);
             //$this->_deleteFileIfExist();
             DB::commit();
-            Session::flash('success', getMessaage('delete_success'));
+            Session::flash('success', getMessage('delete_success'));
             return redirect()->route($this->getAlias() . '.index');
         } catch(\Exception $e) {
             DB::rollBack();
             logError($e);
         }
         // Delete failed
-        return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessaage('delete_failed')]);
+        return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 
     protected function _uploadToTmpIfExist($request)
