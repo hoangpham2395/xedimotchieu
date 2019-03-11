@@ -5,6 +5,8 @@ Route::get('/', function () {
 });
 Route::get('login', 'Frontend\Auth\LoginController@getLogin');
 Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
+Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
+Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
 
 // Backend
 Route::prefix(getBackendAlias())->group(function () {

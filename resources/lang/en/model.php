@@ -16,6 +16,7 @@ return [
         'gg_id' => 'Google ID',
         'email' => 'Email',
         'password' => 'Mật khẩu',
+        'confirm_password' => 'Xác nhận mật khẩu',
         'open_flag' => 'Mở tài khoản',
     ],
     'posts' => [

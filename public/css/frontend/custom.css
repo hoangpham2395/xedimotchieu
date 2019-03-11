@@ -133,6 +133,6 @@ span.connect-input {
 
 /* Login
 ---------------------------------------*/
-.fb {
-    background: #49639F;
+.login-logo a {
+    text-transform: uppercase;
 }

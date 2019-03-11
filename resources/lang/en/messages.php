@@ -29,4 +29,13 @@ return [
     'dashboard_posts' => 'Hệ thống đã có :posts bài được đăng lên.',
     'dashboard_cars' => 'Hệ thống hiện có :cars chiếc xe đã đăng ký.',
     'dashboard_cities' => 'Hiện tại hệ thống đã có xe ở :cities tỉnh và thành phố trên cả nước.',
+
+    'login_fb' => 'Sử dụng tài khoản Facebook',
+    'login_title' => 'Đăng nhập vào hệ thống',
+    'login_remember_me' => 'Giữ cho tôi đăng nhập',
+    'login_forgot_password' => 'Quên mật khẩu',
+    'login_register' => 'Đăng ký thành viên',
+    'register_title' => 'Đăng ký thành viên',
+    'register_agree_term' => 'Tôi đồng ý với các <a href="#">điều khoản</a>',
+    'register_login' => 'Tôi đã có tài khoản',
 ];

@@ -1,6 +1,6 @@
 @extends('layouts.frontend.structure.auth.main')
 @section('content')
-    <p class="login-box-msg">{{getMessage('login_title')}}</p>
+    <p class="login-box-msg">{{getMessage('register_title')}}</p>
 
     @include('layouts.backend.errors')
 
@@ -13,11 +13,15 @@
         {!! Form::password('password', ['class' => 'form-control', 'placeholder' => transm('users.password')]) !!}
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
+    <div class="form-group has-feedback">
+        {!! Form::password('password', ['class' => 'form-control', 'placeholder' => transm('users.confirm_password')]) !!}
+        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+    </div>
     <div class="row">
         <div class="col-xs-8">
             <div class="checkbox icheck">
                 <label>
-                    <input type="checkbox" name="remember_me"> {{getMessage('login_remember_me')}}
+                    <input type="checkbox" name="agree_term"> {!! getMessage('register_agree_term') !!}
                 </label>
             </div>
         </div>
@@ -35,6 +39,5 @@
     </div>
     <!-- /.social-auth-links -->
 
-    <a href="#">{{getMessage('login_forgot_password')}}</a><br>
-    <a href="{{route('frontend.register')}}" class="text-center">{{getMessage('login_register')}}</a>
+    <a href="{{route('frontend.login')}}" class="text-center">{{getMessage('register_login')}}</a>
 @endsection
