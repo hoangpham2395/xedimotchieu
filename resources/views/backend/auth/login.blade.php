@@ -32,7 +32,7 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox" name="remember_me"> {{transa('remember_me')}}
+              <input type="checkbox" name="remember_me"> {{getMessage('login_remember_me')}}
             </label>
           </div>
         </div>
