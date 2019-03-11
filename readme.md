@@ -26,7 +26,7 @@
 
 * Clone
 ```bash
-git clone https://github.com/hoangpham2395/mybase.git
+git clone https://github.com/hoangpham2395/xedimotchieu.git
 ```
 
 * Permission
@@ -67,22 +67,27 @@ composer require "laravelcollective/html":"^5.4.0"
 composer require prettus/l5-repository
 ```
 
+* Install Doctrine for migration
+```bash
+composer require doctrine/dbal
+```
+
 ## CONFIG URL
 
 * C:\Windows\System32\drivers\etc\hosts
 ```bash 
-127.0.0.1 dev.mybase.vn
+127.0.0.1 dev.xdmc.vn
 ```
 
 * C:\xampp\apache\conf\extra\httpd-vhosts.conf
 ```bash 
 <VirtualHost *:80>
-    DocumentRoot "{LOCAL_HTDOCS}\mybase\public"
-    ServerName dev.mybase.vn
+    DocumentRoot "{LOCAL_HTDOCS}\xedimotchieu\public"
+    ServerName dev.xdmc.vn
 </VirtualHost>
 <VirtualHost *:443>
-    DocumentRoot "{LOCAL_HTDOCS}\mybase\public"
-    ServerName dev.mybase.vn
+    DocumentRoot "{LOCAL_HTDOCS}\xedimotchieu\public"
+    ServerName dev.xdmc.vn
     SSLEngine on
     SSLCertificateFile "C:\xampp\apache\conf\ssl.crt\server.crt"
     SSLCertificateKeyFile "C:\xampp\apache\conf\ssl.key\server.key"
