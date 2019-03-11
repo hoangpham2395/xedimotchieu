@@ -40,4 +40,23 @@ return [
         'car_type' => 'Loại xe',
         'car_image' => 'Hình ảnh',
     ],
+    'comments' => [
+        'id' => 'ID',
+        'user_id' => 'Người bình luận',
+        'comment' => 'Bình luận',
+    ],
+    'feedbacks' => [
+        'id' => 'ID',
+        'user_id' => 'Người phản hồi',
+        'feedback' => 'Phản hồi',
+    ],
+    'cities' => [
+        'id' => 'ID',
+        'city_name' => 'Tỉnh/Thành phố',
+    ],
+    'districts' => [
+        'id' => 'ID',
+        'city_id' => 'Tỉnh/Thành phố',
+        'district_name' => 'Quận/Huyện',
+    ],
 ];
