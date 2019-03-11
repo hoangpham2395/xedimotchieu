@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         @endif
-                        @if (!empty($entities) || $entities > 0)
+                        @if (!empty($entities) && $entities->total() > 0)
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped">
                                     <thead>
