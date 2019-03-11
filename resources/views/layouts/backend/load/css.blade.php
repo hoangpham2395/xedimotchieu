@@ -14,5 +14,7 @@
 <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datepicker.min.css')}}">
 <!-- Jasny bootstrap -->
 <link rel="stylesheet" href="{{asset('css/vendor/jasny-bootstrap.min.css')}}">
+<!-- Morris -->
+<link rel="stylesheet" href="{{asset('css/vendor/morris.css')}}">
 <!-- My style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/backend/custom.css')}}">

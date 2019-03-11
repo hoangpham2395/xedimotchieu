@@ -27,5 +27,6 @@
 <!-- ./wrapper -->
 
 @include('layouts.backend.load.js')
+@yield('javascript')
 </body>
 </html>

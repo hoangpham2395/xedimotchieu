@@ -12,5 +12,8 @@
 <script src="{{asset('js/vendor/demo.js')}}"></script>
 <!-- iCheck -->
 <script src="{{asset('js/vendor/icheck.min.js')}}"></script>
+<!-- Morris -->
+<script src="{{asset('js/vendor/raphael.min.js')}}"></script>
+<script src="{{asset('js/vendor/morris.min.js')}}"></script>
 <!-- My js -->
 <script src="{{asset('js/backend/system.js')}}"></script>
