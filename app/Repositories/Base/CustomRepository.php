@@ -1,6 +1,7 @@
 <?php 
 namespace App\Repositories\Base;
 
+use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Events\RepositoryEntityCreated;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
@@ -129,5 +130,31 @@ class CustomRepository extends BaseRepository
         }
 
         return $result;
+    }
+
+    // Custom builder by laravel core
+    public function getBuilder()
+    {
+        return $this->model()::select('*');
+    }
+
+    public function statisticalByMonthInYear()
+    {
+        $r = [];
+        $entities = $this->getBuilder()
+            ->select(DB::raw('MONTH(created_at) as month'), DB::raw('COUNT(MONTH(created_at)) as count'))
+            ->where(DB::raw('YEAR(created_at)'), date('Y'))
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->get();
+
+        if (empty($entities)) {
+            return $r;
+        }
+
+        foreach ($entities as $entity) {
+            $r[$entity->month] = $entity->count;
+        }
+
+        return $r;
     }
 }

@@ -97,3 +97,13 @@ function getBackendAlias()
 {
 	return env('BACKEND_ALIAS', 'management');
 }
+
+function rjust($string, $totalLength, $fillChar = ' ')
+{
+    return str_pad($string, $totalLength, $fillChar, STR_PAD_RIGHT);
+}
+
+function ljust($string, $totalLength, $fillChar = ' ')
+{
+    return str_pad($string, $totalLength, $fillChar, STR_PAD_LEFT);
+}

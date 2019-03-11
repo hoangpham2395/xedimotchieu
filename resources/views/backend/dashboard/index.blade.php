@@ -68,7 +68,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="box box-danger">
 					<div class="box-header with-border">
-						<h3 class="box-title">{{ transb('dashboard.name') }}</h3>
+						<h3 class="box-title">{{ transb('dashboard.report') }}</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -77,7 +77,7 @@
 						</div>
 					</div>
 					<div class="box-body chart-responsive">
-						<div class="chart" id="revenue-chart" style="height: 300px;"></div>
+						<div class="chart" id="line-chart" style="height: 300px;"></div>
 					</div>
                 </div>
             </div>
@@ -90,26 +90,17 @@
         $(function () {
             "use strict";
 
-            // AREA CHART
-            var area = new Morris.Area({
-                element: 'revenue-chart',
+            // LINE CHART
+			var data = {!! json_encode(array_get($params, 'dataChart')) !!};
+
+            var line = new Morris.Line({
+                element: 'line-chart',
                 resize: true,
-                data: [
-                    {y: '2011 Q1', item1: 2666, item2: 2666},
-                    {y: '2011 Q2', item1: 2778, item2: 2294},
-                    {y: '2011 Q3', item1: 4912, item2: 1969},
-                    {y: '2011 Q4', item1: 3767, item2: 3597},
-                    {y: '2012 Q1', item1: 6810, item2: 1914},
-                    {y: '2012 Q2', item1: 5670, item2: 4293},
-                    {y: '2012 Q3', item1: 4820, item2: 3795},
-                    {y: '2012 Q4', item1: 15073, item2: 5967},
-                    {y: '2013 Q1', item1: 10687, item2: 4460},
-                    {y: '2013 Q2', item1: 8432, item2: 5713}
-                ],
-                xkey: 'y',
-                ykeys: ['item1', 'item2'],
-                labels: ['Item 1', 'Item 2'],
-                lineColors: ['#a0d0e0', '#3c8dbc'],
+                data: data,
+                xkey: 'month',
+                ykeys: ['user', 'post', 'car'],
+                labels: ['Thành viên mới', 'Bài đăng', 'Số xe đăng ký mới'],
+                lineColors: ['#00c0ef', '#dd4b39', '#00a65a'],
                 hideHover: 'auto'
             });
         });

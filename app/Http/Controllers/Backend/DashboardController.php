@@ -69,17 +69,27 @@ class DashboardController extends BackendController
 
 	public function index() 
 	{
-		$users = $this->getUserRepository()->getCount();
-		$posts = $this->getPostRepository()->getCount();
-		$cars = $this->getCarRepository()->getList();
+		$users = $this->getUserRepository()->getDataForDashboard();
+		$posts = $this->getPostRepository()->getDataForDashboard();
+		$cars = $this->getCarRepository()->getDataForDashboard();
+		$dataChart = [];
+		for ($i = 1; $i <= 12; $i ++) {
+		    $dataChart[] = [
+		        'month' => date('Y-') . ljust($i, 2, '0'),
+                'user' => array_get($users, 'dataChart.' . $i, 0),
+                'post' => array_get($posts, 'dataChart.' . $i, 0),
+                'car' => array_get($cars, 'dataChart.' . $i, 0),
+            ];
+        }
 
 		$params = [
 			'users' => array_get($users, 'users'),
 			'car_owner' => array_get($users, 'car_owner'),
 			'passenger' => array_get($users, 'passenger'),
-			'cars' => count($cars),
+			'cars' => array_get($cars, 'cars'),
 			'posts' => array_get($posts, 'posts'),
 			'cities' => array_get($posts, 'cities'),
+            'dataChart' => $dataChart,
 		];
 		return view('backend.dashboard.index', compact('params'));
 	}

@@ -10,4 +10,12 @@ class CarRepository extends CustomRepository
     {
         return Car::class;
     }
+
+    public function getDataForDashboard()
+    {
+        return [
+            'cars' => count($this->all()),
+            'dataChart' => $this->statisticalByMonthInYear(),
+        ];
+    }
 }

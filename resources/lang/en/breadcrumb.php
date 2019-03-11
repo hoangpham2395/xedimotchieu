@@ -3,6 +3,7 @@ return [
 	'dashboard' => [
 		'name' => 'Dashboard',
 		'index' => 'Index',
+        'report' => 'Biểu đồ thống kê theo tháng',
 	],
 	'management' => 'Quản lý',
 	'admin' => [

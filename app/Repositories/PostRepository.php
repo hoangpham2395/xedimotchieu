@@ -11,7 +11,7 @@ class PostRepository extends CustomRepository
         return Post::class;
     }
 
-    public function getCount() 
+    public function getDataForDashboard()
     {
     	$posts = $this->all();
     	$cities = [];
@@ -29,6 +29,7 @@ class PostRepository extends CustomRepository
     	return [
     		'posts' => count($posts),
     		'cities' => count($cities),
+            'dataChart' => $this->statisticalByMonthInYear(),
     	];
     }
 }

@@ -11,7 +11,7 @@ class UserRepository extends CustomRepository
         return User::class;
     }
 
-    public function getCount() 
+    public function getDataForDashboard()
     {
     	$users = $this->all();
     	$carOwner = 0;
@@ -25,6 +25,7 @@ class UserRepository extends CustomRepository
     		'users' => count($users),
     		'car_owner' => $carOwner,
     		'passenger' => count($users) - $carOwner,
+            'dataChart' => $this->statisticalByMonthInYear(),
     	];
     }
 }
