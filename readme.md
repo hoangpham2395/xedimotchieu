@@ -67,7 +67,7 @@ composer require "laravelcollective/html":"^5.4.0"
 composer require prettus/l5-repository
 ```
 
-* Install Doctrine for migration
+* Install Doctrine dbal for migration
 ```bash
 composer require doctrine/dbal
 ```
