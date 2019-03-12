@@ -17,6 +17,7 @@ class AddColumnChatTable extends Migration
             $table->dropColumn('user_id');
             $table->integer('user_from_id')->after('id');
             $table->integer('user_to_id')->after('user_from_id');
+            $table->char('read', 1)->default(0)->after('content');
         });
     }
 
@@ -31,6 +32,7 @@ class AddColumnChatTable extends Migration
             $table->integer('user_id')->after('id');
             $table->dropColumn('user_from_id');
             $table->dropColumn('user_to_id');
+            $table->dropColumn('read');
         });
     }
 }
