@@ -5,6 +5,7 @@ use App\Http\Controllers\Base\FrontendController;
 use App\Model\Entities\Post;
 use App\Repositories\PostRepository;
 use App\Validators\VPost;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends FrontendController
 {
@@ -22,6 +23,8 @@ class HomeController extends FrontendController
 
     public function index() 
     {
-        return view('frontend.home.index');
+        $params = $this->_prepareIndex();
+        $entities = $this->getRepository()->getListForFrontend(Input::all());
+        return view('frontend.home.index', compact('entities', 'params'));
     }
 }

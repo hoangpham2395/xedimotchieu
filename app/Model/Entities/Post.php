@@ -3,6 +3,7 @@ namespace App\Model\Entities;
 
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
+use App\Model\Presenters\PPost;
 
 class Post extends Base 
 {
@@ -11,6 +12,8 @@ class Post extends Base
 	protected $fillable = ['user_id', 'city_from_id', 'city_to_id', 'district_from_id', 'district_to_id', 'car_id', 'type', 
 							'date_start', 'cost', 'phone', 'image', 'note', 'tags', 'del_flag'];
 	protected $_alias = 'posts';
+
+    use PPost;
 
 	// Add global scope
     protected static function boot()
@@ -39,7 +42,7 @@ class Post extends Base
     	return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 
-    public function cityForm() 
+    public function cityFrom() 
     {
     	return $this->belongsTo(City::class, 'city_from_id', 'id');
     }
@@ -49,7 +52,7 @@ class Post extends Base
     	return $this->belongsTo(City::class, 'city_to_id', 'id');
     }
 
-    public function districtForm() 
+    public function districtFrom() 
     {
     	return $this->belongsTo(District::class, 'district_from_id', 'id');
     }

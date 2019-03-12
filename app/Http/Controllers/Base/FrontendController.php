@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Base;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Base\BaseController;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
+use Session;
+use Storage;
 
 /**
  * 

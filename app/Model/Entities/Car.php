@@ -3,6 +3,7 @@ namespace App\Model\Entities;
 
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
+use App\Model\Presenters\PCar;
 
 class Car extends Base 
 {
@@ -10,6 +11,8 @@ class Car extends Base
 	protected $primaryKey = 'id';
 	protected $fillable = ['user_id', 'car_name', 'car_type', 'car_image', 'del_flag'];
 	protected $_alias = 'cars';
+
+    use PCar;
 
 	// Add global scope
     protected static function boot()
