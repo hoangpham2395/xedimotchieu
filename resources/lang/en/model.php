@@ -21,10 +21,10 @@ return [
     ],
     'posts' => [
         'id' => 'ID',
-        'city_form_id' => 'Tỉnh/Thành phố',
-        'city_to_id' => '',
+        'city_from_id' => 'Tỉnh/Thành phố',
+        'city_to_id' => 'Tỉnh/Thành phố',
         'district_from_id' => 'Huyện/Quận',
-        'district_to_id' => '',
+        'district_to_id' => 'Huyện/Quận',
         'car_id' => 'Loại xe',
         'type' => 'Hình thức',
         'date_start' => 'Ngày đi',

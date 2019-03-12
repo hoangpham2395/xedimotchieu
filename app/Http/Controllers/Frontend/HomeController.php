@@ -19,4 +19,9 @@ class HomeController extends FrontendController
         $this->setAlias($post->getTable());
         parent::__construct();
     }
+
+    public function index() 
+    {
+        return view('frontend.home.index');
+    }
 }

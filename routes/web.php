@@ -1,8 +1,6 @@
 <?php
 // Frontend
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as' => 'home.index', 'uses' => 'Frontend\HomeController@index']);
 Route::get('login', 'Frontend\Auth\LoginController@getLogin');
 Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
 Route::get('register', 'Frontend\Auth\RegisterController@getRegister');

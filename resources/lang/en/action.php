@@ -7,4 +7,7 @@ return [
 	'reset' => 'Làm mới',
 	'login' => 'Đăng nhập',
 	'logout' => 'Đăng xuất',
+	'register' => 'Đăng ký',
+	'introduce' => 'Giới thiệu',
+	'post' => 'Đăng tin',
 ];
