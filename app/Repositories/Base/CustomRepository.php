@@ -71,6 +71,27 @@ class CustomRepository extends BaseRepository
 		->paginate($this->getPerPage());
 	}
 
+    public function getListForFrontend($params = [])
+    {
+        // Serve pagination
+        if (isset($params['page'])) {
+            unset($params['page']);
+        }
+        // Get data
+        return $this->scopeQuery(function ($query) use ($params) {
+            $query = $query->orderBy($this->getSortField(), $this->getSortType());
+            if (empty($params)) {
+                return $query;
+            }
+            // Search
+            foreach ($params as $key => $value) {
+                $query = $query->where($key, 'LIKE', '%' . $value . '%');
+            }
+            return $query;
+        })
+        ->paginate(getConfig('frontend.per_page'));
+    }
+
 	public function findById($id)
     {
         return $this->findWhere(['id' => $id])->first();

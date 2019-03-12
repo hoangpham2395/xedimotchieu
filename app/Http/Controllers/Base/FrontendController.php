@@ -75,8 +75,8 @@ class FrontendController extends BaseController
     public function index()
     {
         $params = $this->_prepareIndex();
-        $entities = $this->getRepository()->getListForBackend(Input::all());
-        return view('backend.' . $this->getAlias() . '.index', compact('entities', 'params'));
+        $entities = $this->getRepository()->getListForFrontend(Input::all());
+        return view('frontend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }
 
     public function show($id)
@@ -87,13 +87,13 @@ class FrontendController extends BaseController
         if (empty($entity)) {
             return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
-        return view('backend.' . $this->getAlias() . '.show', compact('entity', 'params'));
+        return view('frontend.' . $this->getAlias() . '.show', compact('entity', 'params'));
     }
 
     public function create()
     {
         $params = $this->_prepareCreate();
-        return view('backend.' . $this->getAlias() . '.create', compact('params'));
+        return view('frontend.' . $this->getAlias() . '.create', compact('params'));
     }
 
     public function edit($id)
@@ -104,7 +104,7 @@ class FrontendController extends BaseController
         if (empty($entity)) {
             return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
         }
-        return view('backend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
+        return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
     public function store(Request $request)

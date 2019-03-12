@@ -1,6 +1,9 @@
 <?php
 return [
     'select_default' => '--- Hãy chọn giá trị ---',
+    'frontend' => [
+        'per_page' => 20,
+    ],
     // Image
 	'avatar_default' => '/images/avatar.png',
 	'no_image' => '/images/placeholder.png',
