@@ -13,11 +13,11 @@
 	<!-- Main content -->
 	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
   		<!-- The Grid -->
-  		<div class="w3-row">
+  		<div class="w3-row {{ empty(frontendGuard()->user()) ? 'center' : '' }}">
   			@if (!empty(frontendGuard()->user()))
 				@include('layouts.frontend.structure.left_column')
 			@endif
-			<div class="w3-col {{!empty(frontendGuard()->user()) ? 'm9' : 'm12'}}">
+			<div class="w3-col m9">
 				@yield('content')
 			</div>
 		</div>

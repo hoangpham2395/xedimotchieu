@@ -3,6 +3,7 @@
 Route::get('/', ['as' => 'home.index', 'uses' => 'Frontend\HomeController@index']);
 Route::get('login', 'Frontend\Auth\LoginController@getLogin');
 Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
+Route::get('logout', ['as' => 'frontend.logout', 'uses' => 'Frontend\Auth\LoginController@logout']);
 Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
 Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
 

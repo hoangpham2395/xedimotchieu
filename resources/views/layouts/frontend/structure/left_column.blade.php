@@ -3,14 +3,14 @@
 	<!-- Profile -->
 	<div class="w3-card w3-round w3-white">
 		<div class="w3-container">
-			<h4 class="w3-center">My Profile</h4>
+			<h4 class="w3-center">{{transb('users.my_profile')}}</h4>
 			<p class="w3-center">
-				<img src="./frontend_files/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+				<img src="{{getAvatarDefault()}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 			</p>
 			<hr>
-			<p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
-			<p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p>
-			<p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p>
+			<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> {{frontendGuard()->user()->name}}</p>
+			<p><i class="fa fa-car fa-fw w3-margin-right w3-text-theme"></i> {{frontendGuard()->user()->getUserType()}}</p>
+			<p><i class="fa fa-envelope-o fa-fw w3-margin-right w3-text-theme"></i> {{frontendGuard()->user()->email}}</p>
 		</div>
 	</div>
 	<br>
@@ -18,42 +18,32 @@
 	<!-- Accordion -->
 	<div class="w3-card w3-round">
 		<div class="w3-white">
-			<button onclick="myFunction(&#39;Demo1&#39;)" class="w3-button w3-block w3-theme-l1 w3-left-align">
-				<i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups
+			<button onclick="showSubMenu('left_col_profile')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> {{transb('users.profile_management')}}
 			</button>
-			<div id="Demo1" class="w3-hide w3-container">
-				<p>Some text..</p>
+			<div id="left_col_profile" class="w3-hide w3-container">
+				<p><a href="#">{{transb('users.profile_show')}}</a></p>
+				<p><a href="#">{{transb('users.profile_edit')}}</a></p>
 			</div>
-			<button onclick="myFunction(&#39;Demo2&#39;)" class="w3-button w3-block w3-theme-l1 w3-left-align">
-				<i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events
+			<button onclick="showSubMenu('left_col_posts')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-share fa-fw w3-margin-right"></i> {{transb('posts.management')}}
 			</button>
-			<div id="Demo2" class="w3-hide w3-container">
-				<p>Some other text..</p>
+			<div id="left_col_posts" class="w3-hide w3-container">
+				<p><a href="#">{{transb('posts.index')}}</a></p>
+				<p><a href="#">{{transb('posts.create')}}</a></p>
 			</div>
-			<button onclick="myFunction(&#39;Demo3&#39;)" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-			<div id="Demo3" class="w3-hide w3-container">
-				<div class="w3-row-padding">
-					<br>
-					<div class="w3-half">
-						<img src="./frontend_files/lights.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
-					<div class="w3-half">
-						<img src="./frontend_files/nature.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
-					<div class="w3-half">
-						<img src="./frontend_files/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
-					<div class="w3-half">
-						<img src="./frontend_files/forest.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
-					<div class="w3-half">
-						<img src="./frontend_files/nature.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
-					<div class="w3-half">
-						<img src="./frontend_files/snow.jpg" style="width:100%" class="w3-margin-bottom">
-					</div>
+			@if (frontendGuard()->user()->isCarOwner())
+				<button onclick="showSubMenu('left_col_cars')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+					<i class="fa fa-car fa-fw w3-margin-right"></i> {{transb('cars.management')}}
+				</button>
+				<div id="left_col_cars" class="w3-hide w3-container">
+					<p><a href="#">{{transb('cars.index')}}</a></p>
+					<p><a href="#">{{transb('cars.create')}}</a></p>
 				</div>
-			</div>
+			@endif
+			<a href="#" class="w3-button w3-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-commenting-o fa-fw w3-margin-right"></i> {{transb('feedbacks.create')}}
+			</a>
 		</div>      
 	</div>
 	<br>

@@ -3,6 +3,12 @@ html, body, h1, h2, h3, h4, h5 {
 }
 
 /* Custom */
+.center {
+    justify-content: center; 
+    display: flex; 
+    align-items: center;
+}
+
 .color-red {
     color: red !important;
 }
