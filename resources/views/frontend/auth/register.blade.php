@@ -4,7 +4,7 @@
 
     @include('layouts.backend.errors')
 
-    {!! Form::open(['route' => 'frontend.login', 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'frontend.register', 'method' => 'POST']) !!}
     <div class="form-group has-feedback">
         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => transm('users.email')]) !!}
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -14,7 +14,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-        {!! Form::password('password', ['class' => 'form-control', 'placeholder' => transm('users.confirm_password')]) !!}
+        {!! Form::password('confirm_password', ['class' => 'form-control', 'placeholder' => transm('users.confirm_password')]) !!}
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            {!! Form::submit(transa('login'), ['class' => 'btn btn-primary btn-block btn-flat']) !!}
+            {!! Form::submit(transa('register'), ['class' => 'btn btn-primary btn-block btn-flat']) !!}
         </div>
         <!-- /.col -->
     </div>
