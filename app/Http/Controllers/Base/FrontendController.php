@@ -128,7 +128,7 @@ class FrontendController extends BaseController
         // Create
         $data = array_merge($data, $this->_prepareStore());
         DB::beginTransaction();
-        // try {
+        try {
             $this->getRepository()->create($data);
             // Move file to medias if exist
             $this->_moveToMediasIfExist($data);
@@ -136,10 +136,10 @@ class FrontendController extends BaseController
 
             Session::flash('success', getMessage('create_success'));
             return redirect()->route('frontend.' . $this->getAlias() . '.index');
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     logError($e);
-        // }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            logError($e);
+        }
         // Create failed
         $this->_deleteFileInTmpIfExist();
         return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['create_failed' => getMessage('create_failed')]);
