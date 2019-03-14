@@ -143,14 +143,7 @@ class CustomRepository extends BaseRepository
             return [];
         }
 
-        $list =$list->toArray();
-
-        $result = [];
-        foreach ($list as $item) {
-            $result[array_get($item, $columnId)] = array_get($item, $columnName);
-        }
-
-        return $result;
+        return $list->pluck($columnName, $columnId)->toArray();
     }
 
     // Custom builder by laravel core
