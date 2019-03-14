@@ -72,6 +72,9 @@ composer require prettus/l5-repository
 composer require doctrine/dbal
 ```
 
+* Upload file
+- Create folder tmp, media in public
+
 ## CONFIG URL
 
 * C:\Windows\System32\drivers\etc\hosts
