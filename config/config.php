@@ -7,8 +7,9 @@ return [
     // Image
 	'avatar_default' => '/images/avatar.png',
 	'no_image' => '/images/placeholder.png',
-	'url_tmp' => '/tmp_uploads',
-	'url_media' => '/medias',
+	'url_tmp' => '/tmp',
+	'url_media' => '/media',
+    'url_media_frontend' => '/media/frontend',
 
     // Admin
     'role_type' => [
