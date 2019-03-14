@@ -9,6 +9,7 @@ Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\R
 Route::middleware(['isLoginFrontend'])->group(function() {
 	Route::prefix(getFrontendAlias())->group(function() {
 		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');
+		Route::resource('posts', 'Frontend\PostsController')->names('frontend.posts');
 	});
 });
 

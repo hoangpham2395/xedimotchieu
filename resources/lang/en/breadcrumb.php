@@ -26,6 +26,8 @@ return [
         'management' => 'Quản lý bài đăng',
         'index' => 'Danh sách bài đăng',
         'create' => 'Viết bài',
+        'show' => 'Chi tiết bài đăng',
+        'destroy' => 'Xóa bài đăng',
     ],
     'cars' => [
     	'name' => 'Cars',

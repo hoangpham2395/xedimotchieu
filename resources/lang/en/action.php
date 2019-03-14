@@ -10,4 +10,6 @@ return [
 	'register' => 'Đăng ký',
 	'introduce' => 'Giới thiệu',
 	'post' => 'Đăng tin',
+	'show' => 'Chi tiết',
+	'list' => 'Danh sách',
 ];

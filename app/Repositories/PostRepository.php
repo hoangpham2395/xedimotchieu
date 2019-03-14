@@ -32,4 +32,25 @@ class PostRepository extends CustomRepository
             'dataChart' => $this->statisticalByMonthInYear(),
     	];
     }
+
+    public function getListByUser($userId, $params = []) 
+    {
+        // Serve pagination
+        if (isset($params['page'])) {
+            unset($params['page']);
+        }
+        // Get data
+        return $this->scopeQuery(function ($query) use ($userId, $params) {
+            $query = $query->where('user_id', '=', $userId)->orderBy($this->getSortField(), $this->getSortType());
+            if (empty($params)) {
+                return $query;
+            }
+            // Search
+            foreach ($params as $key => $value) {
+                $query = $query->where($key, 'LIKE', '%' . $value . '%');
+            }
+            return $query;
+        })
+        ->paginate(getConfig('frontend.per_page'));
+    }
 }

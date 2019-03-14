@@ -33,6 +33,8 @@ return [
         'image' => 'Hình ảnh',
         'note' => 'Nội dung',
         'tags' => 'Thẻ',
+        'place_from' => 'Nơi đi',
+        'place_to' => 'Nơi đến',
     ],
     'cars' => [
         'id' => 'ID',

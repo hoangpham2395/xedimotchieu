@@ -23,6 +23,7 @@ return [
     'id_invalid' => 'ID is invalid.',
     'permission' => 'Bạn không có quyền truy cập.',
     'error_login' => 'Email hoặc mật khẩu không đúng.',
+    'text_confirm_delete' => 'Bạn có chắc chắn muốn xóa?',
 
     // Message of dashboard
     'dashboard_users' => 'Hiện tại hệ thống có :users thành viên, bao gồm :car_owner chủ xe và :passenger hành khách đăng ký tham gia vào hệ thống.', 
