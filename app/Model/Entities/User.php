@@ -5,6 +5,7 @@ use App\Model\Base\BaseAuth;
 use App\Model\Presenters\PUser;
 use App\Model\Scopes\Base\BaseScope;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends BaseAuth
 {
@@ -13,7 +14,7 @@ class User extends BaseAuth
 
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'user_type', 'fb_id', 'gg_id', 'email', 'password','open_flag', 'del_flag'];
+    protected $fillable = ['name', 'user_type', 'fb_id', 'gg_id', 'email', 'password', 'avatar', 'open_flag', 'del_flag'];
     protected $_alias = 'users';
 
     // Add global scope
@@ -21,6 +22,11 @@ class User extends BaseAuth
     {
         parent::boot();
         static::addGlobalScope(new BaseScope());
+    }
+
+    public function setPasswordAttribute($value) 
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 
     public function cars() 

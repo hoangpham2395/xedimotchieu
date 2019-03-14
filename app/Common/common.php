@@ -188,6 +188,16 @@ if (! function_exists('getBackendAlias')) {
     }
 }
 
+if (! function_exists('getFrontendAlias')) {
+    /**
+     * @return mixed
+     */
+    function getFrontendAlias()
+    {
+        return env('FRONTEND_ALIAS', 'client');
+    }
+}
+
 if (! function_exists('rjust')) {
     /**
      * @param $string

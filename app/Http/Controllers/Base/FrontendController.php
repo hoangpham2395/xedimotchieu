@@ -56,11 +56,11 @@ class FrontendController extends BaseController
     protected function _prepareStore()
     {
         // Get current admin
-        $params['ins_id'] = getCurrentAdminId();
+        $params['ins_id'] = frontendGuard()->user()->id;
         // Get file input if exist
         if (Session::has('current_file_field')) {
             $fileName = date('YmdHis') . '_' . Session::get('current_file_name');
-            $params[Session::get('current_file_field')] = getConfig('url_media'). '/' .$this->getAlias() . '/' . $fileName;
+            $params[Session::get('current_file_field')] = getConfig('url_media_frontend'). '/' .$this->getAlias() . '/' . $fileName;
         }
         return $params;
     }
@@ -68,11 +68,11 @@ class FrontendController extends BaseController
     protected function _prepareUpdate()
     {
         // Get current admin
-        $params['upd_id'] = getCurrentAdminId();
+        $params['upd_id'] = frontendGuard()->user()->id;
         // Get file input if exist
         if (Session::has('current_file_field')) {
             $fileName = date('YmdHis') . '_' . Session::get('current_file_name');
-            $params[Session::get('current_file_field')] = getConfig('url_media'). '/' .$this->getAlias() . '/' . $fileName;
+            $params[Session::get('current_file_field')] = getConfig('url_media_frontend'). '/' .$this->getAlias() . '/' . $fileName;
         }
         return $params;
     }

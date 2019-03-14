@@ -5,7 +5,7 @@
 		<div class="w3-container">
 			<h4 class="w3-center">{{transb('users.my_profile')}}</h4>
 			<p class="w3-center">
-				<img src="{{getAvatarDefault()}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+				<img src="{{frontendGuard()->user()->getUrlImage()}}" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 			</p>
 			<hr>
 			<p><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> {{frontendGuard()->user()->name}}</p>
@@ -18,13 +18,9 @@
 	<!-- Accordion -->
 	<div class="w3-card w3-round">
 		<div class="w3-white">
-			<button onclick="showSubMenu('left_col_profile')" class="w3-button w3-block w3-theme-l1 w3-left-align">
-				<i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> {{transb('users.profile_management')}}
-			</button>
-			<div id="left_col_profile" class="w3-hide w3-container">
-				<p><a href="#">{{transb('users.profile_show')}}</a></p>
-				<p><a href="#">{{transb('users.profile_edit')}}</a></p>
-			</div>
+			<a href="{{route('frontend.users.edit', ['id' => frontendGuard()->user()->id])}}" class="w3-button w3-block w3-theme-l1 w3-left-align">
+				<i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> {{transb('users.profile_edit')}}
+			</a>
 			<button onclick="showSubMenu('left_col_posts')" class="w3-button w3-block w3-theme-l1 w3-left-align">
 				<i class="fa fa-share fa-fw w3-margin-right"></i> {{transb('posts.management')}}
 			</button>

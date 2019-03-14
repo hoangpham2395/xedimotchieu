@@ -3,12 +3,18 @@ namespace App\Repositories;
 
 use App\Model\Entities\User;
 use App\Repositories\Base\CustomRepository;
+use App\Validators\VUser;
 
 class UserRepository extends CustomRepository
 {
     public function model()
     {
         return User::class;
+    }
+
+    public function validator() 
+    {
+        return VUser::class;
     }
 
     public function getDataForDashboard()

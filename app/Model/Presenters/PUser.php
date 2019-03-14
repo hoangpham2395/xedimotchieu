@@ -27,4 +27,14 @@ trait PUser
     {
         return $this->open_flag == getConstant('OPEN_FLAG_ACTIVE');
     }
+
+    public function isOwner() 
+    {
+        return $this->id == frontendGuard()->user()->id;
+    }
+
+    public function getUrlImage() 
+    {
+        return (!$this->avatar || !file_exists(public_path($this->avatar))) ? getAvatarDefault() : asset($this->avatar);
+    }
 }

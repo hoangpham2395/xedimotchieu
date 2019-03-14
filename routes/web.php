@@ -6,6 +6,11 @@ Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginCo
 Route::get('logout', ['as' => 'frontend.logout', 'uses' => 'Frontend\Auth\LoginController@logout']);
 Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
 Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
+Route::middleware(['isLoginFrontend'])->group(function() {
+	Route::prefix(getFrontendAlias())->group(function() {
+		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');
+	});
+});
 
 // Backend
 Route::prefix(getBackendAlias())->group(function () {
