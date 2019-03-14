@@ -6,7 +6,7 @@
 				<div class="w3-container w3-padding">
 					<h4 class="w3-opacity">{{transb('users.profile_edit')}}</h4> 
 				</div>
-				@include('layouts.backend.notify')
+				@include('layouts.frontend.notify')
 				<div class="w3-container w3-padding">
 					<div class="w3-row">
 						{!! Form::model($entity, ['route' => ['frontend.users.update', $entity->id], 'method' => 'PATCH', 'files' => true]) !!}

@@ -25,8 +25,8 @@
 				<i class="fa fa-share fa-fw w3-margin-right"></i> {{transb('posts.management')}}
 			</button>
 			<div id="left_col_posts" class="w3-hide w3-container">
-				<p><a href="#">{{transb('posts.index')}}</a></p>
-				<p><a href="#">{{transb('posts.create')}}</a></p>
+				<p><a href="{{route('frontend.posts.index')}}">{{transb('posts.index')}}</a></p>
+				<p><a href="{{route('frontend.posts.create')}}">{{transb('posts.create')}}</a></p>
 			</div>
 			@if (frontendGuard()->user()->isCarOwner())
 				<button onclick="showSubMenu('left_col_cars')" class="w3-button w3-block w3-theme-l1 w3-left-align">
