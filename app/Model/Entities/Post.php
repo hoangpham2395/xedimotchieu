@@ -9,7 +9,7 @@ class Post extends Base
 {
 	protected $table = 'posts';
 	protected $primaryKey = 'id';
-	protected $fillable = ['user_id', 'city_from_id', 'city_to_id', 'district_from_id', 'district_to_id', 'car_id', 'type', 
+	protected $fillable = ['user_id', 'city_from_id', 'city_to_id', 'district_from_id', 'district_to_id', 'car_id', 'car_type', 'type', 
 							'date_start', 'cost', 'phone', 'image', 'note', 'tags', 'del_flag'];
 	protected $_alias = 'posts';
 
@@ -20,6 +20,11 @@ class Post extends Base
     {
         parent::boot();
         static::addGlobalScope(new BaseScope());
+    }
+
+    public function getCostAttribute() 
+    {
+        return (int) $this->attributes['cost'];
     }
 
     public function user() 
