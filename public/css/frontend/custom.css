@@ -149,3 +149,21 @@ span.connect-input {
 .login-logo a {
     text-transform: uppercase;
 }
+
+/* Custom select2
+---------------------------------------*/
+.select2-container--default .select2-selection--single {
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    height: 34px; 
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 4px;
+}
+
+/* Navbar
+---------------------------------------*/
+.w3-top-custom {
+    z-index: 9999;
+}

@@ -12,4 +12,5 @@ return [
 	'post' => 'Đăng tin',
 	'show' => 'Chi tiết',
 	'list' => 'Danh sách',
+	'confirm' => 'Xác nhận',
 ];

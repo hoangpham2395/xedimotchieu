@@ -18,4 +18,17 @@ class CarRepository extends CustomRepository
             'dataChart' => $this->statisticalByMonthInYear(),
         ];
     }
+
+    public function getListForSelectByUser($userId) 
+    {
+        $cars = $this->findWhere(['user_id' => $userId]);
+        $r = [];
+        if (empty($cars)) {
+            return $r;
+        }
+        foreach ($cars as $car) {
+            $r[$car->id] = $car->car_name . ' - ' . $car->getCarType();
+        }
+        return $r;
+    }
 }

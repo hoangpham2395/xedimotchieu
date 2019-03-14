@@ -10,7 +10,7 @@
 				<div class="w3-container w3-padding">
 					<div class="row">
                         <div class="col-md-12 text-right padding-bottom">
-                            <a href="{{route('admin.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transb('admin.create')}}</a>
+                            <a href="{{route('frontend.posts.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> {{transb('posts.create')}}</a>
                         </div>
                     </div>
 					@if (!empty($entities) && $entities->total() > 0)
@@ -20,7 +20,7 @@
                                 <th width="50">{{transm('posts.id')}}</th>
                                 <th width="300">{{transm('posts.place_from')}}</th>
                                 <th width="300">{{transm('posts.place_to')}}</th>
-                                <th width="200">{{transm('posts.car_id')}}</th>
+                                <th width="200">{{transm('posts.car_type')}}</th>
                                 <th width="200">{{transm('posts.type')}}</th>
                                 <th width="300">{{transm('posts.date_start')}}</th>
                                 <th width="200">{{transm('posts.cost')}}</th>

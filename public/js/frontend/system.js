@@ -1,6 +1,12 @@
 // Date picker
 $(function () {
 	$('.datepicker').datepicker();
+	$('.datetimepicker').datetimepicker({
+		format: 'YYYY-MM-DD H:mm',
+		inline: false,
+        sideBySide: true
+	});
+	$('.select2').select2();
 });
 
 // Accordion in left column

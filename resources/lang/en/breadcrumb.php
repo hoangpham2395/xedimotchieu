@@ -25,9 +25,10 @@ return [
     	'name' => 'Posts',
         'management' => 'Quản lý bài đăng',
         'index' => 'Danh sách bài đăng',
-        'create' => 'Viết bài',
+        'create' => 'Đăng bài',
         'show' => 'Chi tiết bài đăng',
         'destroy' => 'Xóa bài đăng',
+        'edit' => 'Cập nhật thông tin bài đăng',
     ],
     'cars' => [
     	'name' => 'Cars',

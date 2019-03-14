@@ -27,6 +27,11 @@ class Post extends Base
         return (int) $this->attributes['cost'];
     }
 
+    public function setDateStartAttribute($value) 
+    {
+        $this->attributes['date_start'] = date('Y-m-d H:i:s', strtotime($value));
+    }
+
     public function user() 
     {
     	return $this->belongsTo(User::class, 'user_id', 'id');

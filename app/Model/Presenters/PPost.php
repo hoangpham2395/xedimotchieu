@@ -20,7 +20,7 @@ trait PPost
 
 	public function getCarType() 
 	{
-		return $this->car->getCarType();
+		return $this->user->isCarOwner() ? $this->car->getCarType() : getConfig('car_type.' . $this->car_type);
 	}
 
 	public function getDateStart() 
@@ -40,7 +40,7 @@ trait PPost
 
 	public function showImage() 
 	{
-		return '<img src="'.url('images/frontend/nature.jpg').'" style="max-height: 200px;" alt="Nature" class="w3-margin-bottom">';
+		return !empty($this->image) ? '<img src="'.url($this->image).'" style="max-height: 200px;" alt="Nature" class="w3-margin-bottom">' : '';
 	}
 
 	public function getUrlImage() 
