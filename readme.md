@@ -114,5 +114,5 @@ composer require doctrine/dbal
 ## RUN IN BROWSER
 
 ```bash 
-dev.mybase.vn
+dev.xdmc.vn
 ```
