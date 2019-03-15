@@ -1,4 +1,4 @@
-# My base
+# My project
 
 ## SYSTEM REQUIREMENT
 
@@ -11,14 +11,18 @@
 ## TEMPLATE
 
 * Admin LTE 2.4.5
+* W3 School
 
 ## VENDOR
 
 * Bootstrap 3.3.7 
 * Fontawesome 4.7
 * Jquery 3
-* Jasny bootstrap
+* Jquery UI 1.12.1
+* Jquery select2 4.0.6
+* Jasny bootstrap 3.1.3
 * Bootstrap datepicker 1.6.4
+* Bootstrap datetimepicker (eonasdan)
 * iCheck
 * Google font
 
@@ -33,7 +37,7 @@ git clone https://github.com/hoangpham2395/xedimotchieu.git
 ```bash
 chmod -R 777 public/images
 chmod -R 777 public/media
-chmod -R 777 public/tmp_uploads
+chmod -R 777 public/tmp
 ```
 
 * Run
@@ -48,6 +52,16 @@ php artisan key:generate
 DB_DATABASE=homestead
 DB_USERNAME=homestead
 DB_PASSWORD=secret
+```
+
+* Run migration
+```bash
+php artisan migrate
+```
+
+* Run seeder
+```bash
+php artisan db:seed
 ```
 
 * Delete cache
