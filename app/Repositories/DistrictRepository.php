@@ -10,4 +10,18 @@ class DistrictRepository extends CustomRepository
     {
         return District::class;
     }
+
+    public function getListForPosts() 
+    {
+    	$r = [];
+    	$districts = $this->all();
+    	if (empty($districts)) {
+    		return $r;
+    	}
+
+    	foreach ($districts as $district) {
+    		$r[$district->city->city_name][$district->id] = $district->district_name;
+    	}
+    	return $r;
+    }
 }

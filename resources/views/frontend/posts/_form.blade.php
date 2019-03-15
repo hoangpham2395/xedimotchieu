@@ -5,14 +5,14 @@
             {!! Form::label('city_from_id', transm('posts.city_from_id')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                {!! Form::select('city_from_id', array_get($params, 'listCities'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.city_from_id')]) !!}
+                {!! Form::select('city_from_id', array_get($params, 'listCities'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.city_from_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_from_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('district_from_id', transm('posts.district_from_id')) !!} <span class="required"></span>
-            <div class="input-group">
+            <div class="input-group" id="district_from_id">
                 <span class="input-group-addon"><i class="fa fa-map"></i></span>
                 {!! Form::select('district_from_id', array_get($params, 'listDistricts'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.district_from_id')]) !!}
             </div>
@@ -25,14 +25,14 @@
             {!! Form::label('city_to_id', transm('posts.city_to_id')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                {!! Form::select('city_to_id', array_get($params, 'listCities'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.city_to_id')]) !!}
+                {!! Form::select('city_to_id', array_get($params, 'listCities'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_to_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             {!! Form::label('district_to_id', transm('posts.district_to_id')) !!} <span class="required"></span>
-            <div class="input-group">
+            <div class="input-group" id="district_to_id">
                 <span class="input-group-addon"><i class="fa fa-map"></i></span>
                 {!! Form::select('district_to_id', array_get($params, 'listDistricts'), null, ['class' => 'form-control select2', 'placeholder' => transm('posts.district_to_id')]) !!}
             </div>

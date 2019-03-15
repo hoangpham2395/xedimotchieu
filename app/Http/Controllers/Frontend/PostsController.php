@@ -75,7 +75,7 @@ class PostsController extends FrontendController
 	protected function _prepareData() 
 	{
 		$params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
-		$params['listDistricts'] = $this->getDistrictRepository()->getListForSelect('id', 'district_name');
+		$params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
 		if (!empty(frontendGuard()) && frontendGuard()->user()->isCarOwner()) {
 			$params['listCars'] = $this->getCarRepository()->getListForSelectByUser(frontendGuard()->user()->id);
 		} else {

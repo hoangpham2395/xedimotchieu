@@ -10,6 +10,10 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 	Route::prefix(getFrontendAlias())->group(function() {
 		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');
 		Route::resource('posts', 'Frontend\PostsController')->names('frontend.posts');
+		Route::post('posts/get-districts', [
+			'as' => 'frontend.districts.get_districts_by_city', 
+			'uses' => 'Frontend\DistrictsController@getDistrictsByCity'
+		]);
 	});
 });
 
