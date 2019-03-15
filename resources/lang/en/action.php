@@ -13,4 +13,6 @@ return [
 	'show' => 'Chi tiết',
 	'list' => 'Danh sách',
 	'confirm' => 'Xác nhận',
+	'home' => 'Trang chủ',
+	'community' => 'Cộng đồng',
 ];

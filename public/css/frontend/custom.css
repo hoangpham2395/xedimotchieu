@@ -167,3 +167,9 @@ span.connect-input {
 .w3-top-custom {
     z-index: 9999;
 }
+
+/* Slider UI
+---------------------------------------*/
+.ui-slider-horizontal .ui-slider-range {
+    background: rgb(96, 125, 139);
+}

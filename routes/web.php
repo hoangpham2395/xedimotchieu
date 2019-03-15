@@ -1,19 +1,20 @@
 <?php
 // Frontend
 Route::get('/', ['as' => 'home.index', 'uses' => 'Frontend\HomeController@index']);
+Route::get('/community', ['as' => 'home.community', 'uses' => 'Frontend\HomeController@community']);
 Route::get('login', 'Frontend\Auth\LoginController@getLogin');
 Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
 Route::get('logout', ['as' => 'frontend.logout', 'uses' => 'Frontend\Auth\LoginController@logout']);
 Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
 Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
+Route::post('posts/get-districts', [
+	'as' => 'frontend.districts.get_districts_by_city', 
+	'uses' => 'Frontend\DistrictsController@getDistrictsByCity'
+]);
 Route::middleware(['isLoginFrontend'])->group(function() {
 	Route::prefix(getFrontendAlias())->group(function() {
 		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');
 		Route::resource('posts', 'Frontend\PostsController')->names('frontend.posts');
-		Route::post('posts/get-districts', [
-			'as' => 'frontend.districts.get_districts_by_city', 
-			'uses' => 'Frontend\DistrictsController@getDistrictsByCity'
-		]);
 	});
 });
 

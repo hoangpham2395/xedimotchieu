@@ -34,6 +34,10 @@ return [
         1 => 'Xe tìm khách',
         2 => 'Khách tìm xe',
     ],
+    'cost_search' => [
+        'min' => 0,
+        'max' => 10,
+    ],
 
     // Car
     'car_type' => [

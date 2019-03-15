@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="{{asset('css/vendor/jasny-bootstrap.min.css')}}">
 <!-- Jquery select2 -->
 <link rel="stylesheet" href="{{asset('css/vendor/select2.min.css')}}">
+<!-- Jquery UI -->
+<link rel="stylesheet" href="{{asset('css/vendor/jquery-ui.min.css')}}">
 <!-- Morris -->
 <link rel="stylesheet" href="{{asset('css/vendor/morris.css')}}">
 <!-- Custom theme -->

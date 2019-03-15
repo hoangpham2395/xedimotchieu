@@ -1,5 +1,6 @@
 <!-- jQuery 3 -->
 <script src="{{asset('js/vendor/jquery.min.js')}}"></script>
+<script src="{{asset('js/vendor/jquery-ui.min.js')}}"></script>
 <!-- Moment for datetime picker -->
 <script src="{{asset('js/vendor/moment.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->

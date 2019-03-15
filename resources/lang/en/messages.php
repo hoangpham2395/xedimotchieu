@@ -45,4 +45,8 @@ return [
         'cost' => 'Dưới 10 triệu VND.',
         'tags' => 'Ngăn cách giữa các thẻ là dấu phẩy. VD: facebook,google, ...',
     ],
+
+    'home_search' => 'Tìm kiếm chuyến xe phù hợp',
+    'home_search_cost' => ':min triệu VND - :max triệu VND',
+    'home_search_result' => 'Có :result kết quả tìm kiếm.',
 ];

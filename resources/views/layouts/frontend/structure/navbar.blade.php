@@ -12,37 +12,34 @@
 			<!-- <i class="fa fa-sign-in"></i>  -->
 			{{transa($login)}}
 		</a>
-		<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transa('post')}}">
-			<!-- <i class="fa fa-share"></i>  -->
-			{{transa('post')}}
+		<a href="{{route('frontend.posts.create')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transb('posts.create')}}">
+			<!-- <i class="fa fa-pencil"></i>  -->
+			{{transb('posts.create')}}
 		</a>
-		<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transa('introduce')}}">
+		<a href="{{route('home.community')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transa('community')}}">
 			<!-- <i class="fa fa-globe"></i>  -->
-			{{transa('introduce')}}
+			{{transa('community')}}
 		</a>
-		<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transa('search')}}">
-			<!-- <i class="fa fa-search"></i>  -->
-			{{transa('search')}}
+		<a href="{{route('home.index')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-right" title="{{transa('home')}}">
+			<!-- <i class="fa fa-home"></i>  -->
+			{{transa('home')}}
 		</a>
-		
-		<!-- <div class="w3-dropdown-hover w3-hide-small">
-			<button class="w3-button w3-padding-large" title="Notifications">
-				<i class="fa fa-bell"></i>
-				<span class="w3-badge w3-right w3-small w3-green">3</span>
-			</button>     
-			<div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-				<a href="https://www.w3schools.com/w3css/tryw3css_templates_social.htm#" class="w3-bar-item w3-button">One new friend request</a>
-				<a href="https://www.w3schools.com/w3css/tryw3css_templates_social.htm#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
-				<a href="https://www.w3schools.com/w3css/tryw3css_templates_social.htm#" class="w3-bar-item w3-button">Jane likes your post</a>
-			</div>
-		</div> -->
 	</div>
 
 	<!-- Navbar on small screens -->
 	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
 		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"></a>
-		<a href="#" class="w3-bar-item w3-button w3-padding-large">{{transa('introduce')}}</a>
-		<a href="#" class="w3-bar-item w3-button w3-padding-large">{{transa('post')}}</a>
-		<a href="{{route('frontend.login')}}" class="w3-bar-item w3-button w3-padding-large">{{transa('login')}}</a>
+		<a href="{{route('home.index')}}" class="w3-bar-item w3-button w3-padding-large">
+			<i class="fa fa-home"></i> &nbsp;{{transa('home')}}
+		</a>
+		<a href="{{route('home.community')}}" class="w3-bar-item w3-button w3-padding-large">
+			<i class="fa fa-globe"></i> &nbsp;{{transa('community')}}
+		</a>
+		<a href="{{route('frontend.posts.create')}}" class="w3-bar-item w3-button w3-padding-large">
+			<i class="fa fa-pencil"></i> &nbsp;{{transb('posts.create')}}
+		</a>
+		<a href="{{route('frontend.' . $login)}}" class="w3-bar-item w3-button w3-padding-large">
+			<i class="fa fa-sign-in"></i> &nbsp;{{transa($login)}}
+		</a>
 	</div>
 </div>

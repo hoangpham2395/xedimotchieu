@@ -13,15 +13,31 @@ class DistrictRepository extends CustomRepository
 
     public function getListForPosts() 
     {
-    	$r = [];
     	$districts = $this->all();
-    	if (empty($districts)) {
-    		return $r;
-    	}
+    	return $this->_filterDistrict($districts);
+    }
 
-    	foreach ($districts as $district) {
-    		$r[$district->city->city_name][$district->id] = $district->district_name;
-    	}
-    	return $r;
+    public function getListForSearch($cityId = null) 
+    {
+        $districts = $this->scopeQuery(function($q) use ($cityId) {
+            if (!empty($cityId)) {
+                $q = $q->where('city_id', '=', $cityId);
+            }            
+            return $q;
+        })->get();    
+        return $this->_filterDistrict($districts);    
+    }
+
+    protected function _filterDistrict($districts) 
+    {
+        $r = [];
+        if (empty($districts)) {
+            return $r;
+        }
+
+        foreach ($districts as $district) {
+            $r[$district->city->city_name][$district->id] = $district->district_name;
+        }
+        return $r;
     }
 }
