@@ -39,4 +39,10 @@ return [
     'register_title' => 'Đăng ký thành viên',
     'register_agree_term' => 'Tôi đồng ý với các <a href="#">điều khoản</a>',
     'register_login' => 'Tôi đã có tài khoản',
+
+    'note_posts' => [
+        'image' => 'Ảnh sẽ hiển thị ở cuối bài đăng.',
+        'cost' => 'Dưới 10 triệu VND.',
+        'tags' => 'Ngăn cách giữa các thẻ là dấu phẩy. VD: facebook,google, ...',
+    ],
 ];

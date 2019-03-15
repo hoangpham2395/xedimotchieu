@@ -88,9 +88,10 @@
             {!! Form::label('cost', transm('posts.cost')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-money"></i></span>
-                {!! Form::text('cost', null, ['class' => 'form-control', 'placeholder' => transm('posts.cost')]) !!}
+                {!! Form::input('number', 'cost', null, ['class' => 'form-control', 'placeholder' => transm('posts.cost'), 'min' => 0, 'max' => 10000000]) !!}
                 <span class="input-group-addon">VND</span>
             </div>
+            <span class="color-red">{{getMessage('note_posts.cost')}}</span>
         </div>
     </div>
     <div class="col-md-6">
@@ -98,7 +99,7 @@
             {!! Form::label('phone', transm('posts.phone')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => transm('posts.phone')]) !!}
+                {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => transm('posts.phone'), 'maxlength' => 11]) !!}
             </div>
         </div>
     </div>
@@ -107,7 +108,7 @@
     <div class="col-md-12">
         <div class="form-group">
             {!! Form::label('image', transm('posts.image')) !!} <br>
-            <span class="color-red">Ảnh sẽ hiển thị ở cuối bài đăng.</span>
+            <span class="color-red">{{getMessage('note_posts.image')}}</span>
             @include('layouts.frontend.upload_image', ['image' => 'image'])
         </div>
     </div>
@@ -120,7 +121,7 @@
                 <span class="input-group-addon"><i class="fa fa-tags	"></i></span>
                 {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => transm('posts.tags')]) !!}
             </div>
-            <span class="color-red">Ngăn cách giữa các thẻ là dấu phẩy. VD: facebook,google, ...</span>
+            <span class="color-red">{{getMessage('note_posts.tags')}}</span>
         </div>
     </div>
 </div>

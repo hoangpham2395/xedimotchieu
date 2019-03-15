@@ -14,7 +14,7 @@ class VPost extends BaseValidator
         	'district_to_id' => 'required',
         	'type' => 'required',
         	'date_start' => 'required',
-        	'cost' => 'required|numeric',
+        	'cost' => 'required|digits_between:0,10000000',
         	'phone' => 'required',
         	'image' => 'nullable|max:5000|mimes:jpeg,png,gif,jpg',
         	'note' => 'required',
