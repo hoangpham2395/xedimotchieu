@@ -54,16 +54,6 @@ DB_USERNAME=homestead
 DB_PASSWORD=secret
 ```
 
-* Run migration
-```bash
-php artisan migrate
-```
-
-* Run seeder
-```bash
-php artisan db:seed
-```
-
 * Delete cache
 ```bash
 php artisan cache:clear
@@ -84,6 +74,16 @@ composer require prettus/l5-repository
 * Install Doctrine dbal for migration
 ```bash
 composer require doctrine/dbal
+```
+
+* Run migration
+```bash
+php artisan migrate
+```
+
+* Run seeder
+```bash
+php artisan db:seed
 ```
 
 * Upload file
