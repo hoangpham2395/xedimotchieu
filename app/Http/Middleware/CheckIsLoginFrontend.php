@@ -18,7 +18,7 @@ class CheckIsLoginFrontend
     public function handle($request, Closure $next, $guard = null)
     {
         if (!Auth::guard('frontend')->check()) {
-            return redirect()->route('admin.login');
+            return redirect()->route('home.index');
         }
 
         return $next($request);
