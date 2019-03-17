@@ -36,6 +36,6 @@
     </div>
     <!-- /.social-auth-links -->
 
-    <a href="#">{{getMessage('login_forgot_password')}}</a><br>
+    <a href="{{route('frontend.forgot_password')}}">{{getMessage('login_forgot_password')}}</a><br>
     <a href="{{route('frontend.register')}}" class="text-center">{{getMessage('login_register')}}</a>
 @endsection

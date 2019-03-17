@@ -15,4 +15,6 @@ return [
 	'confirm' => 'Xác nhận',
 	'home' => 'Trang chủ',
 	'community' => 'Cộng đồng',
+	'send' => 'Gửi',
+	'change_password' => 'Đổi mật khẩu',
 ];

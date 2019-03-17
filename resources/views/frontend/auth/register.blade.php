@@ -2,9 +2,9 @@
 @section('content')
     <p class="login-box-msg">{{getMessage('register_title')}}</p>
 
-    @include('layouts.backend.errors')
+    @include('layouts.frontend.errors')
 
-    {!! Form::open(['route' => 'frontend.register', 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'frontend.post_register', 'method' => 'POST']) !!}
     <div class="form-group has-feedback">
         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => transm('users.email')]) !!}
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

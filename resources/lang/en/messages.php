@@ -41,6 +41,10 @@ return [
     'register_title' => 'Đăng ký thành viên',
     'register_agree_term' => 'Tôi đồng ý với các <a href="#">điều khoản</a>',
     'register_login' => 'Tôi đã có tài khoản',
+    'forgot_password_title' => 'Hệ thống sẽ gửi email cho bạn, bạn hãy xác nhận email để nhận lại mật khẩu.',
+    'account_not_exist' => 'Tài khoản không tồn tại.',
+    'send_mail_success' => 'Gửi email thành công. Bạn hãy kiểm tra lại email để xem mật khẩu mới của bạn.',
+    'send_mail_fail' => 'Gửi email thất bại.',
 
     'note_posts' => [
         'image' => 'Ảnh sẽ hiển thị ở cuối bài đăng.',

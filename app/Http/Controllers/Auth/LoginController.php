@@ -56,7 +56,7 @@ class LoginController extends Controller
             'password' => ['required']
         ];
 
-        $data = $data = [
+        $data = [
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ];

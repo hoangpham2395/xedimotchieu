@@ -7,6 +7,14 @@ Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginCo
 Route::get('logout', ['as' => 'frontend.logout', 'uses' => 'Frontend\Auth\LoginController@logout']);
 Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
 Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
+Route::get('forgot-password', [
+	'as' => 'frontend.forgot_password',
+	'uses' => 'Frontend\Auth\ForgotPasswordController@forgotPassword',
+]);
+Route::post('forgot-password', [
+	'as' => 'frontend.post_forgot_password',
+	'uses' => 'Frontend\Auth\ForgotPasswordController@postForgotPassword',
+]);
 Route::post('posts/get-districts', [
 	'as' => 'frontend.districts.get_districts_by_city', 
 	'uses' => 'Frontend\DistrictsController@getDistrictsByCity'

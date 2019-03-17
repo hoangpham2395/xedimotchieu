@@ -223,3 +223,10 @@ if (! function_exists('ljust')) {
         return str_pad($string, $totalLength, $fillChar, STR_PAD_LEFT);
     }
 }
+
+if (!function_exists('randomString')) {
+    function randomString($length = 8) {
+        $string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return substr(str_shuffle(str_repeat($string, 5)), 0, $length);
+    }
+}

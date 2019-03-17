@@ -57,6 +57,6 @@ class LoginController extends FrontendController
     public function logout()
     {
         Auth::guard('frontend')->logout();
-        return redirect()->route('frontend.login');
+        return redirect()->route('home.index');
     }
 }
