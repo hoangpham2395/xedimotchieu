@@ -21,6 +21,9 @@ class LoginController extends FrontendController
 
     public function getLogin()
     {
+        if (frontendGuard()->check()) {
+            return redirect('/');
+        }
         return view('frontend.auth.login');
     }
 

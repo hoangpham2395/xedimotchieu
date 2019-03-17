@@ -26,6 +26,9 @@ class RegisterController extends FrontendController
 	
     public function getRegister()
     {
+        if (frontendGuard()->check()) {
+            return redirect('/');
+        }
         return view('frontend.auth.register');
     }
 
