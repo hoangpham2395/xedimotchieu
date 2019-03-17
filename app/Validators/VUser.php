@@ -8,7 +8,10 @@ class VUser extends BaseValidator
 {
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [
-
+            'user_type' => 'required',
+            'email' => 'required|email|max:128|unique:users,email',
+            'password' => 'required|max:64|min:6',
+            'confirm_password' => 'bail|nullable|required_with:password|same:password|max:64|min:6',
         ],
         ValidatorInterface::RULE_UPDATE => [
         	'name' => 'required|max:128',

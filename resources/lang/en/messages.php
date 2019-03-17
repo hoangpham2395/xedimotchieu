@@ -24,6 +24,8 @@ return [
     'permission' => 'Bạn không có quyền truy cập.',
     'error_login' => 'Email hoặc mật khẩu không đúng.',
     'text_confirm_delete' => 'Bạn có chắc chắn muốn xóa?',
+    'error_not_agree_term' => 'Bạn chưa đồng ý các điều khoản.',
+    'create_account_success' => 'Đăng ký tài khoản thành công, mời bạn đăng nhập vào hệ thống.',
 
     // Message of dashboard
     'dashboard_users' => 'Hiện tại hệ thống có :users thành viên, bao gồm :car_owner chủ xe và :passenger hành khách đăng ký tham gia vào hệ thống.', 

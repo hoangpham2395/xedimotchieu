@@ -44,7 +44,7 @@ class LoginController extends FrontendController
 
         $rememberMe = ($request->input('remember_me')) ? true : false;
         if (Auth::guard('frontend')->attempt($data, $rememberMe)) {
-            return redirect('/');
+            return redirect()->route('frontend.users.edit', ['id' => frontendGuard()->user()->id]);
         }
         // Login Fail
         $errors = new MessageBag(['errorLogin' => getMessage('error_login')]);

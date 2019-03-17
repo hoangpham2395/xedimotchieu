@@ -10,6 +10,9 @@
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
+        {!! Form::select('user_type', getConfig('user_type'), null, ['class' => 'form-control', 'placeholder' => transm('users.user_type') . ' ---']) !!}
+    </div>
+    <div class="form-group has-feedback">
         {!! Form::password('password', ['class' => 'form-control', 'placeholder' => transm('users.password')]) !!}
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>

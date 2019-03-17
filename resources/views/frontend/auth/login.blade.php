@@ -2,7 +2,8 @@
 @section('content')
     <p class="login-box-msg">{{getMessage('login_title')}}</p>
 
-    @include('layouts.backend.errors')
+    @include('layouts.frontend.errors')
+    @include('layouts.frontend.success')
 
     {!! Form::open(['route' => 'frontend.login', 'method' => 'POST']) !!}
     <div class="form-group has-feedback">
