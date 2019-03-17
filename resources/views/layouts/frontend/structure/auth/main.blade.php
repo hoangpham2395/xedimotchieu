@@ -6,12 +6,15 @@
     <title>{!!getConstant('APP_NAME')!!}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url('images/favicon.png') }}">
     @include('layouts.frontend.load.css')
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    <div class="login-logo">
-        <a href="{{route('home.index')}}">{{getConstant('APP_NAME')}}</a>
+    <div class="login-logo" style="margin-bottom: 0;">
+        <a href="{{route('home.index')}}">
+            <img src="{{url('images/logo.png')}}" width="390">
+        </a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

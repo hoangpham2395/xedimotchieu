@@ -10,6 +10,8 @@ return [
 	'url_tmp' => '/tmp',
 	'url_media' => '/media',
     'url_media_frontend' => '/media/frontend',
+    'favicon_frontend' => 'images/favicon.png',
+    'logo_frontend' => 'images/logo.png',
 
     // Admin
     'role_type' => [

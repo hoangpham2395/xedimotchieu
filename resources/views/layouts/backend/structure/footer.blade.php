@@ -2,5 +2,5 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2018 <a href="https://adminlte.io">{{getConstant('APP_NAME')}}</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="{{route('home.index')}}">{{getConstant('APP_NAME')}}</a>.</strong> All rights reserved.
 </footer>
