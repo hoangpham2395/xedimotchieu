@@ -23,7 +23,7 @@
 	
 	@foreach ($entities as $entity)
 		<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-			<img src="{{getAvatarDefault()}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+			<img src="{{$entity->user->getUrlImage()}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px; height: 60px;">
 			<h4>{{$entity->getPlace()}}</h4>
 			<h6>{{$entity->user->name}}</h6>
 			<br>
