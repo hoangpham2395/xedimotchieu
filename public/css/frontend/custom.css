@@ -170,7 +170,7 @@ span.connect-input {
     top: 4px;
 }
 
-/* Navbar
+/* Custom theme w3
 ---------------------------------------*/
 .w3-top-custom {
     z-index: 9999;
@@ -183,6 +183,10 @@ span.connect-input {
 
 .w3-bar-logo-custom {
     padding: 0 !important;
+}
+
+.w3-margin-custom {
+    margin: 0 16px 16px 16px !important;
 }
 
 /* Slider UI

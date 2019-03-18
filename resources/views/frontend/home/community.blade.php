@@ -8,7 +8,7 @@
 		<i class="fa fa-chevron-up"></i>
 	</button>
 			
-	<div class="w3-row-padding home-search {{array_get($params, 'display_search')}}" style="margin-top: 16px;">
+	<div class="w3-row-padding home-search {{array_get($params, 'display_search')}}">
 		<div class="w3-col m12">
 			<div class="w3-card w3-round w3-white">
 				<div class="w3-container w3-padding">
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<div class="w3-row-padding padding-top home-result {{array_get($params, 'display_search')}}">
+	<div class="w3-row-padding padding-top margin-bottom home-result {{array_get($params, 'display_search')}}">
 		<div class="w3-col m12">
 			<div class="w3-card w3-round w3-white">
 				<div class="w3-container w3-padding">
@@ -30,7 +30,7 @@
 	</div>
 	
 	@foreach ($entities as $entity)
-		<div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+		<div class="w3-container w3-card w3-white w3-round w3-margin-custom"><br>
 			<img src="{{$entity->user->getUrlImage()}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px; height: 60px;">
 			<h4>{{$entity->getPlace()}}</h4>
 			<h6>{{$entity->user->name}}</h6>
