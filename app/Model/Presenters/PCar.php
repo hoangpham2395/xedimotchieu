@@ -7,4 +7,17 @@ trait PCar
 	{
 		return getConfig('car_type.' . $this->car_type);
 	}
+
+	public function getUrlImage() 
+	{
+		return (!$this->car_image || !file_exists(public_path($this->car_image))) ? '' : asset($this->car_image);
+	}
+
+	public function getImage() 
+	{
+		if (empty($this->getUrlImage())) {
+			return '';
+		}
+		return '<img src="'. $this->getUrlImage() .'" height="100">';
+	}
 }

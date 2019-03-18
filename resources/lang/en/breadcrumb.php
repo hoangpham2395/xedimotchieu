@@ -35,6 +35,8 @@ return [
         'management' => 'Quản lý xe',
         'index' => 'Danh sách xe',
         'create' => 'Đăng ký thêm xe',
+        'edit' => 'Thay đổi thông tin xe',
+        'destroy' => 'Xóa đăng ký xe',
     ],
     'cities' => [
     	'name' => 'Cities',

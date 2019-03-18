@@ -182,3 +182,9 @@ span.connect-input {
 .ui-slider-horizontal .ui-slider-range {
     background: rgb(96, 125, 139);
 }
+
+/* Modal 
+---------------------------------------*/
+.modal {
+    top: 50px;
+}

@@ -33,8 +33,8 @@
 					<i class="fa fa-car fa-fw w3-margin-right"></i> {{transb('cars.management')}}
 				</button>
 				<div id="left_col_cars" class="w3-hide w3-container">
-					<p><a href="#">{{transb('cars.index')}}</a></p>
-					<p><a href="#">{{transb('cars.create')}}</a></p>
+					<p><a href="{{route('frontend.cars.index')}}">{{transb('cars.index')}}</a></p>
+					<p><a href="{{route('frontend.cars.create')}}">{{transb('cars.create')}}</a></p>
 				</div>
 			@endif
 			<a href="#" class="w3-button w3-block w3-theme-l1 w3-left-align">
