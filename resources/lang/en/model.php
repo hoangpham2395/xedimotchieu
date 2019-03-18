@@ -63,4 +63,11 @@ return [
         'city_id' => 'Tỉnh/Thành phố',
         'district_name' => 'Quận/Huyện',
     ],
+    'rates' => [
+        'id' => 'ID',
+        'use_id' => 'Người dùng',
+        'post_id' => 'Bài đăng',
+        'rate' => 'Đánh giá',
+        'comment' => 'Bình luận',
+    ],
 ];

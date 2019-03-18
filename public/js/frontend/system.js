@@ -102,3 +102,47 @@ var HomeController = {
   		}
 	},
 };
+
+var RatesController = {
+	store: function(formId) {
+		var url = $(formId).attr('action'),
+		method = $(formId).attr('method'),
+		token = $(formId + ' input[name="_token"]').val(),
+		postId = $(formId + ' input[name="post_id"]').val(),
+		rate = $(formId + ' input[name="rate"]').val(),
+		comment = $(formId + ' textarea[name="comment"]').val();
+
+		// Reset validation
+		$('#alert_rate').addClass('display-none');
+		$('#alert_rate .error-rate').addClass('display-none');
+		$('#alert_rate .error-comment').addClass('display-none');
+
+		// Validate
+		if (!rate) {
+			$('#alert_rate').removeClass('display-none');
+			$('#alert_rate .error-rate').removeClass('display-none');
+		}
+		if (!comment) {
+			$('#alert_rate').removeClass('display-none');
+			$('#alert_rate .error-comment').removeClass('display-none');
+		}
+
+		// Submit form
+		if (rate && comment) {
+			$.ajax({
+				url: url,
+				type: 'POST',
+				data: {
+					_token: token,
+					rate: rate,
+					comment: comment,
+					post_id: postId
+				}
+			}).done(function(data) {
+				$('#list_rates').html(data);
+			}).fail(function() {
+				alert(SystemController.systemError);
+			});
+		}
+	},
+};

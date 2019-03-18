@@ -55,4 +55,6 @@ return [
     'home_search' => 'Tìm kiếm chuyến xe phù hợp',
     'home_search_cost' => ':min triệu VND - :max triệu VND',
     'home_search_result' => 'Có :result kết quả tìm kiếm.',
+    'average_rating' => 'Đánh giá trung bình',
+    'rating_breakdown' => 'Thống kê đánh giá ',
 ];

@@ -19,11 +19,16 @@ Route::post('posts/get-districts', [
 	'as' => 'frontend.districts.get_districts_by_city', 
 	'uses' => 'Frontend\DistrictsController@getDistrictsByCity'
 ]);
+Route::get('community/{id}', [
+	'as' => 'home.community.detail',
+	'uses' => 'Frontend\HomeController@detail'
+]);
 Route::middleware(['isLoginFrontend'])->group(function() {
 	Route::prefix(getFrontendAlias())->group(function() {
 		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');
 		Route::resource('posts', 'Frontend\PostsController')->names('frontend.posts');
 		Route::resource('cars', 'Frontend\CarsController')->names('frontend.cars');
+		Route::resource('rates', 'Frontend\RatesController')->names('frontend.rates')->only('store');
 	});
 });
 

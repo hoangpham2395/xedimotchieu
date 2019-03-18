@@ -25,5 +25,7 @@
 <link rel="stylesheet" href="{{asset('css/vendor/w3.css')}}">
 <link rel="stylesheet" href="{{asset('css/vendor/w3-theme-blue-grey.css')}}">
 <link rel="stylesheet" href="{{asset('css/vendor/css')}}">
+<!-- Star rating -->
+<link rel="stylesheet" href="{{asset('css/vendor/star-rating.min.css')}}">
 <!-- My style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/frontend/custom.css')}}">

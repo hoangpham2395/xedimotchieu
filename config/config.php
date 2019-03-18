@@ -3,6 +3,9 @@ return [
     'select_default' => '--- Hãy chọn giá trị ---',
     'frontend' => [
         'per_page' => 20,
+        'rates' => [
+            'per_page' => 3,
+        ],
     ],
     // Image
 	'avatar_default' => '/images/avatar.png',

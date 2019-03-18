@@ -18,4 +18,7 @@ return [
 	'send' => 'Gửi',
 	'change_password' => 'Đổi mật khẩu',
 	'scroll_to_top' => 'Lên đầu trang',
+	'chat' => 'Chat',
+	'rate' => 'Đánh giá',
+	'cancel' => 'Cancel',
 ];

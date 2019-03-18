@@ -21,5 +21,7 @@
 <!-- Morris -->
 <script src="{{asset('js/vendor/raphael.min.js')}}"></script>
 <script src="{{asset('js/vendor/morris.min.js')}}"></script>
+<!-- Star rating -->
+<script src="{{asset('js/vendor/star-rating.min.js')}}"></script>
 <!-- My js -->
 <script src="{{asset('js/frontend/system.js')}}"></script>

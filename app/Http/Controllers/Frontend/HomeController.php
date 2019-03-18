@@ -6,6 +6,7 @@ use App\Model\Entities\Post;
 use App\Repositories\PostRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\DistrictRepository;
+use App\Repositories\RateRepository;
 use App\Validators\VPost;
 use Illuminate\Support\Facades\Input;
 
@@ -13,6 +14,7 @@ class HomeController extends FrontendController
 {
     protected $_cityRepository;
     protected $_districtRepository;
+    protected $_rateRepository;
 
     public function setCityRepository($cityRepository) 
     {
@@ -34,17 +36,29 @@ class HomeController extends FrontendController
         return $this->_districtRepository;
     }
 
+    public function setRateRepository($rateRepository) 
+    {
+        $this->_rateRepository = $rateRepository;
+    }
+
+    public function getRateRepository() 
+    {
+        return $this->_rateRepository;
+    }
+
     public function __construct(
         PostRepository $postRepository,
         VPost $postValidator,
         Post $post,
         CityRepository $cityRepository,
-        DistrictRepository $districtRepository
+        DistrictRepository $districtRepository,
+        RateRepository $rateRepository
     )
     {
         $this->setRepository($postRepository);
         $this->setCityRepository($cityRepository);
         $this->setDistrictRepository($districtRepository);
+        $this->setRateRepository($rateRepository);
         $this->setValidator($postValidator);
         $this->setAlias($post->getTable());
         parent::__construct();
@@ -72,5 +86,13 @@ class HomeController extends FrontendController
         $params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
         $params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
         return array_merge($params, parent::_prepareData());
+    }
+
+    public function detail($id) 
+    {
+        $entity = $this->getRepository()->findById($id);
+        $rates = $this->getRateRepository()->getListByPost($id);
+        $params['average_rating'] = 4.3;
+        return view('frontend.home.detail', compact('entity', 'params', 'rates'));
     }
 }

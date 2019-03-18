@@ -59,8 +59,8 @@
 					{!! $entity->showImage() !!}
 				</div>
 			</div>
-			<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Chat</button> 
-			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Comment</button>
+			<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</button> 
+			<a href="{{route('home.community.detail', ['id' => $entity->id])}}" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}</a>
 		</div>
 	@endforeach
 @endsection
