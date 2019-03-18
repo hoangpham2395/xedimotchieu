@@ -17,4 +17,5 @@ return [
 	'community' => 'Cộng đồng',
 	'send' => 'Gửi',
 	'change_password' => 'Đổi mật khẩu',
+	'scroll_to_top' => 'Lên đầu trang',
 ];

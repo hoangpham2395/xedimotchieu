@@ -80,3 +80,30 @@ var PostsController = {
 		});
 	},
 };
+
+var HomeController = {
+	search: function(e) {
+		// Scroll to top
+		HomeController.scrollToTop();
+  		// Show form search
+		$('.home-search').removeClass('display-none');
+		$('.home-result').removeClass('display-none');
+	},
+	scrollToTop: function() {
+		document.body.scrollTop = 0; // For Safari
+  		document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera	
+	},
+	showBtnScroll: function() {
+		// Scroll 300px
+		if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    		document.getElementById("btn_scroll").style.display = "block";
+  		} else {
+    		document.getElementById("btn_scroll").style.display = "none";
+  		}
+	},
+};
+
+// Scroll to top
+window.onscroll = function() {
+	HomeController.showBtnScroll();
+};

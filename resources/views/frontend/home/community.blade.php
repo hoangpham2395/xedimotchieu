@@ -1,6 +1,14 @@
 @extends('layouts.frontend.structure.main')
 @section('content')
-	<div class="w3-row-padding">
+	
+	<button type="button" class="btn-fixed btn-search" onclick="HomeController.search(this)" title="{{transa('search')}}">
+		<i class="fa fa-search"></i>
+	</button>
+	<button type="button" class="btn-fixed btn-scroll" id="btn_scroll" onclick="HomeController.scrollToTop()" title="{{transa('scroll_to_top')}}">
+		<i class="fa fa-chevron-up"></i>
+	</button>
+			
+	<div class="w3-row-padding home-search {{array_get($params, 'display_search')}}" style="margin-top: 16px;">
 		<div class="w3-col m12">
 			<div class="w3-card w3-round w3-white">
 				<div class="w3-container w3-padding">
@@ -11,11 +19,11 @@
 		</div>
 	</div>
 
-	<div class="w3-row-padding padding-top">
+	<div class="w3-row-padding padding-top home-result {{array_get($params, 'display_search')}}">
 		<div class="w3-col m12">
 			<div class="w3-card w3-round w3-white">
 				<div class="w3-container w3-padding">
-					<h4 style="font-weight: bold;">Có {{$entities->total()}} kết quả tìm kiếm.</h4>
+					<h4 style="font-weight: bold;">{{getMessage('home_search_result', ['result' => $entities->total()])}}</h4>
 				</div>
 			</div>
 		</div>
