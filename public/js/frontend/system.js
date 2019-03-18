@@ -102,8 +102,3 @@ var HomeController = {
   		}
 	},
 };
-
-// Scroll to top
-window.onscroll = function() {
-	HomeController.showBtnScroll();
-};

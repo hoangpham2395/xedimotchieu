@@ -64,3 +64,12 @@
 		</div>
 	@endforeach
 @endsection
+
+@section('javascript')
+	<script type="text/javascript">
+		// Scroll to top
+		window.onscroll = function() {
+			HomeController.showBtnScroll();
+		};
+	</script>
+@endsection
