@@ -38,16 +38,16 @@ class FeedbacksController extends FrontendController
 
         // Create
         DB::beginTransaction();
-        // try {
+        try {
             $this->getRepository()->create($data);
             DB::commit();
 
             Session::flash('success', getMessage('create_success'));
             return redirect()->back();
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     logError($e);
-        // }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            logError($e);
+        }
         // Create failed
         return redirect()->back()->withErrors(['create_failed' => getMessage('create_failed')]);
     }
