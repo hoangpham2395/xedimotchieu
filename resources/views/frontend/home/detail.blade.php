@@ -33,7 +33,11 @@
 		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
 			<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}
 		</button>
-		@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
+		@if (frontendGuard()->check())
+			@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
+		@else
+			@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
+		@endif
 	</div>
 	<div id="list_rates">
 		@include('frontend.rates._list_rates')

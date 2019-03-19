@@ -145,4 +145,8 @@ var RatesController = {
 			});
 		}
 	},
+	redirectLogin:function(e) {
+		var url = $(e).attr('data-url');
+		window.location.href = url;
+	},
 };

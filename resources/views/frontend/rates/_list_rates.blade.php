@@ -3,78 +3,28 @@
 		<div class="col-sm-4">
 			<div class="rating-block average-rating">
 				<h4>{{getMessage('average_rating')}}</h4>
-				<h2 class="bold padding-bottom-7">{{array_get($params, 'average_rating')}} <small>/ 5</small></h2>
-				<input name="input-2" class="rating rating-loading" value="{{array_get($params, 'average_rating')}}" data-min="0" data-max="5" data-step="0.1" data-show-clear="false" data-show-caption="false" data-disabled="true" data-size="xl">
+				<h2 class="bold padding-bottom-7">{{array_get($params, 'rates.average_rating')}} <small>/ 5</small></h2>
+				<input name="input-2" class="rating rating-loading" value="{{array_get($params, 'rates.average_rating')}}" data-min="0" data-max="5" data-step="0.1" data-show-clear="false" data-show-caption="false" data-disabled="true" data-size="xl">
 				</button>
 			</div>
 		</div>
 		<div class="col-sm-6 col-xs-8 rating-breakdown">
 			<h4>{{getMessage('rating_breakdown')}}</h4>
-			<div class="pull-left">
-				<div class="pull-left" style="width:35px; line-height:1;">
-					<div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-				</div>
-				<div class="pull-left" style="width:180px;">
-					<div class="progress" style="height:9px; margin:8px 0;">
-					  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-						<span class="sr-only">80% Complete (danger)</span>
-					  </div>
+			@foreach (getConfig('rating_breakdown') as $key => $item)
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">{{$key}} <span class="glyphicon glyphicon-star"></span></div>
 					</div>
-				</div>
-				<div class="pull-right" style="margin-left:10px;">1</div>
-			</div>
-			<div class="pull-left">
-				<div class="pull-left" style="width:35px; line-height:1;">
-					<div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
-				</div>
-				<div class="pull-left" style="width:180px;">
-					<div class="progress" style="height:9px; margin:8px 0;">
-					  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-						<span class="sr-only">80% Complete (danger)</span>
-					  </div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+						  <div class="progress-bar progress-bar-{{$item}}" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: {{array_get($params, 'rates.rating_breakdown.'. $key .'.per_cent')}}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
 					</div>
+					<div class="pull-right" style="margin-left:10px;">{{array_get($params, 'rates.rating_breakdown.'. $key .'.count')}}</div>
 				</div>
-				<div class="pull-right" style="margin-left:10px;">1</div>
-			</div>
-			<div class="pull-left">
-				<div class="pull-left" style="width:35px; line-height:1;">
-					<div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-				</div>
-				<div class="pull-left" style="width:180px;">
-					<div class="progress" style="height:9px; margin:8px 0;">
-					  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-						<span class="sr-only">80% Complete (danger)</span>
-					  </div>
-					</div>
-				</div>
-				<div class="pull-right" style="margin-left:10px;">0</div>
-			</div>
-			<div class="pull-left">
-				<div class="pull-left" style="width:35px; line-height:1;">
-					<div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-				</div>
-				<div class="pull-left" style="width:180px;">
-					<div class="progress" style="height:9px; margin:8px 0;">
-					  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-						<span class="sr-only">80% Complete (danger)</span>
-					  </div>
-					</div>
-				</div>
-				<div class="pull-right" style="margin-left:10px;">0</div>
-			</div>
-			<div class="pull-left">
-				<div class="pull-left" style="width:35px; line-height:1;">
-					<div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
-				</div>
-				<div class="pull-left" style="width:180px;">
-					<div class="progress" style="height:9px; margin:8px 0;">
-					  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-						<span class="sr-only">80% Complete (danger)</span>
-					  </div>
-					</div>
-				</div>
-				<div class="pull-right" style="margin-left:10px;">0</div>
-			</div>
+			@endforeach
 		</div>
 	</div>	
 	<hr/>		
@@ -82,7 +32,6 @@
 	@if (!empty($rates) && $rates->total() > 0)
 		<div class="row">
 			<div class="col-sm-12">
-				<hr/>
 				<div class="review-block">
 					@foreach ($rates as $rate)
 					<div class="row">

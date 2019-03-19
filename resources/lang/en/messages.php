@@ -57,4 +57,7 @@ return [
     'home_search_result' => 'Có :result kết quả tìm kiếm.',
     'average_rating' => 'Đánh giá trung bình',
     'rating_breakdown' => 'Thống kê đánh giá ',
+    'rates_error_rate' => 'Bạn chưa đánh giá sao.',
+    'rates_error_comment' => 'Bạn chưa để lại bình luận.',
+    'rates_require_login' => 'Vui lòng bạn đăng nhập trước khi đánh giá.'
 ];

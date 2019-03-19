@@ -91,8 +91,7 @@ class HomeController extends FrontendController
     public function detail($id) 
     {
         $entity = $this->getRepository()->findById($id);
-        $rates = $this->getRateRepository()->getListByPost($id);
-        $params['average_rating'] = 4.3;
+        list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);
         return view('frontend.home.detail', compact('entity', 'params', 'rates'));
     }
 }

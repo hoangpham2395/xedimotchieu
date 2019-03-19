@@ -14,8 +14,8 @@
 				<div class="modal-body">
 					<div id="alert_rate" class="alert alert-danger alert-dismissable display-none">
 				        <ul>
-			                <li class="error-rate display-none">Bạn chưa đánh giá sao.</li>
-			                <li class="error-comment display-none">Bạn chưa bình luận.</li>
+			                <li class="error-rate display-none">{{getMessage('rates_error_rate')}}</li>
+			                <li class="error-comment display-none">{{getMessage('rates_error_comment')}}</li>
 				        </ul>
 				    </div>
 					<div class="row">

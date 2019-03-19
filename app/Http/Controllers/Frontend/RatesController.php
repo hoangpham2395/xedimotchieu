@@ -32,8 +32,7 @@ class RatesController extends FrontendController
             DB::rollBack();
         }
 
-        $rates = $this->getRepository()->getListByPost(array_get($data, 'post_id'));
-        $params['average_rating'] = 4.3;
+        list($rates, $params['rates']) = $this->getRepository()->getListByPost(array_get($data, 'post_id'));
         return view('frontend.rates._list_rates', compact('rates', 'params'));
     }
 }

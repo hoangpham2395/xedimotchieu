@@ -55,4 +55,13 @@ return [
         7 => '30 chỗ',
         8 => 'Trên 30 chỗ',
     ],
+
+    // Rate
+    'rating_breakdown' => [
+        5 => 'success',
+        4 => 'primary',
+        3 => 'info',
+        2 => 'warning',
+        1 => 'danger',
+    ],
 ];
