@@ -140,6 +140,10 @@ var RatesController = {
 				}
 			}).done(function(data) {
 				$('#list_rates').html(data);
+				// Reset data
+				$(formId + ' input[name="rate"]').val(0);
+				$(formId + ' .filled-stars').css('width', '0%');
+				$(formId + ' textarea[name="comment"]').val('');
 			}).fail(function() {
 				alert(SystemController.systemError);
 			});
