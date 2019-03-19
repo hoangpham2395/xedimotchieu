@@ -8,7 +8,7 @@ class Feedback extends Base
 {
 	protected $table = 'feedbacks';
 	protected $primaryKey = 'id';
-	protected $fillable = ['user_id', 'feedback', 'del_flag'];
+	protected $fillable = ['email', 'feedback', 'del_flag'];
 	protected $_alias = 'feedbacks';
 
 	// Add global scope
@@ -20,6 +20,6 @@ class Feedback extends Base
 
     public function user() 
     {
-    	return $this->belongsTo(User::class, 'user_id', 'id');
+    	return $this->belongsTo(User::class, 'email', 'email');
     }
 }

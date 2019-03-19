@@ -60,6 +60,6 @@ class User extends BaseAuth
 
     public function feedbacks() 
     {
-        return $this->hasMany(Feedback::class, 'user_id', 'id');
+        return $this->hasMany(Feedback::class, 'email', 'email');
     }
 }

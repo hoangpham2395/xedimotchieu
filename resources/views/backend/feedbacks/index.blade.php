@@ -22,7 +22,7 @@
 	                                    @foreach ($entities as $entity)
 	                                        <tr>
 	                                            <td>{{ $entity->id }}</td>
-	                                            <td>{{ $entity->user->name }}</td>
+	                                            <td>{{ $entity->email }}</td>
 	                                            <td>{!! $entity->content !!}</td>
 	                                        </tr>
 	                                    @endforeach
