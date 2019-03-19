@@ -34,12 +34,12 @@ class LoginController extends FrontendController
             'password' => ['required']
         ];
 
-        $data = $data = [
+        $data = [
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ];
 
-        // Check validate
+        // Check validate 
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -47,6 +47,9 @@ class LoginController extends FrontendController
 
         $rememberMe = ($request->input('remember_me')) ? true : false;
         if (Auth::guard('frontend')->attempt($data, $rememberMe)) {
+            if (!empty($request->input('return_url'))) {
+                return redirect($request->get('return_url'));
+            }
             return redirect()->route('frontend.users.edit', ['id' => frontendGuard()->user()->id]);
         }
         // Login Fail
