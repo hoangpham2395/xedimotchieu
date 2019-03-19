@@ -37,7 +37,7 @@
 					<p><a href="{{route('frontend.cars.create')}}">{{transb('cars.create')}}</a></p>
 				</div>
 			@endif
-			<a href="#" class="w3-button w3-block w3-theme-l1 w3-left-align">
+			<a href="{{route('frontend.feedbacks.create')}}" class="w3-button w3-block w3-theme-l1 w3-left-align">
 				<i class="fa fa-commenting-o fa-fw w3-margin-right"></i> {{transb('feedbacks.create')}}
 			</a>
 		</div>      

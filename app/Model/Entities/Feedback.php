@@ -8,7 +8,7 @@ class Feedback extends Base
 {
 	protected $table = 'feedbacks';
 	protected $primaryKey = 'id';
-	protected $fillable = ['email', 'feedback', 'del_flag'];
+	protected $fillable = ['email', 'content', 'del_flag'];
 	protected $_alias = 'feedbacks';
 
 	// Add global scope

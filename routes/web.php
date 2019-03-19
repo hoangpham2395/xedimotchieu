@@ -23,6 +23,14 @@ Route::get('community/{id}', [
 	'as' => 'home.community.detail',
 	'uses' => 'Frontend\HomeController@detail'
 ]);
+Route::get('feedbacks', [
+	'as' => 'frontend.feedbacks.create',
+	'uses' => 'Frontend\FeedBacksController@create',
+]);
+Route::post('feedbacks', [
+	'as' => 'frontend.feedbacks.store',
+	'uses' => 'Frontend\FeedBacksController@store',
+]);
 Route::middleware(['isLoginFrontend'])->group(function() {
 	Route::prefix(getFrontendAlias())->group(function() {
 		Route::resource('users', 'Frontend\UsersController')->only('edit', 'update')->names('frontend.users');

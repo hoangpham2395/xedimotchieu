@@ -45,6 +45,7 @@ return [
         'name' => 'Feedbacks',
         'index' => 'Danh sách phản hồi',
         'create' => 'Viết phản hồi',
+        'show' => 'Chi tiết phản hồi',
     ],
     'rates' => [
         'create' => 'Đánh giá bài đăng',

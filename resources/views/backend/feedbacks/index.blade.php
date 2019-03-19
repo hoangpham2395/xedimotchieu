@@ -15,15 +15,22 @@
                                 <table class="table table-bordered table-striped">
                                     <thead>
 	                                    <th width="50">{{transm('feedbacks.id')}}</th>
-	                                    <th>{{transm('feedbacks.user_id')}}</th>
+	                                    <th width="300">{{transm('feedbacks.email')}}</th>
 	                                    <th>{{transm('feedbacks.content')}}</th>
+                                        <th width="80" class="text-center">{{transa('show')}}</th>
                                     </thead>
                                     <tbody>
 	                                    @foreach ($entities as $entity)
 	                                        <tr>
 	                                            <td>{{ $entity->id }}</td>
 	                                            <td>{{ $entity->email }}</td>
-	                                            <td>{!! $entity->content !!}</td>
+	                                            <td style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                                    {!! nl2br($entity->content) !!}
+                                                </td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_show_{{$entity->id}}"><i class="fa fa-info-circle"></i></button>
+                                                </td>
+                                                @include('backend.feedbacks._modal_show')
 	                                        </tr>
 	                                    @endforeach
                                     </tbody>

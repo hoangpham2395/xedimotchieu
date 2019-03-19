@@ -51,7 +51,7 @@ return [
     ],
     'feedbacks' => [
         'id' => 'ID',
-        'user_id' => 'Người phản hồi',
+        'email' => 'Email',
         'content' => 'Nội dung phản hồi',
     ],
     'cities' => [

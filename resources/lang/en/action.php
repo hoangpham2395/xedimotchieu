@@ -21,4 +21,5 @@ return [
 	'chat' => 'Chat',
 	'rate' => 'Đánh giá',
 	'cancel' => 'Cancel',
+	'close' => 'Đóng',
 ];
