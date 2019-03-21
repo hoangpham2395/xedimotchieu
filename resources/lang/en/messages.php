@@ -1,26 +1,26 @@
 <?php
 return [
 	// add
-    'create_success' => 'Create success.',
-    'create_failed' => 'Some errors has occurred. Please try again!',
+    'create_success' => 'Thành công.',
+    'create_failed' => 'Đã có lỗi xảy ra ở hệ thống. Xin hãy thử lại!',
     // update
-    'update_success' => 'Update success.',
-    'update_failed' => 'Some errors has occurred. Please try again!',
+    'update_success' => 'Thành công.',
+    'update_failed' => 'Đã có lỗi xảy ra ở hệ thống. Xin hãy thử lại!',
     // delete
-    'delete_success' => 'Delete success.',
-    'delete_failed' => 'Some errors has occurred. Please try again!',
+    'delete_success' => 'Xóa thành công.',
+    'delete_failed' => 'Đã có lỗi xảy ra ở hệ thống. Xin hãy thử lại!',
 
-    'change_success' => 'Change success.',
-    'failed' => 'Some errors has occurred. Please try again!',
-    'success' => 'success',
+    'change_success' => 'Thay đổi thành công.',
+    'failed' => 'Đã có lỗi xảy ra ở hệ thống. Xin hãy thử lại!',
+    'success' => 'Thành công.',
     // search
-    'no_result_found' => 'No data.',
-    'db_not_connect' => 'Db not connect.',
-    'url_not_found' => 'URL not found.',
-    'db_error' => 'Database error has occurred.',
-    'system_error' => 'system error has occurred.',
+    'no_result_found' => 'Không có dữ liệu.',
+    'db_not_connect' => 'Chưa kết nối với cơ sở dữ liệu.',
+    'url_not_found' => 'URL không được tìm thấy.',
+    'db_error' => 'Đã có lỗi xảy ra ở cơ sở dữ liệu.',
+    'system_error' => 'Hệ thống xảy ra lỗi.',
 
-    'id_invalid' => 'ID is invalid.',
+    'id_invalid' => 'ID không hợp lệ.',
     'permission' => 'Bạn không có quyền truy cập.',
     'error_login' => 'Email hoặc mật khẩu không đúng.',
     'text_confirm_delete' => 'Bạn có chắc chắn muốn xóa?',
