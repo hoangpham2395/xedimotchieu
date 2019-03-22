@@ -5,8 +5,14 @@ Route::get('/community', ['as' => 'home.community', 'uses' => 'Frontend\HomeCont
 Route::get('login', 'Frontend\Auth\LoginController@getLogin');
 Route::post('login', ['as' => 'frontend.login', 'uses' => 'Frontend\Auth\LoginController@postLogin']);
 Route::get('logout', ['as' => 'frontend.logout', 'uses' => 'Frontend\Auth\LoginController@logout']);
-Route::get('register', 'Frontend\Auth\RegisterController@getRegister');
-Route::post('register', ['as' => 'frontend.register', 'uses' => 'Frontend\Auth\RegisterController@postRegister']);
+Route::get('register', [
+	'as' => 'frontend.register',
+	'uses' => 'Frontend\Auth\RegisterController@getRegister'
+]);
+Route::post('register', [
+	'as' => 'frontend.register.store', 
+	'uses' => 'Frontend\Auth\RegisterController@postRegister'
+]);
 Route::get('forgot-password', [
 	'as' => 'frontend.forgot_password',
 	'uses' => 'Frontend\Auth\ForgotPasswordController@forgotPassword',
@@ -39,6 +45,10 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 		Route::resource('rates', 'Frontend\RatesController')->names('frontend.rates')->only('store');
 	});
 });
+
+// Socialite
+Route::get('login/redirect/{social}', 'Frontend\Auth\LoginController@redirect');
+Route::get('login/callback/{social}', 'Frontend\Auth\LoginController@callback');
 
 // Backend
 Route::prefix(getBackendAlias())->group(function () {

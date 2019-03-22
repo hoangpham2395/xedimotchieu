@@ -230,3 +230,13 @@ if (!function_exists('randomString')) {
         return substr(str_shuffle(str_repeat($string, 5)), 0, $length);
     }
 }
+
+if (!function_exists('isElementInString')) {
+    function isElementInString($element, $string) 
+    {
+         if (empty(strstr($string, $element))) {
+              return false;
+         }
+         return true;
+    }
+}

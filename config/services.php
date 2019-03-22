@@ -44,4 +44,24 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID', '330781920904654'),
+        'client_secret' => env('FACEBOOK_APP_SECRET', 'ced14e28496b0396f1fa6d3fcfd63176'),
+        'redirect' => env('FACEBOOK_APP_CALLBACK_URL', 'https://dev.xemotchieu.vn/callback/facebook'),
+    ],
+    'github' => [
+        'client_id' => env('GITHUB_APP_ID'),
+        'client_secret' => env('GITHUB_APP_SECRET'),
+        'redirect' => env('GITHUB_APP_CALLBACK_URL'),
+    ],
+    'twitter' => [
+        'client_id' => env('TWITTER_APP_ID'),
+        'client_secret' => env('TWITTER_APP_SECRET'),
+        'redirect' => env('TWITTER_APP_CALLBACK_URL'),
+    ],
+    'google' => [
+        'client_id' => env('GOOGLE_APP_ID'),
+        'client_secret' => env('GOOGLE_APP_SECRET'),
+        'redirect' => env('GOOGLE_APP_CALLBACK_URL'),
+    ],
 ];

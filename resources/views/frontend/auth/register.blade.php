@@ -4,7 +4,7 @@
 
     @include('layouts.frontend.errors')
 
-    {!! Form::open(['route' => 'frontend.post_register', 'method' => 'POST']) !!}
+    {!! Form::open(['route' => 'frontend.register.store', 'method' => 'POST']) !!}
     <div class="form-group has-feedback">
         {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => transm('users.email')]) !!}
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -38,7 +38,7 @@
 
     <div class="social-auth-links text-center">
         <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{getMessage('login_fb')}}</a>
+        <a href="{{url('login/redirect/facebook')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{getMessage('login_fb')}}</a>
     </div>
     <!-- /.social-auth-links -->
 

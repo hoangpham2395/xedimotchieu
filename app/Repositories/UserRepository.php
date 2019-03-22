@@ -34,4 +34,9 @@ class UserRepository extends CustomRepository
             'dataChart' => $this->statisticalByMonthInYear(),
     	];
     }
+
+    public function findByFb($fbId) 
+    {
+        return $this->findWhere(['fb_id' => $fbId])->first();
+    }
 }

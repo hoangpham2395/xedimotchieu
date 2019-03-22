@@ -15,6 +15,7 @@ return [
     'url_media_frontend' => '/media/frontend',
     'favicon_frontend' => 'images/favicon.png',
     'logo_frontend' => 'images/logo.png',
+    'url_facebook_image' => 'https://graph.facebook.com',
 
     // Admin
     'role_type' => [
@@ -29,6 +30,7 @@ return [
         2 => 'Hành khách',
     ],
     'user_type_car_owner' => 1,
+    'user_type_passenger' => 2,
     'open_flag' => [
         1 => 'On',
         0 => 'Off',

@@ -86,6 +86,16 @@ php artisan migrate
 php artisan db:seed
 ```
 
+* Socialite to login facebook
+```bash
+composer require laravel/socialite
+```
+
+* Config file config/app.php
+```bash
+
+```
+
 * Upload file
 - Create folder tmp, media in public
 

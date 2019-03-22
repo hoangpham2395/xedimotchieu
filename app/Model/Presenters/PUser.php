@@ -35,6 +35,10 @@ trait PUser
 
     public function getUrlImage() 
     {
+        if ($this->avatar && isElementInString(getConfig('url_facebook_image'), $this->avatar)) {
+            return $this->avatar;
+        }
+
         return (!$this->avatar || !file_exists(public_path($this->avatar))) ? getAvatarDefault() : asset($this->avatar);
     }
 }
