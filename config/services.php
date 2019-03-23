@@ -45,9 +45,9 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => env('FACEBOOK_APP_ID', '330781920904654'),
-        'client_secret' => env('FACEBOOK_APP_SECRET', 'ced14e28496b0396f1fa6d3fcfd63176'),
-        'redirect' => env('FACEBOOK_APP_CALLBACK_URL', 'https://dev.xemotchieu.vn/callback/facebook'),
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_APP_CALLBACK_URL'),
     ],
     'github' => [
         'client_id' => env('GITHUB_APP_ID'),
