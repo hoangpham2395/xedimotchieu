@@ -3,6 +3,7 @@
     <p class="login-box-msg">{{getMessage('register_title')}}</p>
 
     @include('layouts.frontend.errors')
+    @include('layouts.frontend.success')
 
     {!! Form::open(['route' => 'frontend.register.store', 'method' => 'POST']) !!}
     <div class="form-group has-feedback">

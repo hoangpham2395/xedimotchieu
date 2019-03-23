@@ -153,7 +153,7 @@ class LoginController extends FrontendController
             }
 
             if (frontendGuard()->check()) {
-                return redirect()->route('frontend.users.edit', ['id' => $user->id])->withErrors(['error_system' => getMessage('error_system')]);
+                return redirect()->route('frontend.users.edit', ['id' => $user->id])->withErrors(['error_system' => getMessage('error_register')])->withInput();
             }
 
             // Check open flag
@@ -171,10 +171,9 @@ class LoginController extends FrontendController
     protected function _checkValidate($data, $id = null) 
     {
         $rules = [
-            'user_type' => 'required',
+            'name' => 'required',
             'email' => 'nullable|email|max:128|unique:users,email',
             'fb_id' => 'required|unique:users,fb_id',
-            'avatar' => 'nullable|max:512|mimes:jpeg,png,gif,jpg',
         ];
 
         if (!empty($id)) {

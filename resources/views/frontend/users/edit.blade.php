@@ -22,7 +22,7 @@
 	                                    </div>
 	                                    <div class="input-group">
 	                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-	                                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => transm('users.name')]) !!}
+	                                        {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => transm('users.name')]) !!}
 	                                    </div>
 	                                </div>
 	                                <div class="col-md-6">
@@ -68,6 +68,13 @@
 	                                    </div>
 	                                </div>
 	                            </div>
+                            	@if ($entity->showBtnFb())
+	                            	<div class="row margin-top">
+		                            	<div class="col-md-6">
+		                            		<a href="/login/redirect/facebook" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sử dụng tài khoản Facebook</a>
+		                            	</div>
+	                            	</div>
+                            	@endif
 	                            <div class="row" style="margin-top: 15px; margin-bottom: 15px;">
 	                            	<div class="col-md-12">
 	                            		<button type="submit" class="w3-button w3-theme"><i class="fa fa-pencil"></i> &nbsp;{{transa('edit')}}</button>

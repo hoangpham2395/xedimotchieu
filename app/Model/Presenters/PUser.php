@@ -41,4 +41,9 @@ trait PUser
 
         return (!$this->avatar || !file_exists(public_path($this->avatar))) ? getAvatarDefault() : asset($this->avatar);
     }
+
+    public function showBtnFb() 
+    {
+        return empty($this->fb_id);
+    }
 }
