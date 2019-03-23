@@ -48,6 +48,7 @@ return [
     'account_block' => 'Tài khoản của bạn đã bị chặn.',
     'not_connect_fb' => 'Không thể kết nối với facebook',
     'not_have_account' => 'Bạn chưa có tài khoản. Vui lòng hãy đăng ký!',
+    'error_register' => 'Đã xảy lỗi, có thể tài khoản facebook hoặc email đăng ký facebook được đã đăng ký cho tài khoản khác. Vui lòng kiểm tra lại!',
 
     'note_posts' => [
         'image' => 'Ảnh sẽ hiển thị ở cuối bài đăng.',

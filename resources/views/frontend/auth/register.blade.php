@@ -38,7 +38,7 @@
 
     <div class="social-auth-links text-center">
         <p>- OR -</p>
-        <a href="{{url('login/redirect/facebook')}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{getMessage('login_fb')}}</a>
+        <a href="{{url('login/redirect/facebook?return_url=' . route('frontend.register'))}}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> {{getMessage('login_fb')}}</a>
     </div>
     <!-- /.social-auth-links -->
 
