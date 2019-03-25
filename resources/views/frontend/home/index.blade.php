@@ -93,7 +93,7 @@
                                 <ul id="nav">
                                     <li class="active"><a href="{{route('home.index')}}">{{transa('home')}}</a></li>
                                     <li><a href="{{route('home.community')}}">{{transa('community')}}</a></li>
-                                    <li><a href="{{route('frontend.posts.create')}}">{{transa('post')}}</a></li>
+                                    <li><a href="{{route('frontend.feedbacks.create')}}">{{transa('contact')}}</a></li>
                                 </ul>
                                 <!-- Login -->
                                 <div class="book-now-btn ml-3 ml-lg-5">
@@ -335,11 +335,11 @@
                     <div class="col-12 col-md-7">
                         <div class="cta-text mb-50">
                             <h2>Liên hệ với chúng tôi!</h2>
-                            <h6>Viết email hoặc gọi điện đến số (+84) 123-456-789 nhằm giải đáp những thắc mắc của bạn để bạn có thể hiểu rõ chúng tôi hơn.</h6>
+                            <h6>Viết email hoặc gọi điện đến số {{getConfig('contact.phone')}} nhằm giải đáp những thắc mắc của bạn để bạn có thể hiểu rõ chúng tôi hơn.</h6>
                         </div>
                     </div>
                     <div class="col-12 col-md-5 text-right">
-                        <a href="{{route('frontend.feedbacks.store')}}" class="btn roberto-btn mb-50">Liên hệ</a>
+                        <a href="{{route('frontend.feedbacks.create')}}" class="btn roberto-btn mb-50">{{transa('contact')}}</a>
                     </div>
                 </div>
             </div>

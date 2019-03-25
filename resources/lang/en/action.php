@@ -28,4 +28,5 @@ return [
 	'info' => 'Thông tin',
 	'use' => 'Hướng dẫn',
 	'terms_of_service' => 'Chính sách',
+	'contact' => 'Liên hệ',
 ];

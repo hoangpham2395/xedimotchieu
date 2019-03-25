@@ -53,7 +53,7 @@
                             <ul id="nav">
                                 <li><a href="{{route('home.index')}}">{{transa('home')}}</a></li>
                                 <li><a href="{{route('home.community')}}">{{transa('community')}}</a></li>
-                                <li><a href="{{route('frontend.posts.create')}}">{{transa('post')}}</a></li>
+                                <li><a href="{{route('frontend.feedbacks.create')}}">{{transa('contact')}}</a></li>
                             </ul>
                             <!-- Login -->
                             <div class="book-now-btn ml-3 ml-lg-5">
