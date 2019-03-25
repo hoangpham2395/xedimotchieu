@@ -23,5 +23,7 @@
 <script src="{{asset('js/vendor/morris.min.js')}}"></script>
 <!-- Star rating -->
 <script src="{{asset('js/vendor/star-rating.min.js')}}"></script>
+<!-- All Plugins -->
+<script src="{{asset('js/frontend/roberto.bundle.js')}}"></script>
 <!-- My js -->
 <script src="{{asset('js/frontend/system.js')}}"></script>

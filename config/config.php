@@ -17,6 +17,12 @@ return [
     'logo_frontend' => 'images/logo.png',
     'url_facebook_image' => 'https://graph.facebook.com',
 
+    'contact' => [
+        'phone' => '(+84) 123-456-789',
+        'email' => 'hoangpham2395@gmail.com',
+        'address' => 'Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội, Việt Nam.',
+    ],
+
     // Admin
     'role_type' => [
         1 => 'Super admin',

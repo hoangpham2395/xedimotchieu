@@ -29,3 +29,8 @@
 <link rel="stylesheet" href="{{asset('css/vendor/star-rating.min.css')}}">
 <!-- My style -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/frontend/custom.css')}}">
+
+<link rel="stylesheet" href="{{asset('css/frontend/classy-nav.css')}}">
+<link rel="stylesheet" href="{{asset('css/vendor/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/vendor/jquery-ui.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">

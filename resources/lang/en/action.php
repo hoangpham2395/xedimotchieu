@@ -24,4 +24,8 @@ return [
 	'close' => 'Đóng',
 	'discover' => 'Khám phá',
 	'feedback' => 'Phản hồi',
+	'links' => 'Đường dẫn',
+	'info' => 'Thông tin',
+	'use' => 'Hướng dẫn',
+	'terms_of_service' => 'Chính sách',
 ];

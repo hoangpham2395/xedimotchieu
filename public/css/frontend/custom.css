@@ -299,3 +299,92 @@ span.connect-input {
 .rating-breakdown {
     margin-top: 28px;
 }
+
+/* Nav */
+.classy-nav-container .classy-navbar .classynav-custom ul li a {
+    color: #fff !important;
+}
+
+.nav-logo {
+    height: 80px;
+}
+
+.classy-navbar-toggler .navbarToggler-white span {
+    background-color: #fff !important;
+}
+
+/* Footer */
+img.footer-logo {
+    width: 200px; 
+    margin-top: -20px;
+}
+
+img.footer-logo-index {
+    margin-bottom: -124px;
+}
+
+/* Custom style of theme */
+.room-feature-custom {
+    padding-top: 30px;
+}
+
+@media (max-width: 992px) {
+    /* nav */
+    .classy-nav-container .classy-navbar .classynav-custom ul li a {
+        color: #2a303b !important;
+    }
+
+    .book-now-btn {
+        text-align: center;
+    }
+
+    .main-header-area .book-now-btn a {
+        font-size: 15px !important;
+        margin-top: 15px;
+    }
+
+    .nav-logo {
+        height: 70px;
+    }
+
+    /* Footer */
+    img.footer-logo {
+        width: 150px !important; 
+    }
+
+    img.footer-logo-index {
+        margin-bottom: 0px !important;
+    }
+
+    /* Custom w3 */
+    .w3-row-padding, .w3-row-padding>.w3-col {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .w3-margin-custom {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Custom style of theme */
+    .mt-100 {
+        margin-top: 50px !important;
+    }
+
+    .mb-100 {
+        margin-bottom: 50px !important;
+    }
+
+    .mt-80 {
+        margin-top: 35px !important;
+    }
+
+    .mb-80 {
+        margin-bottom: 35px !important;
+    }
+
+    .room-feature-custom {
+        padding-top: 10px !important;
+    }
+}

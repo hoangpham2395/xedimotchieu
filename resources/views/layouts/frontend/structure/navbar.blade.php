@@ -1,45 +1,70 @@
-<!-- Navbar -->
-<div class="w3-top w3-top-custom">
-	<div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-		<a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-		<a href="{{route('home.index')}}" class="w3-bar-item w3-button w3-theme-d4 w3-bar-logo-custom">
-			<img src="{{url(getConfig('logo_frontend'))}}" height="50">
-		</a>
-		
-		<!-- Navbar right -->
-		@php $login = !empty(frontendGuard()->user()) ? 'logout' : 'login'; @endphp
-		<a href="{{route('frontend.'. $login)}}" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right w3-bar-custom" title="{{transa($login)}}">
-			<!-- <i class="fa fa-sign-in"></i>  -->
-			{{transa($login)}}
-		</a>
-		<a href="{{route('frontend.posts.create')}}" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right w3-bar-custom" title="{{transb('posts.create')}}">
-			<!-- <i class="fa fa-pencil"></i>  -->
-			{{transb('posts.create')}}
-		</a>
-		<a href="{{route('home.community')}}" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right w3-bar-custom" title="{{transa('community')}}">
-			<!-- <i class="fa fa-globe"></i>  -->
-			{{transa('community')}}
-		</a>
-		<a href="{{route('home.index')}}" class="w3-bar-item w3-button w3-hide-small w3-hover-white w3-right w3-bar-custom" title="{{transa('home')}}">
-			<!-- <i class="fa fa-home"></i>  -->
-			{{transa('home')}}
-		</a>
-	</div>
+<header class="header-area" style="position: fixed; top: 0; left: 0;">
+    <!-- Top Header Area Start -->
+    <!-- <div class="top-header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="top-header-content">
+                        <a href="#"><i class="icon_phone"></i> <span>{{getConfig('contact.phone')}}</span></a>
+                        <a href="#"><i class="icon_mail"></i> <span>{{getConfig('contact.email')}}</span></a>
+                    </div>
+                </div>
 
-	<!-- Navbar on small screens -->
-	<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-large"></a>
-		<a href="{{route('home.index')}}" class="w3-bar-item w3-button w3-padding-large">
-			<i class="fa fa-home"></i> &nbsp;{{transa('home')}}
-		</a>
-		<a href="{{route('home.community')}}" class="w3-bar-item w3-button w3-padding-large">
-			<i class="fa fa-globe"></i> &nbsp;{{transa('community')}}
-		</a>
-		<a href="{{route('frontend.posts.create')}}" class="w3-bar-item w3-button w3-padding-large">
-			<i class="fa fa-pencil"></i> &nbsp;{{transb('posts.create')}}
-		</a>
-		<a href="{{route('frontend.' . $login)}}" class="w3-bar-item w3-button w3-padding-large">
-			<i class="fa fa-sign-in"></i> &nbsp;{{transa($login)}}
-		</a>
-	</div>
-</div>
+                <div class="col-6">
+                    <div class="top-header-content">
+                        Top Social Area
+                        <div class="top-social-area ml-auto">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> -->
+    <!-- Top Header Area End -->
+
+    <!-- Main Header Start -->
+    <div class="main-header-area" style="background: #0e2737;">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                    <!-- Logo -->
+                    <a class="nav-brand" href="{{route('home.index')}}"><img src="{{url(getConfig('logo_frontend'))}}" alt="" class="nav-logo"></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler navbarToggler-white"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- Menu Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav classynav-custom">
+                            <ul id="nav">
+                                <li><a href="{{route('home.index')}}">{{transa('home')}}</a></li>
+                                <li><a href="{{route('home.community')}}">{{transa('community')}}</a></li>
+                                <li><a href="{{route('frontend.posts.create')}}">{{transa('post')}}</a></li>
+                            </ul>
+                            <!-- Login -->
+                            <div class="book-now-btn ml-3 ml-lg-5">
+                            	@php $login = frontendGuard()->check() ? 'logout' : 'login'; @endphp
+                                <a href="{{route('frontend.'.$login)}}">{{transa($login)}} <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

@@ -4,11 +4,11 @@
 	<button type="button" class="btn-fixed btn-search" onclick="HomeController.search(this)" title="{{transa('search')}}">
 		<i class="fa fa-search"></i>
 	</button>
-	<button type="button" class="btn-fixed btn-scroll" id="btn_scroll" onclick="HomeController.scrollToTop()" title="{{transa('scroll_to_top')}}">
+	<button type="button" class="btn-fixed btn-scroll" id="btn_scroll" onclick="HomeController.scrollToTop(0)" title="{{transa('scroll_to_top')}}">
 		<i class="fa fa-chevron-up"></i>
 	</button>
 			
-	<div class="w3-row-padding home-search {{array_get($params, 'display_search')}}">
+	<div class="w3-row-padding home-search {{array_get($params, 'display_search')}}" id="home_search">
 		<div class="w3-col m12">
 			<div class="w3-card w3-round w3-white">
 				<div class="w3-container w3-padding">

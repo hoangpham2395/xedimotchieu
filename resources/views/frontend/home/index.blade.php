@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datepicker.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/vendor/jquery-ui.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/frontend/custom.css')}}">
 
 </head>
 
@@ -44,8 +45,8 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="top-header-content">
-                            <a href="#"><i class="icon_phone"></i> <span>(+84) 123-456-789</span></a>
-                            <a href="#"><i class="icon_mail"></i> <span>hoangpham2395@gmail.com</span></a>
+                            <a href="#"><i class="icon_phone"></i> <span>{{getConfig('contact.phone')}}</span></a>
+                            <a href="#"><i class="icon_mail"></i> <span>{{getConfig('contact.email')}}</span></a>
                         </div>
                     </div>
 
@@ -74,7 +75,7 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="{{route('home.index')}}"><img src="{{url(getConfig('logo_frontend'))}}" alt="" style="height: 80px;"></a>
+                        <a class="nav-brand" href="{{route('home.index')}}"><img src="{{url(getConfig('logo_frontend'))}}" alt="" class="nav-logo"></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -213,8 +214,7 @@
                 <!-- Content -->
                 <div class="room-content">
                     <h2 data-animation="fadeInUp" data-delay="100ms">Chủ Xe</h2>
-                    <h3 data-animation="fadeInUp" data-delay="300ms"></h3>
-                    <ul class="room-feature" data-animation="fadeInUp" data-delay="500ms" style="padding-top: 30px;">
+                    <ul class="room-feature room-feature-custom" data-animation="fadeInUp" data-delay="500ms">
                         <li><span><i class="fa fa-check"></i> Kiếm thêm thu nhập</span></li>
                         <li><span><i class="fa fa-check"></i> Đăng bài tìm khách một cách dễ dàng</span></li>
                         <li><span><i class="fa fa-check"></i> Tìm kiếm khách theo khu vực cụ thể</span></li>
@@ -233,8 +233,7 @@
                 <!-- Content -->
                 <div class="room-content">
                     <h2 data-animation="fadeInUp" data-delay="100ms">Hành Khách</h2>
-                    <!-- <h3 data-animation="fadeInUp" data-delay="300ms"></h3> -->
-                    <ul class="room-feature" data-animation="fadeInUp" data-delay="500ms" style="padding-top: 30px;">
+                    <ul class="room-feature room-feature-custom" data-animation="fadeInUp" data-delay="500ms">
                         <li><span><i class="fa fa-check"></i> Tiết kiệm được một khoản tiền</li>
                         <li><span><i class="fa fa-check"></i> Đăng bài tìm xe một chiều một chiều dễ dàng</li>
                         <li><span><i class="fa fa-check"></i> Tìm kiếm xe theo khu vực cụ thể</li>
@@ -340,7 +339,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-5 text-right">
-                        <a href="#" class="btn roberto-btn mb-50">Liên hệ</a>
+                        <a href="{{route('frontend.feedbacks.store')}}" class="btn roberto-btn mb-50">Liên hệ</a>
                     </div>
                 </div>
             </div>
@@ -381,7 +380,7 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                     	<!-- <div class="single-footer-widget"> -->
 	                        <!-- Footer Logo -->
-	                        <a href="{{route('home.index')}}"><img src="{{getConfig('favicon_frontend')}}" alt="logo" style="width: 200px; margin-bottom: -124px;"></a>
+	                        <a href="{{route('home.index')}}"><img src="{{getConfig('favicon_frontend')}}" alt="logo" class="footer-logo footer-logo-index"></a>
                     	<!-- </div> -->
                     </div>
 
@@ -390,44 +389,44 @@
                         <div class="single-footer-widget mb-80">
                             <h5 class="widget-title">{{getConstant('APP_NAME')}}</h5>
 
-                            <h4>(+84) 123-456-789</h4>
-                            <span>hoangpham2395@gmail.com</span>
-                            <span>Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội, Việt Nam.</span>
+                            <h4>{{getConfig('contact.phone')}}</h4>
+	                        <span>{{getConfig('contact.email')}}</span>
+	                        <span>{{getConfig('contact.address')}}</span>
                         </div>
                     </div>
 
                     <!-- Single Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-2">
-                        <div class="single-footer-widget mb-80">
-                            <!-- Widget Title -->
-                            <h5 class="widget-title">Đường dẫn</h5>
+                    <div class="col-6 col-xs-6 col-sm-6 col-lg-2">
+	                    <div class="single-footer-widget mb-80">
+	                        <!-- Widget Title -->
+	                        <h5 class="widget-title">{{transa('links')}}</h5>
 
-                            <!-- Footer Nav -->
-                            <ul class="footer-nav">
-                                <li><a href="{{route('home.community')}}">{{transa('community')}}</a></li>                                
-                                <li><a href="#">{{transa('feedback')}}</a></li>
-                                @if (!frontendGuard()->check())
-                                	<li><a href="{{route('frontend.register')}}">{{transa('register')}}</a></li>
-                            	@else
-                            		<li><a href="{{route('frontend.posts.create')}}"> {{transa('post')}}</a></li>
-                            	@endif
-                            </ul>
-                        </div>
-                    </div>
+	                        <!-- Footer Nav -->
+	                        <ul class="footer-nav">
+	                            <li><a href="{{route('home.community')}}">{{transa('community')}}</a></li>                                
+	                            <li><a href="#">{{transa('feedback')}}</a></li>
+	                            @if (!frontendGuard()->check())
+	                            	<li><a href="{{route('frontend.register')}}">{{transa('register')}}</a></li>
+	                        	@else
+	                        		<li><a href="{{route('frontend.posts.create')}}"> {{transa('post')}}</a></li>
+	                        	@endif
+	                        </ul>
+	                    </div>
+	                </div>
 
-                    <!-- Single Footer Widget Area -->
-                    <div class="col-12 col-sm-6 col-lg-2">
-                        <div class="single-footer-widget mb-80">
-                            <h5 class="widget-title">Thông tin</h5>
+	                <!-- Single Footer Widget Area -->
+	                <div class="col-6 col-xs-6 col-sm-6 col-lg-2">
+	                    <div class="single-footer-widget mb-80">
+	                        <h5 class="widget-title">{{transa('info')}}</h5>
 
-                            <!-- Footer Nav -->
-                            <ul class="footer-nav">
-                            	<li><a href="#">{{transa('introduce')}}</a></li>
-                            	<li><a href="#">Hướng dẫn</a></li>
-                            	<li><a href="#">Chính sách</a></li>
-                            </ul>
-                        </div>
-                    </div>
+	                        <!-- Footer Nav -->
+	                        <ul class="footer-nav">
+	                        	<li><a href="#">{{transa('introduce')}}</a></li>
+	                        	<li><a href="#">{{transa('use')}}</a></li>
+	                        	<li><a href="#">{{transa('terms_of_service')}}</a></li>
+	                        </ul>
+	                    </div>
+	                </div>
                 </div>
             </div>
         </div>
@@ -439,7 +438,7 @@
                     <div class="col-12 col-md-8">
                         <!-- Copywrite Text -->
                         <div class="copywrite-text">
-                            <p>Copyright © 2019 <a href="https://colorlib.com" target="_blank" style="color: #1cc3b2;">xemotchieu</a>. All rights reserved.</p>
+                            <p>Copyright © 2019 <a href="https://colorlib.com" target="_blank" style="color: #1cc3b2;">{{getConstant('BACKEND_NAME')}}</a>. All rights reserved.</p>
                         </div>
                     </div>
                     <div class="col-12 col-md-4">

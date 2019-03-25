@@ -1,4 +1,4 @@
-<div class="w3-container w3-card w3-white w3-round w3-margin">			
+<div class="w3-container w3-card w3-white w3-round w3-margin w3-margin-custom">			
 	<div class="row">
 		<div class="col-sm-4">
 			<div class="rating-block average-rating">
@@ -35,11 +35,11 @@
 				<div class="review-block">
 					@foreach ($rates as $rate)
 					<div class="row">
-						<div class="col-sm-3">
-							<img src="{{$rate->user->getUrlImage()}}" class="img-circle" width="60" height="60">
+						<div class="col-sm-3 col-xs-12">
+							<img src="{{$rate->user->getUrlImage()}}" class="img-circle" style="width: 60px; height: 60px;">
 							<div class="review-block-name"><a href="#">{{$rate->user->name}}</a></div>
 						</div>
-						<div class="col-sm-9">
+						<div class="col-sm-9 col-xs-12">
 							<div class="review-block-rate">
 								<input name="input-2" class="rating rating-loading" value="{{$rate->rate}}" data-min="0" data-max="5" data-step="0.1" data-show-clear="false" data-show-caption="false" data-disabled="true" data-size="sm">
 							</div>
