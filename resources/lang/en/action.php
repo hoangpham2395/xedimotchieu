@@ -22,4 +22,6 @@ return [
 	'rate' => 'Đánh giá',
 	'cancel' => 'Cancel',
 	'close' => 'Đóng',
+	'discover' => 'Khám phá',
+	'feedback' => 'Phản hồi',
 ];
