@@ -328,6 +328,12 @@ img.footer-logo-index {
     padding-top: 30px;
 }
 
+/* Pagination */
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background-color: #1cc3b2;
+    border-color: #1cc3b2;
+}
+
 @media (max-width: 992px) {
     /* nav */
     .classy-nav-container .classy-navbar .classynav-custom ul li a {

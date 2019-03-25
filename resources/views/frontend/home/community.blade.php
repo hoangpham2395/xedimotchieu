@@ -63,6 +63,12 @@
 			<a href="{{route('home.community.detail', ['id' => $entity->id])}}" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}</a>
 		</div>
 	@endforeach
+
+	@if (!empty($entities) && $entities->total() > 0)
+		<div class="row">
+            <div class="col-sm-12 text-center">{{ $entities->links() }}</div>
+        </div>
+	@endif
 @endsection
 
 @section('javascript')

@@ -76,7 +76,7 @@ class HomeController extends FrontendController
         $params['listDistrictsTo'] = $this->getDistrictRepository()->getListForSearch(array_get($data, 'city_to_id'));
         $params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
         $params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
-        $params['display_search'] = !empty($data) ? '' : 'display-none';
+        $params['display_search'] = !empty($data['max_cost']) ? '' : 'display-none';
         $entities = $this->getRepository()->getListForHome($data);
         return view('frontend.home.community', compact('entities', 'params'));
     }
