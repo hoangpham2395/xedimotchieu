@@ -209,27 +209,33 @@ span.connect-input {
 ----------------------------------------*/
 .btn-fixed {
     position: fixed; 
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background: #4d636f;
+    background: #1cc3b2;
     color: #fff;
     z-index: 999;
     outline: none;
     border: none;
-    font-size: 18px;
+    font-size: 13px;
+    box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+    -webkit-box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
 }
 
 .btn-search {
     right: 15px; 
-    bottom: 80px;
+    bottom: 70px;
 }
 
 .btn-scroll {
     right: 15px;
-    bottom: 20px;
+    bottom: 18px;
     padding-bottom: 5px;
     display: none;
+}
+
+.btn-fixed:hover {
+    background: #333;
 }
 
 /* Rating

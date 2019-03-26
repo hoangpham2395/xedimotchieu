@@ -108,7 +108,7 @@ var HomeController = {
 		$('.home-search').removeClass('display-none');
 		$('.home-result').removeClass('display-none');
 		// Scroll to top
-		HomeController.scrollToTop(parseInt($('#home_search').offset().top) - 80);
+		HomeController.scrollToTop(parseInt($('#home_search').offset().top) - 90);
 	},
 	scrollToTop: function(position) {
   		$("html, body").animate({ scrollTop: position }, "slow");
