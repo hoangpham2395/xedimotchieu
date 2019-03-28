@@ -39,4 +39,9 @@ class UserRepository extends CustomRepository
     {
         return $this->findWhere(['fb_id' => $fbId])->first();
     }
+
+    public function getListForChat() 
+    {
+        return $this->getBuilder()->where('id', '!=', frontendGuard()->user()->id)->get();
+    }
 }

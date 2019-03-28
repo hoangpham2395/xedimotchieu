@@ -33,6 +33,11 @@
 git clone https://github.com/hoangpham2395/xedimotchieu.git
 ```
 
+* Go into the project
+```bash
+cd xemotchieu
+```
+
 * Permission
 ```bash
 chmod -R 777 public/images
@@ -91,9 +96,20 @@ php artisan db:seed
 composer require laravel/socialite
 ```
 
-* Config file config/app.php
+* Install vuejs
 ```bash
+npm install
+```
 
+* Install pusher & laravel echo
+```bash
+npm install --save pusher-js laravel-echo
+composer require pusher/pusher-php-server "~3.0"
+```
+
+* Run webpack and watch for changes
+```bash
+npm run watch
 ```
 
 * Upload file

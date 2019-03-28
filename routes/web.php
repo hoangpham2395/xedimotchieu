@@ -44,6 +44,17 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 		Route::resource('cars', 'Frontend\CarsController')->names('frontend.cars');
 		Route::resource('rates', 'Frontend\RatesController')->names('frontend.rates')->only('store');
 	});
+	// Chat
+	Route::prefix('chat')->group(function() {
+		Route::get('/', [
+			'as' => 'frontend.chat.index',
+			'uses' => 'Frontend\ChatController@index',
+		]);
+		Route::get('/contacts', 'Frontend\ChatController@get');
+		Route::get('/conversation/{id}', 'Frontend\ChatController@getMessagesFor');
+		Route::post('/conversation/send', 'Frontend\ChatController@send');
+	});
+		
 });
 
 // Socialite

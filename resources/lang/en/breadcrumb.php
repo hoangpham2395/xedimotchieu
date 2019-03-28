@@ -44,10 +44,14 @@ return [
     'feedbacks' => [
         'name' => 'Feedbacks',
         'index' => 'Danh sách phản hồi',
-        'create' => 'Viết phản hồi',
+        'create' => 'Phản hồi',
         'show' => 'Chi tiết phản hồi',
     ],
     'rates' => [
         'create' => 'Đánh giá bài đăng',
+    ],
+    'chat' => [
+        'name' => 'Chat',
+        'index' => 'Trò chuyện',
     ],
 ];

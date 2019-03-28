@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DistrictsTableSeeder::class);
         // $this->call(PostsTableSeeder::class);
         // $this->call(CarsTableSeeder::class);
+        // $this->call(ChatTableSeeder::class);
     }
 }
