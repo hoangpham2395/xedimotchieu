@@ -1795,7 +1795,6 @@ __webpack_require__.r(__webpack_exports__);
       _this.hanleIncoming(e.message);
     });
     axios.get('/chat/contacts').then(function (response) {
-      console.log(response.data);
       _this.contacts = response.data;
     });
   },
@@ -60508,8 +60507,8 @@ if (token) {
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
-  key: "",
-  cluster: "mt1",
+  key: "155a37eb29387a41e4bb",
+  cluster: "ap1",
   encrypted: true
 });
 
