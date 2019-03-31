@@ -24,7 +24,6 @@ class ChatTableSeeder extends Seeder
         		'user_from_id' => rand(1, 20),
                 'user_to_id' => rand(1, 20),
         		'content' => $faker->sentence,
-        		'read' => 0,
         		'created_at' => new DateTime, 
         		'del_flag' => 0
         	];

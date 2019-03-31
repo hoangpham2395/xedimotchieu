@@ -44,6 +44,18 @@ class ChatController extends FrontendController
 	{
 		$contacts = $this->getUserRepository()->getListForChat();
 
+		// get a collection of items where sender_id is the user who sent us a message
+        // and messages_count is the number of unread messages we have from him
+        $unreadIds = $this->getRepository()->getListUnreadIds();
+
+        $contacts = $contacts->map(function($contact) use($unreadIds) {
+        	$contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
+
+            $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+
+            return $contact;
+        });
+
 		return response()->json($contacts);
 	}
 
@@ -75,5 +87,31 @@ class ChatController extends FrontendController
 		broadcast(new NewMessage($message));
 
 		return response()->json($message);
+	}
+
+	public function updateRead(Request $request) 
+	{
+		$userFromId = $request->user_from_id;
+		$messages = $this->getRepository()->getListForUpdateRead($userFromId);
+		$status = false;
+
+		DB::beginTransaction();
+		try {
+			foreach($messages as $message) {
+				$data = [
+					'id' => $message->id,
+					'read' => getConstant('CHAT_READ'),
+				];
+
+				$this->getRepository()->update($data, $message->id);
+			}
+			DB::commit();
+
+			$status = true;
+		} catch(\Exception $e) {
+			DB::rollBack();
+		}
+
+		return response()->json(['status' => $status]);
 	}
 }

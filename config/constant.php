@@ -14,5 +14,7 @@ return [
     'FILE_INPUT_NAME' => 'file_input',
     'OPEN_FLAG_ACTIVE' => 1,
     'OPEN_FLAG_NO_ACTIVE' => 0,
+    'CHAT_UNREAD' => 0,
+    'CHAT_READ' => 1,
 ];
 ?>

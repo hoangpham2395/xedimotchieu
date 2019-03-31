@@ -1,3 +1,6 @@
+Header Set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "Content-Type, X-CSRF-TOKEN"
+
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes

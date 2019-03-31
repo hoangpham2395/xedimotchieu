@@ -53,6 +53,7 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 		Route::get('/contacts', 'Frontend\ChatController@get');
 		Route::get('/conversation/{id}', 'Frontend\ChatController@getMessagesFor');
 		Route::post('/conversation/send', 'Frontend\ChatController@send');
+		Route::post('/update-read', 'Frontend\ChatController@updateRead');
 	});
 		
 });

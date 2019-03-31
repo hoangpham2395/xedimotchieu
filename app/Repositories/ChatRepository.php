@@ -22,4 +22,23 @@ class ChatRepository extends CustomRepository
     		$q->where('user_to_id', $currentUserId);
     	})->get();
     }
+
+    public function getListUnreadIds() 
+    {
+        return $this->getBuilder()
+            ->select(\DB::raw('`user_from_id` as sender_id, count(`user_from_id`) as messages_count'))
+            ->where('user_to_id', frontendGuard()->user()->id)
+            ->where('read', getConstant('CHAT_UNREAD'))
+            ->groupBy('user_from_id')
+            ->get();
+    }
+
+    public function getListForUpdateRead($userFromId) 
+    {
+        return $this->getBuilder()
+            ->where('user_from_id', $userFromId)
+            ->where('user_to_id', frontendGuard()->user()->id)
+            ->where('read', getConstant('CHAT_UNREAD'))
+            ->get();
+    }
 }
