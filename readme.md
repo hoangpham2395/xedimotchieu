@@ -107,6 +107,11 @@ npm install --save pusher-js laravel-echo
 composer require pusher/pusher-php-server "~3.0"
 ```
 
+* Change file .env
+```bash
+BROADCAST_DRIVER=pusher
+```
+
 * Run webpack and watch for changes
 ```bash
 npm run watch
