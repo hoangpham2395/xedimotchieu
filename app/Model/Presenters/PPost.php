@@ -47,4 +47,13 @@ trait PPost
     {
         return (!$this->image || !file_exists(public_path($this->image))) ? getNoImage() : asset($this->image);
     }
+
+    public function isOwner() 
+    {
+    	if (!frontendGuard()->check()) {
+    		return false;
+    	}
+
+    	return $this->user_id == frontendGuard()->user()->id;
+    }
 }

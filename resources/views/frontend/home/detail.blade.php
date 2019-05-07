@@ -30,13 +30,15 @@
 			</div>
 		</div>
 		<button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</button> 
-		<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
-			<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}
-		</button>
-		@if (frontendGuard()->check())
-			@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
-		@else
-			@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
+		@if ($allowRate)
+			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
+				<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}
+			</button>
+			@if (frontendGuard()->check())
+				@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
+			@else
+				@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
+			@endif
 		@endif
 	</div>
 	<div id="list_rates">

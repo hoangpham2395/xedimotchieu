@@ -7,4 +7,13 @@ trait PRate
 	{
 		return $this->created_at;
 	}
+
+	public function isOwner() 
+	{
+		if (!frontendGuard()->check()) {
+    		return false;
+    	}
+
+    	return $this->user_id == frontendGuard()->user()->id;
+	}
 }

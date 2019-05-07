@@ -92,6 +92,21 @@ class HomeController extends FrontendController
     {
         $entity = $this->getRepository()->findById($id);
         list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);
-        return view('frontend.home.detail', compact('entity', 'params', 'rates'));
+        $allowRate = $entity->isOwner() ? false : $this->_allowRate($rates);
+        return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate'));
+    }
+
+    protected function _allowRate($rates) {
+        if (!frontendGuard()->check() || empty($rates)) {
+            return true;
+        }
+
+        foreach ($rates as $rate) {
+            if ($rate->isOwner()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
