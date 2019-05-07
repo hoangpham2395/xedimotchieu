@@ -60555,8 +60555,9 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "155a37eb29387a41e4bb",
   cluster: "ap1",
-  encrypted: true // authEndpoint: 'http://127.0.0.1/broadcasting/auth'
-
+  encrypted: true,
+  authEndpoint: '/broadcasting/auth',
+  csrfToken: token.content
 });
 
 /***/ }),
@@ -61014,8 +61015,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\1.projects\projects\xedimotchieu\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\1.projects\projects\xedimotchieu\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\1.projects\projects\XeDiMotChieu\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\1.projects\projects\XeDiMotChieu\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
