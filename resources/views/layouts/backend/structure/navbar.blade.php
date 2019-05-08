@@ -2,7 +2,7 @@
     <!-- Logo -->
     <a href="#" class="logo">
         <span class="logo-mini"><b>{{getConstant('APP_NAME_SHORT')}}</b></span>
-        <span class="logo-lg">{{getConstant('BACKEND_NAME')}}</span>
+        <span class="logo-lg"><img src="{{url('images/logo/logo_white_sm.png')}}" style="width: 100%;"></span>
     </a>
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->

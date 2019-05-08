@@ -13,7 +13,7 @@
 <div class="login-box">
     <div class="login-logo" style="margin-bottom: 0;">
         <a href="{{route('home.index')}}">
-            <img src="{{url('images/logo.png')}}" width="390">
+            <img src="{{url('images/logo/logo_bg_black.png')}}" width="390">
         </a>
     </div>
     <!-- /.login-logo -->

@@ -75,7 +75,7 @@
                     <nav class="classy-navbar justify-content-between" id="robertoNav">
 
                         <!-- Logo -->
-                        <a class="nav-brand" href="{{route('home.index')}}"><img src="{{url(getConfig('logo_frontend'))}}" alt="" class="nav-logo"></a>
+                        <a class="nav-brand" href="{{route('home.index')}}"><img src="{{url('images/logo/logo_black.png')}}" alt="" class="nav-logo"></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">

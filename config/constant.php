@@ -2,7 +2,7 @@
 return [
 	'APP_NAME' => env('APP_NAME', 'Xe đi một chiều'),
     'BACKEND_NAME' => env('BACKEND_NAME', 'XeDiMotChieu'),
-	'APP_NAME_SHORT' => 'XE',
+	'APP_NAME_SHORT' => 'XMC',
     'PER_PAGE' => 10,
     'DEL_FLAG' => [
     	'ACTIVE' => 0,
