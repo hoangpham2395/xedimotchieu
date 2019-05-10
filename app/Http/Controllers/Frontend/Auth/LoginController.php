@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 use App\Http\Controllers\Base\FrontendController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Laravel\Socialite\Facades\Socialite;
@@ -75,7 +75,7 @@ class LoginController extends FrontendController
     public function logout()
     {
         Auth::guard('frontend')->logout();
-        return redirect()->route('home.index');
+        return redirect()->route('frontend.login');
     }
 
     public function redirect($social) 
@@ -164,6 +164,7 @@ class LoginController extends FrontendController
 
             return redirect()->back()->withErrors(['account_block' => getMessage('account_block')]);
         } catch (\Exception $e) {
+            dd($e);
             return redirect()->back()->withErrors(['not_connect_fb' => getMessage('not_connect_fb')]);
         }
     }

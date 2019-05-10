@@ -97,7 +97,8 @@
                                 </ul>
                                 <!-- Login -->
                                 <div class="book-now-btn ml-3 ml-lg-5">
-                                    <a href="{{route('frontend.login')}}">{{transa('login')}} <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                    @php $login = frontendGuard()->check() ? 'logout' : 'login'; @endphp
+                                    <a href="{{route('frontend.'.$login)}}">{{transa($login)}} <i class="fa fa-sign-in" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <!-- Nav End -->

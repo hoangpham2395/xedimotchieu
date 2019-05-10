@@ -64,9 +64,9 @@ Route::get('login/callback/{social}', 'Frontend\Auth\LoginController@callback');
 
 // Backend
 Route::prefix(getBackendAlias())->group(function () {
-	Route::get('login', 'Auth\LoginController@getLogin');
-	Route::post('login', ['as' => 'admin.login', 'uses' => 'Auth\LoginController@postLogin']);
-	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Auth\LoginController@logout']);
+	Route::get('login', 'Backend\Auth\LoginController@getLogin');
+	Route::post('login', ['as' => 'admin.login', 'uses' => 'Backend\Auth\LoginController@postLogin']);
+	Route::get('logout', ['as' => 'admin.logout', 'uses' => 'Backend\Auth\LoginController@logout']);
 
 	Route::middleware(['isAdmin'])->group(function () {
 		Route::get('dashboard', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
