@@ -38,6 +38,11 @@
                 </a>
             </li>
             <li id="item-4">
+                <a href="{{route('posts.index')}}">
+                    <i class="fa fa-share"></i> <span>{{transb('posts.name')}}</span>
+                </a>
+            </li>
+            <li id="item-5">
                 <a href="{{route('feedbacks.index')}}">
                     <i class="fa fa-commenting"></i> <span>{{transb('feedbacks.name')}}</span>
                 </a>

@@ -73,6 +73,7 @@ Route::prefix(getBackendAlias())->group(function () {
 		Route::get('/', ['as' => 'backend.dashboard', 'uses' => 'Backend\DashboardController@index']);
 		Route::resource('admin', 'Backend\AdminController');
 		Route::resource('users', 'Backend\UsersController');
+		Route::resource('posts', 'Backend\PostsController');
 		Route::post('users/update-open-flag', [
 			'as' => 'users.update_open_flag', 
 			'uses' => 'Backend\UsersController@updateOpenFlag'

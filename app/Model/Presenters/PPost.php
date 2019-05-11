@@ -56,4 +56,9 @@ trait PPost
 
     	return $this->user_id == frontendGuard()->user()->id;
     }
+
+    public function getUserName() 
+    {
+    	return $this->user->name;
+    }
 }

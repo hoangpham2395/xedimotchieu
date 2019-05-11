@@ -21,6 +21,7 @@ return [
     ],
     'posts' => [
         'id' => 'ID',
+        'user_id' => 'Người đăng',
         'city_from_id' => 'Tỉnh/Thành phố đi',
         'city_to_id' => 'Tỉnh/Thành phố đến',
         'district_from_id' => 'Huyện/Quận đi',
