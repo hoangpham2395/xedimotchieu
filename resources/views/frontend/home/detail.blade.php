@@ -29,7 +29,7 @@
 				{!! $entity->showImage() !!}
 			</div>
 		</div>
-		<a href="https://www.facebook.com/messages/t/{{$entity->user->fb_id}}" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</a> 
+		<a href="{{$entity->getUrlChat()}}" target="blank" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</a> 
 		@if ($allowRate)
 			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
 				<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}

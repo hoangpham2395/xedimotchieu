@@ -61,4 +61,9 @@ trait PPost
     {
     	return $this->user->name;
     }
+
+    public function getUrlChat() 
+    {
+    	return !empty($this->user->fb_id) ? getConfig('link_messager').$this->user->fb_id : route('chat.index');
+    }
 }

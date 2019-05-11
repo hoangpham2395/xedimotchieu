@@ -23,6 +23,8 @@ return [
         'address' => 'Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội, Việt Nam.',
     ],
 
+    'link_messager' => 'https://www.facebook.com/messages/t/',
+
     // Admin
     'role_type' => [
         1 => 'Super admin',
