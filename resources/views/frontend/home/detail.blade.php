@@ -4,6 +4,9 @@
 		<img src="{{$entity->user->getUrlImage()}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px; height: 60px;">
 		<h4>{{$entity->getPlace()}}</h4>
 		<h6>{{$entity->user->name}}</h6>
+		@if(isMobile())
+			@include('frontend.home._btn_fb_share')
+		@endif
 		<br>
 		<hr class="w3-clear">
 		<div class="w3-row-padding">
@@ -42,6 +45,9 @@
 			@else
 				@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
 			@endif
+		@endif
+		@if(!isMobile())
+			@include('frontend.home._btn_fb_share')
 		@endif
 	</div>
 	<div id="list_rates">

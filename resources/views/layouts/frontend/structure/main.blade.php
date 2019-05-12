@@ -7,6 +7,7 @@
   	<link rel="icon" type="image/png" sizes="16x16" href="{{ url('images/favicon.png') }}">
   	@include('layouts.frontend.load.css')
   	@yield('css')
+  	@stack('tag_header')
 </head>
 <body class="w3-theme-l5">
 	<!-- Preloader -->
@@ -33,5 +34,6 @@
 	@include('layouts.frontend.structure.footer')
 	@include('layouts.frontend.load.js')
 	@yield('javascript')
+	@stack('scripts')
 </body>
 </html>

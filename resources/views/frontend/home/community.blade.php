@@ -1,5 +1,6 @@
 @extends('layouts.frontend.structure.main')
 @section('content')
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=769828983391451&autoLogAppEvents=1"></script>
 	
 	<button type="button" class="btn-fixed btn-search" onclick="HomeController.search(this)" title="{{transa('search')}}">
 		<i class="fa fa-search"></i>
@@ -34,6 +35,9 @@
 			<img src="{{$entity->user->getUrlImage()}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px; height: 60px;">
 			<h4>{{$entity->getPlace()}}</h4>
 			<h6>{{$entity->user->name}}</h6>
+			@if(isMobile())
+				@include('frontend.home._btn_fb_share')
+			@endif
 			<br>
 			<hr class="w3-clear">
 			<div class="w3-row-padding">
@@ -64,6 +68,9 @@
 			</div>
 			<a href="{{$entity->getUrlChat()}}" target="blank" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</a>
 			<a href="{{route('home.community.detail', ['id' => $entity->id])}}" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}</a>
+			@if(!isMobile())
+				@include('frontend.home._btn_fb_share')
+			@endif
 		</div>
 	@endforeach
 
