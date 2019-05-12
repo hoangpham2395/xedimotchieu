@@ -147,3 +147,53 @@ npm run watch
 ```bash 
 dev.xdmc.vn
 ```
+
+## Install debugbar
+* Require package
+```bash
+composer require barryvdh/laravel-debugbar
+```
+
+* Regist service in config/app.php
+```bash
+'providers' => [
+	...
+	Barryvdh\Debugbar\ServiceProvider::class,
+	...
+],
+'aliases' => [
+	...
+	'Debugbar' => Barryvdh\Debugbar\Facade::class,
+	...
+],
+```
+
+* Enable in file .env
+```bash
+APP_DEBUG=true
+```
+
+* Enable in config/app.php
+```bash
+'debug' => env('APP_DEBUG', false),
+```
+
+* Enable other 
+```bash
+php artisan vendor:publish --provider="Barryvdh\Debugbar\ServiceProvider"
+```
+Config in file config/debugbar.php
+```bash
+<?php
+return [
+    /*
+     |--------------------------------------------------------------------------
+     | Debugbar Settings
+     |--------------------------------------------------------------------------
+     |
+     | Debugbar is enabled by default, when debug is set to true in app.php.
+     | You can override the value by setting enable to true or false instead of null.
+     |
+     */
+    'enabled' => env('DEBUGBAR_ENABLED', null),
+```
