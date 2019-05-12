@@ -89,6 +89,23 @@
             <input type="hidden" name="max_cost" id="amount2" value="10">
         </div>
     </div>
+
+    <div class="row padding-bottom">
+        <div class="col-md-6">
+            <div class="form-group">
+                {!! Form::label('seats', transm('posts.seats')) !!}
+                <div class="input-group" style="display: inline-flex; width: 100%;  ">
+                    {!! Form::input('number', 'min_seat', Request::get('min_seat'), ['class' => 'form-control', 'placeholder' => transm('posts.seats'), 'style' => '']) !!}
+                    <p style="padding: 5px">~</p>
+                    {!! Form::input('number', 'max_seat', Request::get('max_seat'), ['class' => 'form-control', 'placeholder' => transm('posts.seats'), 'style' => '']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+    </div>
+
     <div class="row padding-bottom">
         <div class="col-md-12">
             <button type="submit" class="w3-button w3-theme"><i class="fa fa-search"></i> &nbsp;{{transa('search')}}</button> 

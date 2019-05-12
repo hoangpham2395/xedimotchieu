@@ -40,8 +40,30 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-    	@if (!empty(frontendGuard()) && frontendGuard()->user()->isCarOwner())
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('type', transm('posts.type')) !!} <span class="required"></span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-bullseye"></i></span>
+                {!! Form::select('type', getConfig('post_type'), null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            {!! Form::label('date_start', transm('posts.date_start')) !!} <span class="required"></span>
+            <div class="input-group date">
+                <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                {!! Form::text('date_start', null, ['class' => 'form-control pull-right datetimepicker', 'placeholder' => transm('posts.date_start')]) !!}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @if (!empty(frontendGuard()) && frontendGuard()->user()->isCarOwner())
 	        <div class="form-group">
 	            {!! Form::label('car_id', transm('posts.car_id')) !!}
 	            <div class="input-group">
@@ -59,25 +81,12 @@
 	        </div>
         @endif
     </div>
-</div>
-<div class="row">
-	<div class="col-md-6">
-        <div class="form-group">
-            {!! Form::label('type', transm('posts.type')) !!} <span class="required"></span>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-bullseye"></i></span>
-                {!! Form::select('type', getConfig('post_type'), null, ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
-            </div>
-        </div>
-    </div>
     <div class="col-md-6">
         <div class="form-group">
-            {!! Form::label('date_start', transm('posts.date_start')) !!} <span class="required"></span>
-            <div class="input-group date">
-            	<div class="input-group-addon">
-            		<i class="fa fa-calendar"></i>
-            	</div>
-            	{!! Form::text('date_start', null, ['class' => 'form-control pull-right datetimepicker', 'placeholder' => transm('posts.date_start')]) !!}
+            {!! Form::label('seats', transm('posts.seats')) !!} <span class="required"></span>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-bed"></i></span>
+                {!! Form::input('number', 'seats', null, ['class' => 'form-control', 'placeholder' => transm('posts.seats'), 'min' => 1, 'max' => 100]) !!}
             </div>
         </div>
     </div>
@@ -99,20 +108,22 @@
             {!! Form::label('phone', transm('posts.phone')) !!} <span class="required"></span>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => transm('posts.phone'), 'maxlength' => 11]) !!}
+                {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => transm('posts.phone'), 'maxlength' => 10]) !!}
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="form-group">
-            {!! Form::label('image', transm('posts.image')) !!} <br>
-            <span class="color-red">{{getMessage('note_posts.image')}}</span>
-            @include('layouts.frontend.upload_image', ['image' => 'image'])
+@if (!empty(frontendGuard()) && frontendGuard()->user()->isCarOwner()) 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                {!! Form::label('image', transm('posts.image')) !!} <br>
+                <span class="color-red">{{getMessage('note_posts.image')}}</span>
+                @include('layouts.frontend.upload_image', ['image' => 'image'])
+            </div>
         </div>
     </div>
-</div>
+@endif
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">

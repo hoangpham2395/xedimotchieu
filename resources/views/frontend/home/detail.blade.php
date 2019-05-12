@@ -15,6 +15,9 @@
 					<span class="w3-opacity">{{transm('posts.car_type')}}:</span> {{$entity->getCarType()}}
 				</p>
 				<p>
+					<span class="w3-opacity">{{transm('posts.seats')}}:</span> {{$entity->getSeats()}}
+				</p>
+				<p>
 					<span class="w3-opacity">{{transm('posts.date_start')}}:</span> {{$entity->getDateStart()}}
 				</p>
 				<p>

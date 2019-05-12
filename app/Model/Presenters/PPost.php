@@ -18,14 +18,18 @@ trait PPost
 		return $this->districtTo->district_name . ' - ' . $this->cityTo->city_name;
 	}
 
-	public function getCarType() 
+	public function carType() 
 	{
 		if (!empty($this->user)) {
-			return $this->user->isCarOwner() && !empty($this->car) ? $this->car->getCarType() : getConfig('car_type.' . $this->car_type);
+			return $this->user->isCarOwner() && !empty($this->car) ? $this->car->car_type : $this->car_type;
 		}
 
-		$carType =  (!empty($this->car) && !empty($this->car_id)) ? $this->car->car_type : $this->car_type;
-		return getConfig('car_type.' . $carType);
+		return (!empty($this->car) && !empty($this->car_id)) ? $this->car->car_type : $this->car_type;
+	}
+
+	public function getCarType() 
+	{
+		return getConfig('car_type.' . $this->carType());
 	}
 
 	public function getDateStart() 
@@ -64,11 +68,16 @@ trait PPost
 
     public function getUserName() 
     {
-    	return $this->user->name;
+    	return !empty($this->user) ? $this->user->name : '';
     }
 
     public function getUrlChat() 
     {
-    	return !empty($this->user->fb_id) ? getConfig('link_messager').$this->user->fb_id : route('chat.index');
+    	return (!empty($this->user) && !empty($this->user->fb_id)) ? getConfig('link_messager').$this->user->fb_id : route('chat.index');
+    }
+
+    public function getSeats() 
+    {
+    	return ($this->carType() == getConfig('user_type_car_owner')) ? $this->seats . ' chỗ ngồi' : $this->seats . ' chỗ trống';
     }
 }

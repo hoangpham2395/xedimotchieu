@@ -97,6 +97,17 @@ class PostRepository extends CustomRepository
             }
             unset($params['date_start']);
 
+            // Seats
+            if (!empty($params['min_seat'])) {
+                $query = $query->where('seats', '>=', (int) $params['min_seat']);
+            }
+            unset($params['min_seat']);
+
+            if (!empty($params['max_seat'])) {
+                $query = $query->where('seats', '<=', (int) $params['max_seat']);
+            }
+            unset($params['max_seat']);
+
             foreach ($params as $key => $value) {
                 if (empty($value)) {
                     continue;
