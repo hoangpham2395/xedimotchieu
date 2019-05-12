@@ -16,7 +16,8 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('post_id');
-            $table->string('address', 128);
+            $table->integer('city_id');
+            $table->integer('district_id');
             $table->string('time', 10)->nullable();
             $table->timestamps();
             $table->char('del_flag', 1)->default(0);
