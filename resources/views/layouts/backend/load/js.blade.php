@@ -2,8 +2,11 @@
 <script src="{{asset('js/vendor/jquery.min.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{asset('js/vendor/bootstrap.min.js')}}"></script>
+<!-- Moment for datetime picker -->
+<script src="{{asset('js/vendor/moment.min.js')}}"></script>
 <!-- Bootstrap datepicker 1.6.4 -->
 <script src="{{asset('js/vendor/bootstrap-datepicker.min.js')}}"></script>
+<script src="{{asset('js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
 <!-- Jasny bootstrap -->
 <script src="{{asset('js/vendor/jasny-bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->

@@ -9,6 +9,8 @@ class BaseScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('del_flag', '=', getConstant('DEL_FLAG.ACTIVE'));
+    	$table = $model->getTable();
+    	$delFlag = !empty($table) ? $table. '.del_flag' : 'del_flag';
+        $builder->where($delFlag, '=', getConstant('DEL_FLAG.ACTIVE'));
     }
 }

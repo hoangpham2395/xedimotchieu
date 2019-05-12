@@ -1,6 +1,11 @@
 // Date picker
 $(function () {
     $('.datepicker').datepicker();
+    $('.datetimepicker').datetimepicker({
+		format: 'YYYY-MM-DD H:mm',
+		inline: false,
+        sideBySide: true
+	});
 });
 
 var UsersController = {

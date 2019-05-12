@@ -16,6 +16,11 @@ class CustomRepository extends BaseRepository
 		return "";
 	}
 
+    public function getModel() 
+    {
+        return new $this->model();
+    }
+
 	protected $_sortField = 'id';
     protected $_sortType = 'DESC';
     protected $_perPage = 10;

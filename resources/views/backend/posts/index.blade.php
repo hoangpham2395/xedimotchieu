@@ -2,6 +2,45 @@
 @section('content')
 	@include('layouts.backend.breadcrumb', ['object' => 'posts', 'action' => 'index'])
 	<!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">{{ transa('search') }}</h3>
+                    </div>
+                    <div class="box-body">
+                        {!! Form::open(['route' => 'posts.index', 'method' => 'GET']) !!}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{transm('posts.user_id')}}</label>
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                        {!! Form::text('username', Request::input('username'), ['class' => 'form-control']) !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{transm('posts.date_start')}}</label>
+                                    </div>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        {!! Form::text('date_start', Request::get('date_start'), ['class' => 'form-control pull-right datetimepicker', 'placeholder' => transm('posts.date_start')]) !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin-top"></div>
+                            @include('layouts.backend.btn_search')
+                        {!! Form::close() !!}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 	<section class="content">
 		<div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -63,16 +102,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} bài đăng.</div>
-                                <div class="col-sm-7">{{ $entities->links() }}</div>
-                            </div>
+                            @include('layouts.backend.pagination', ['object' => 'bài đăng'])
                         @else
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có bài đăng nào.</span>
-                                </div>
-                            </div>
+                            @include('layouts.backend.no_result', ['object' => 'bài đăng'])
                         @endif
                     </div>
                 </div>

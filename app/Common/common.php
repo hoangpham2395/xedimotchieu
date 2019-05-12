@@ -240,3 +240,17 @@ if (!function_exists('isElementInString')) {
          return true;
     }
 }
+
+if (!function_exists('toSql')) {
+    function toSql($query)
+    {
+        return str_replace_array('?', $query->getBuilder()->getBindings(), $query->getBuilder()->toSql());
+    }
+}
+
+if (!function_exists('toSql2')) {
+    function toSql2($query)
+    {
+        return str_replace_array('?', $query->getBindings(), $query->toSql());
+    }
+}

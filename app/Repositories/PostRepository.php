@@ -3,6 +3,7 @@ namespace App\Repositories;
 
 use App\Model\Entities\Post;
 use App\Repositories\Base\CustomRepository;
+use Illuminate\Support\Facades\DB;
 
 class PostRepository extends CustomRepository
 {
@@ -31,6 +32,36 @@ class PostRepository extends CustomRepository
     		'cities' => count($cities),
             'dataChart' => $this->statisticalByMonthInYear(),
     	];
+    }
+
+    public function getListForBackend($params = [])
+    {
+        // Serve pagination
+        if (isset($params['page'])) {
+            unset($params['page']);
+        }
+        // Get data
+        $result = $this->getBuilder()->with(['user'])->join('users', 'posts.user_id', '=', 'users.id')
+            ->where(function ($query) use ($params) {
+                $query = $query->orderBy($this->getSortField(), $this->getSortType());
+                if (empty($params)) {
+                    return $query;
+                }
+                // Search
+                if (!empty($params['username'])) {
+                    $query = $query->where('users.name', 'LIKE', '%'.$params['username'].'%');
+                }
+
+                if (!empty($params['date_start'])) {
+                    $dateStart = date('Y-m-d H:i:s', strtotime($params['date_start']));
+                    $dateEnd = date('Y-m-d', strtotime($params['date_start'])) . ' 23:59:59';
+                    $query = $query->where('date_start', '>=', $dateStart)->where('date_start', '<=', $dateEnd);
+                }
+
+                return $query;
+            });
+
+        return $result->paginate($this->getPerPage());
     }
 
     public function getListForHome($params = []) 
