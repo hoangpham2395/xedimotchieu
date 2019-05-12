@@ -120,16 +120,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} admin.</div>
-                                <div class="col-sm-7">{{ $entities->links() }}</div>
-                            </div>
+                            @include('layouts.backend.pagination', ['object' => 'admin'])
                         @else
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có admin nào.</span>
-                                </div>
-                            </div>
+                            @include('layouts.backend.no_result', ['object' => 'admin'])
                         @endif
                     </div>
                 </div>

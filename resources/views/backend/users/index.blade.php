@@ -127,16 +127,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} khách hàng.</div>
-                                <div class="col-sm-7">{{ $entities->links() }}</div>
-                            </div>
-                        @else 
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có khách hàng nào.</span>
-                                </div>
-                            </div>
+                            @include('layouts.backend.pagination', ['object' => 'người dùng'])
+                        @else
+                            @include('layouts.backend.no_result', ['object' => 'người dùng'])
                         @endif
                     </div>
                 </div>
