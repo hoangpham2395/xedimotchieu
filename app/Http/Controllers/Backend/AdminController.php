@@ -34,6 +34,16 @@ class AdminController extends BackendController
         return $params;
     }
 
+    public function index() 
+    {
+        // Check permission
+        if (!$this->_checkPermission()) {
+            return $this->_redirectToIndex();
+        }
+
+        return parent::index();
+    }
+
     public function create() 
     {
     	// Check permission
@@ -153,6 +163,11 @@ class AdminController extends BackendController
 
     protected function _redirectToIndex() 
     {
-    	return redirect()->route('admin.index')->withErrors(['permission' => getMessage('permission')]);
+    	return redirect()->route('admin.permission')->withErrors(['permission' => getMessage('permission')]);
+    }
+
+    public function permission() 
+    {
+        return view('backend.admin.permission');
     }
 }

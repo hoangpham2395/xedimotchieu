@@ -82,5 +82,9 @@ Route::prefix(getBackendAlias())->group(function () {
 			'as' => 'feedbacks.index',
 			'uses' => 'Backend\FeedbacksController@index'
 		]);
+		Route::get('permission', [
+			'as' => 'admin.permission',
+			'uses' => 'Backend\AdminController@permission',
+		]);
 	});
 });

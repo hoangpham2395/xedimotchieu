@@ -29,4 +29,5 @@ return [
 	'use' => 'Hướng dẫn',
 	'terms_of_service' => 'Chính sách',
 	'contact' => 'Liên hệ',
+	'permission' => 'Phân quyền',
 ];
