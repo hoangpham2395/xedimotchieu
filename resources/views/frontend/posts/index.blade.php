@@ -64,16 +64,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} bài đăng.</div>
-                            <div class="col-sm-7">{{ $entities->links() }}</div>
-                        </div>
+                        @include('layouts.frontend.pagination', ['object' => 'bài đăng'])
                     @else
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có bài đăng nào.</span>
-                            </div>
-                        </div>
+                        @include('layouts.frontend.no_result', ['object' => 'bài đăng'])
                     @endif
 				</div>
 			</div>

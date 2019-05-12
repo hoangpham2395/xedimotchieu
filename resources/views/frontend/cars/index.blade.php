@@ -48,16 +48,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-5">Hiển thị {{ count($entities) }} trên {{ $entities->total() }} xe.</div>
-                            <div class="col-sm-7">{{ $entities->links() }}</div>
-                        </div>
+                        @include('layouts.frontend.pagination', ['object' => 'xe'])
                     @else
-                        <div class="row">
-                            <div class="col-md-12">
-                                <span class="color-red"><i class="fa fa-exclamation-triangle"></i> Không có xe nào.</span>
-                            </div>
-                        </div>
+                        @include('layouts.frontend.no_result', ['object' => 'xe'])
                     @endif
                     <div class="padding-bottom"></div>
 				</div>

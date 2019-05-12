@@ -18,6 +18,6 @@ trait PCar
 		if (empty($this->getUrlImage())) {
 			return '';
 		}
-		return '<img src="'. $this->getUrlImage() .'" height="100">';
+		return '<img src="'. $this->getUrlImage() .'" style="max-width: 200px"; max-height: 100px;">';
 	}
 }

@@ -66,7 +66,7 @@
 
 	@if (!empty($entities) && $entities->total() > 0)
 		<div class="row">
-            <div class="col-sm-12 text-center">{{ $entities->links() }}</div>
+            <div class="col-sm-12 text-center">{{ $entities->appends(Request::except('page'))->render() }}</div>
         </div>
 	@endif
 @endsection

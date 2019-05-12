@@ -20,7 +20,12 @@ trait PPost
 
 	public function getCarType() 
 	{
-		return $this->user->isCarOwner() ? $this->car->getCarType() : getConfig('car_type.' . $this->car_type);
+		if (!empty($this->user)) {
+			return $this->user->isCarOwner() && !empty($this->car) ? $this->car->getCarType() : getConfig('car_type.' . $this->car_type);
+		}
+
+		$carType =  (!empty($this->car) && !empty($this->car_id)) ? $this->car->car_type : $this->car_type;
+		return getConfig('car_type.' . $carType);
 	}
 
 	public function getDateStart() 
