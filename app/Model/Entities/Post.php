@@ -9,8 +9,7 @@ class Post extends Base
 {
 	protected $table = 'posts';
 	protected $primaryKey = 'id';
-	protected $fillable = ['user_id', 'city_from_id', 'city_to_id', 'district_from_id', 'district_to_id', 'car_id', 'car_type', 'type', 
-							'date_start', 'cost', 'phone', 'image', 'note', 'tags', 'del_flag'];
+	protected $fillable = ['user_id', 'city_from_id', 'city_to_id', 'district_from_id', 'district_to_id', 'car_id', 'car_type', 'type', 'seats', 'date_start', 'cost', 'phone', 'image', 'note', 'tags', 'del_flag'];
 	protected $_alias = 'posts';
 
     use PPost;
@@ -70,5 +69,10 @@ class Post extends Base
     public function districtTo() 
     {
     	return $this->belongsTo(District::class, 'district_to_id', 'id');
+    }
+
+    public function schedules() 
+    {
+        return $this->hasMany(Schedule::class, 'post_id', 'id');
     }
 }
