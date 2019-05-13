@@ -29,6 +29,7 @@ return [
         'show' => 'Chi tiết bài đăng',
         'destroy' => 'Xóa bài đăng',
         'edit' => 'Cập nhật thông tin bài đăng',
+        'schedules' => 'Lịch trình',
     ],
     'cars' => [
     	'name' => 'Cars',

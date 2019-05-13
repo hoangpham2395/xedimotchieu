@@ -43,6 +43,14 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 		Route::resource('posts', 'Frontend\PostsController')->names('frontend.posts');
 		Route::resource('cars', 'Frontend\CarsController')->names('frontend.cars');
 		Route::resource('rates', 'Frontend\RatesController')->names('frontend.rates')->only('store');
+		Route::get('posts/schedules/{id}', [
+			'as' => 'frontend.posts.schedules',
+			'uses' => 'Frontend\PostsController@getSchedules',
+		]);
+		Route::post('posts/schedules', [
+			'as' => 'frontend.posts.post_schedules',
+			'uses' => 'Frontend\PostsController@postSchedules',
+		]);
 	});
 	// Chat
 	Route::prefix('chat')->group(function() {

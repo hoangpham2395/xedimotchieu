@@ -400,3 +400,7 @@ img.footer-logo-index {
         padding-top: 10px !important;
     }
 }
+
+.btn-delete-schedule {
+    padding: 28px 0 0 15px;
+}

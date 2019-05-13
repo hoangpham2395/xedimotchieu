@@ -13,6 +13,7 @@
 <!-- Bootstrap datepicker 1.6.4 -->
 <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datepicker.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/vendor/bootstrap-datetimepicker.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/vendor/bootstrap-timepicker.min.css')}}">
 <!-- Jasny bootstrap -->
 <link rel="stylesheet" href="{{asset('css/vendor/jasny-bootstrap.min.css')}}">
 <!-- Jquery select2 -->

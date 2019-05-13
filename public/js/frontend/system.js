@@ -6,6 +6,9 @@ $(function () {
 		inline: false,
         sideBySide: true
 	});
+	$('.timepicker').timepicker({
+		showInputs: false
+	});
 	// Jquery select2
 	$('.select2').select2();
 	// slider
@@ -85,14 +88,20 @@ var PostsController = {
 		var cityId = $(e).val(),
 		url = $(e).attr('data-action'),
 		token = $(e).attr('data-token'),
-		htmlId = $(e).attr('data-id');
+		htmlId = $(e).attr('data-id'),
+		field = $(e).attr('data-field');
+
+		if (field == null || field == undefined) {
+			field = htmlId;
+		}
+
 		$.ajax({
 			url: url,
 			type: 'POST',
 			data: {
 				city_id: cityId,
 				_token: token,
-				field: htmlId
+				field: field
 			}
 		}).done(function(response) {
 			$('#' + htmlId).html(response);
@@ -100,6 +109,121 @@ var PostsController = {
 			alert(SystemController.systemError);
 		});
 	},
+	getTotalRow: function () {
+        return $('.model_schedule_list').find('.model_schedule_info').length;
+    },
+    replacePrefix: function (selector, prefix, newName) {
+        $(selector).find('input, select, div, tr, button, label').each(function () {
+            var pattern = /_prefix_/gm;
+            // change name
+            var name = $(this).attr('name');
+            if (name !== undefined && name.length > 0) {
+                name = name.replace('[' + prefix + ']', '[' + newName + ']');
+                $(this).attr('name', name);
+            }
+            // change class
+            var className = $(this).attr('class');
+            if (className !== undefined && className.length > 0) {
+                className = className.replace(pattern, newName);
+                $(this).attr('class', className);
+            }
+            // change id
+            var idName = $(this).attr('id');
+            if (idName !== undefined && idName.length > 0) {
+                idName = idName.replace(pattern, newName);
+                $(this).attr('id', idName);
+            }
+            // change data id
+            var dataId = $(this).data('id');
+            if (dataId !== undefined && dataId.length > 0) {
+                dataId = dataId.replace(pattern, newName);
+                $(this).attr('data-id', dataId);
+            }
+            // change data index
+            var dataIndex = $(this).data('index');
+            if (dataIndex !== undefined && dataIndex.length > 0) {
+                dataIndex = dataIndex.replace(pattern, newName);
+                $(this).attr('data-index', dataIndex);
+            }
+
+            // change for
+            var _for = $(this).attr('for');
+            if (_for !== undefined && _for.length > 0) {
+                _for = _for.replace(pattern, newName);
+                $(this).attr('for', _for);
+            }
+
+            // change name of input file
+            name = $(this).attr('name');
+            if (name !== undefined && name.length > 0 && name.startsWith('_file_name')) {
+                name = name.replace(pattern, newName);
+                $(this).attr('name', name);
+
+                var value = $(this).attr('value');
+                value = value.replace(pattern, newName);
+                $(this).attr('value', value);
+            }
+        });
+    },
+
+    /**
+     * Bind event for delete button
+     */
+    bindDeleteBtn: function () {
+        var total = PostsController.getTotalRow();
+        if (total <= 1) {
+            $('.model_schedule_list .model_schedule_info .delete-row').not(':first').addClass('hide');
+        } else {
+            $('.model_schedule_list .model_schedule_info .delete-row').not(':first').removeClass('hide');
+        }
+        setTimeout(function () {
+            $('.model_schedule_list .model_schedule_info').each(function (e) {
+                $(this).find('input,select,hidden').each(function (ex) {
+                    var name = $(this).attr('name');
+                    name = name.replace(/\[[0-9]*/, '[' + e);
+                    $(this).attr('name', name);
+                })
+            })
+        }, 500);
+    },
+	addSchedule: function(input) {
+		var total = PostsController.getTotalRow(),
+            prefix = '_prefix_',
+            newName = total,
+            html = $('#model_schedule_template').html();
+
+        // append new model
+        $('.model_schedule_list').append(html);
+        // change data-id
+    	$('.model_schedule_list .new_model_schedule:last').attr('data-id', total);
+    	$('.model_schedule_list .new_model_schedule:last .model_schedule_info').attr('data-id', total);
+        // change panel heading
+        $('.model_schedule_list .new_model_schedule:last').find('.panel_heading').empty().text(total + 1);
+        $('.model_schedule_template .new_model_schedule').find('.panel_heading').empty().text(prefix);
+        // change data-id for selectbox city
+        $('.model_schedule_list .new_model_schedule:last').find('.select-city').attr('data-id', 'district_id_' + total);
+        $('.model_schedule_list .new_model_schedule:last').find('.select-district').attr('id', 'district_id_' + total);
+        // change tag name, id, class
+        PostsController.replacePrefix('.model_shop_media_list .new_model_shop_media:last', prefix, newName);
+        PostsController.bindDeleteBtn();
+		// Load package
+        $('.timepicker').timepicker({
+			showInputs: false
+		});
+	},
+	removeSchedule: function (input) {
+        if (PostsController.getTotalRow() <= 1) {
+            return false;
+        }
+        // delete old data
+        $(input).closest('.model_schedule_info').remove();
+        
+        $('.model_schedule_list').find('.model_schedule_info').each(function(index) {
+        	$(this).find('.panel_heading').empty().text(index + 1);
+        	$(this).find('.select-city').attr('data-id', 'district_id_' + index);
+        	$(this).find('.select-district').attr('id', 'district_id_' + index);
+        });
+    },
 };
 
 var HomeController = {

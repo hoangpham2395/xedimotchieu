@@ -73,11 +73,16 @@ trait PPost
 
     public function getUrlChat() 
     {
-    	return (!empty($this->user) && !empty($this->user->fb_id)) ? getConfig('link_messager').$this->user->fb_id : route('chat.index');
+    	return (!empty($this->user) && !empty($this->user->fb_id)) ? getConfig('link_messager').$this->user->fb_id : route('frontend.chat.index');
     }
 
     public function getSeats() 
     {
     	return ($this->carType() == getConfig('user_type_car_owner')) ? $this->seats . ' chỗ ngồi' : $this->seats . ' chỗ trống';
+    }
+
+    public function getCarName() 
+    {
+    	return (!empty($this->car)) ? $this->car->car_name : '';
     }
 }

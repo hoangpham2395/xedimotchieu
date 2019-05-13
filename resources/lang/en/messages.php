@@ -54,6 +54,7 @@ return [
         'image' => 'Ảnh sẽ hiển thị ở cuối bài đăng.',
         'cost' => 'Dưới 10 triệu VND.',
         'tags' => 'Ngăn cách giữa các thẻ là dấu phẩy. VD: facebook,google, ...',
+        'schedules' => 'VD: Hà Nội,6:00|Đà Nẵng,19:00',
     ],
 
     'home_search' => 'Tìm kiếm chuyến xe phù hợp',
@@ -63,5 +64,8 @@ return [
     'rating_breakdown' => 'Thống kê đánh giá ',
     'rates_error_rate' => 'Bạn chưa đánh giá sao.',
     'rates_error_comment' => 'Bạn chưa để lại bình luận.',
-    'rates_require_login' => 'Vui lòng bạn đăng nhập trước khi đánh giá.'
+    'rates_require_login' => 'Vui lòng bạn đăng nhập trước khi đánh giá.',
+
+    'add_schedule_success' => 'Cập nhật lịch trình thành công.',
+    'add_schedule_failed' => 'Cập nhật lịch trình thất bại.',
 ];

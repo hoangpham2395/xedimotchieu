@@ -8,6 +8,7 @@
 <!-- Bootstrap datepicker 1.6.4 -->
 <script src="{{asset('js/vendor/bootstrap-datepicker.min.js')}}"></script>
 <script src="{{asset('js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{asset('js/vendor/bootstrap-timepicker.min.js')}}"></script>
 <!-- Jasny bootstrap -->
 <script src="{{asset('js/vendor/jasny-bootstrap.min.js')}}"></script>
 <!-- Jquery select2 -->

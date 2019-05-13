@@ -72,4 +72,11 @@ return [
         'rate' => 'Đánh giá',
         'comment' => 'Bình luận',
     ],
+    'schedules' => [
+        'id' => 'ID',
+        'city_id' => 'Tỉnh/Thành phố đến',
+        'district_id' => 'Huyện/Quận đến',
+        'time' => 'Thời gian ước lượng đến',
+        'post_id' => 'Bài đăng',
+    ],
 ];
