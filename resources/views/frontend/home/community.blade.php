@@ -81,11 +81,11 @@
 	@endif
 @endsection
 
-@section('javascript')
+@push('scripts')
 	<script type="text/javascript">
 		// Scroll to top
 		window.onscroll = function() {
 			HomeController.showBtnScroll();
 		};
 	</script>
-@endsection
+@endpush

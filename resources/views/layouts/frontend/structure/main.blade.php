@@ -5,9 +5,9 @@
 	<title>{{getConstant('APP_NAME')}}</title>
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="icon" type="image/png" sizes="16x16" href="{{ url('images/favicon.png') }}">
-  	@include('layouts.frontend.load.css')
+	@stack('tag_header')
+	@include('layouts.frontend.load.css')
   	@yield('css')
-  	@stack('tag_header')
 </head>
 <body class="w3-theme-l5">
 	<!-- Preloader -->

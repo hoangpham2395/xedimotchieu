@@ -14,11 +14,11 @@
 	</div>
 @endsection
 
-@section('css')
+@push('tag_header')
 	<!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-@endsection
+@endpush
 
-@section('javascript')
+@push('scripts')
 	<script src="{{ asset('js/app.js') }}"></script>
-@endsection
+@endpush
