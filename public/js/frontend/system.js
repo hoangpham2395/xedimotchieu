@@ -7,7 +7,8 @@ $(function () {
         sideBySide: true
 	});
 	$('.timepicker').timepicker({
-		showInputs: false
+		showInputs: false,
+		showMeridian: false
 	});
 	// Jquery select2
 	$('.select2').select2();
@@ -208,7 +209,8 @@ var PostsController = {
         PostsController.bindDeleteBtn();
 		// Load package
         $('.timepicker').timepicker({
-			showInputs: false
+			showInputs: false,
+			showMeridian: false
 		});
 		$('.select2').select2();
 	},
