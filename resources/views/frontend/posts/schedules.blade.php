@@ -6,7 +6,7 @@
 				<div class="w3-container w3-padding">
 					<h4 class="w3-opacity">{{transb('posts.schedules')}}</h4> 
 				</div>
-				<div class="w3-container w3-padding">
+				<div class="w3-container w3-padding" style="margin-top: -15px;">
 					{!! Form::open(['route' => 'frontend.posts.post_schedules', 'method' => 'POST', 'files' => true]) !!}
 						@php $schedules = $entity->schedules; $params['field'] = 'district_id[]'; @endphp
 
@@ -36,7 +36,7 @@
 		</div>
 	</div>
 	<div id="model_schedule_template" class="hidden">
-	    <div class="new_model_schedule padding-top">
+	    <div class="new_model_schedule">
 	        @include('frontend.posts._schedule', ['idx' => '_prefix_'])
 	    </div>
 	</div>

@@ -210,6 +210,7 @@ var PostsController = {
         $('.timepicker').timepicker({
 			showInputs: false
 		});
+		$('.select2').select2();
 	},
 	removeSchedule: function (input) {
         if (PostsController.getTotalRow() <= 1) {

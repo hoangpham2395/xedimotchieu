@@ -27,7 +27,7 @@
 							@if (frontendGuard()->user()->isCarOwner())
 								<p><span class="w3-opacity">{{transm('cars.car_name')}}:</span> {{$entity->getCarName()}}</p>
 							@endif
-							<p><span class="w3-opacity">{{transm('posts.car_id')}}:</span> {{$entity->getCarType()}}</p>
+							<p><span class="w3-opacity">{{transm('posts.car_type')}}:</span> {{$entity->getCarType()}}</p>
 							<p><span class="w3-opacity">{{transm('posts.type')}}:</span> {{$entity->getPostType()}}</p>
 							<p><span class="w3-opacity">{{transm('posts.seats')}}:</span> {{$entity->getSeats()}}</p>
 							<p><span class="w3-opacity">{{transm('posts.date_start')}}:</span> {{$entity->getDateStart()}}</p>

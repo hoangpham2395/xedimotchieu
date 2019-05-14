@@ -122,6 +122,7 @@ class PostsController extends FrontendController
 		$params['post_id'] = $id;
 		$params['alias'] = $this->getAlias();
 		$entity = $this->getRepository()->findById($id);
+		$schedules = $this->getScheduleRepository()->getListByPostId($id);
     	return view('frontend.posts.schedules', compact('entity', 'params'));
     }
 
