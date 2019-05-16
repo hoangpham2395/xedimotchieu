@@ -41,6 +41,27 @@
         </div>
     </div>
 
+    <div id="search_schedule" class="row {{ frontendGuard()->check() && frontendGuard()->user()->isCarOwner() ? 'hidden' : '' }}">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Tỉnh/Thành phố đi qua (lịch trình)</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                    {!! Form::select('schedule_city_id', array_get($params, 'listCities'), Request::get('schedule_city_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'schedule_district_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Huyện/Quận đi qua (lịch trình)</label>
+                <div class="input-group" id="schedule_district_id">
+                    <span class="input-group-addon"><i class="fa fa-map"></i></span>
+                    {!! Form::select('schedule_district_id', array_get($params, 'listDistrictsTo'), Request::get('schedule_district_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.district_to_id')]) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
@@ -54,9 +75,9 @@
                                 $postType =  Request::get('type');
                             }
                         @endphp
-                        {!! Form::select('type', getConfig('post_type'), $postType, ['class' => 'form-control']) !!}
+                        {!! Form::select('type', getConfig('post_type'), $postType, ['class' => 'form-control', 'onchange' => 'PostsController.displaySchedule(this)']) !!}
                     @else
-                        {!! Form::select('type', getConfig('post_type'), Request::get('type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+                        {!! Form::select('type', getConfig('post_type'), Request::get('type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default'), 'onchange' => 'PostsController.displaySchedule(this)']) !!}
                     @endif
                 </div>
             </div>

@@ -85,6 +85,7 @@ var SystemController = {
 };
 
 var PostsController = {
+	userTypeisCarOwner: 1,
 	getDistricts: function(e) {
 		var cityId = $(e).val(),
 		url = $(e).attr('data-action'),
@@ -187,7 +188,7 @@ var PostsController = {
             })
         }, 500);
     },
-	addSchedule: function(input) {
+	addSchedule: function(e) {
 		var total = PostsController.getTotalRow(),
             prefix = '_prefix_',
             newName = total,
@@ -214,12 +215,12 @@ var PostsController = {
 		});
 		$('.model_schedule_list .new_model_schedule:last .select2').select2();
 	},
-	removeSchedule: function (input) {
+	removeSchedule: function (e) {
         if (PostsController.getTotalRow() <= 1) {
             return false;
         }
         // delete old data
-        $(input).closest('.model_schedule_info').remove();
+        $(e).closest('.model_schedule_info').remove();
         
         $('.model_schedule_list').find('.model_schedule_info').each(function(index) {
         	$(this).find('.panel_heading').empty().text(index + 1);
@@ -227,6 +228,14 @@ var PostsController = {
         	$(this).find('.select-district').attr('id', 'district_id_' + index);
         });
     },
+    displaySchedule: function(e) {
+    	var userType = $(e).val();
+    	if (userType == PostsController.userTypeisCarOwner) {
+    		$('#search_schedule').removeClass('hidden');
+    	} else {
+    		$('#search_schedule').addClass('hidden');
+    	}
+    }
 };
 
 var HomeController = {

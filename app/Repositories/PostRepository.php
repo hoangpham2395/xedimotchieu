@@ -70,8 +70,38 @@ class PostRepository extends CustomRepository
         if (isset($params['page'])) {
             unset($params['page']);
         }
+
+        if (empty($params) || (empty($params['schedule_city_id']) && empty($params['schedule_district_id']))) {
+            return $this->_getListForHomeDefault($params);
+        } 
+
+        return $this->_getListForHomeSearch($params);
+    }
+
+    public function getListByUser($userId, $params = []) 
+    {
+        // Serve pagination
+        if (isset($params['page'])) {
+            unset($params['page']);
+        }
         // Get data
-        $posts = $this->scopeQuery(function ($query) use ($params) {
+        return $this->scopeQuery(function ($query) use ($userId, $params) {
+            $query = $query->where('user_id', '=', $userId)->orderBy($this->getSortField(), $this->getSortType());
+            if (empty($params)) {
+                return $query;
+            }
+            // Search
+            foreach ($params as $key => $value) {
+                $query = $query->where($key, 'LIKE', '%' . $value . '%');
+            }
+            return $query;
+        })
+        ->paginate(getConfig('frontend.per_page'));
+    }
+
+    protected function _getListForHomeDefault($params) 
+    {
+        return $this->scopeQuery(function ($query) use ($params) {
             $query = $query->orderBy($this->getSortField(), $this->getSortType());
             if (empty($params)) {
                 return $query;
@@ -108,16 +138,6 @@ class PostRepository extends CustomRepository
             }
             unset($params['max_seat']);
 
-            // Post type
-//            if (!empty($params['type'])) {
-//                if (!empty($params['city_from_id'])) {
-//                    unset($params['city_from_id']);
-//                }
-//                if (!empty($params['district_from_id'])) {
-//                    unset($params['district_from_id']);
-//                }
-//            }
-
             foreach ($params as $key => $value) {
                 if (empty($value)) {
                     continue;
@@ -127,88 +147,78 @@ class PostRepository extends CustomRepository
             return $query;
         })
         ->paginate(getConfig('frontend.per_page'));
-
-//        if (!empty($params['type'])) {
-//            $cityFromId = array_get($params, 'city_from_id');
-//            $districtFromId = array_get($params, 'district_from_id');
-//            if (!empty($cityFromId) || !empty($districtFromId)) {
-//                foreach ($posts as $key => $post) {
-//                    $isNotDelete = false;
-//                    if (empty($cityFromId) && !empty($districtFromId)) {
-//                        if ($post->district_from_id == $districtFromId) {
-//                            $isNotDelete = true;
-//                            break;
-//                        }
-//
-//                        foreach($post->schedules as $schedule) {
-//                            if ($schedule->district_from_id == $districtFromId) {
-//                                $isNotDelete = true;
-//                                break;
-//                            }
-//                        }
-//                        if ($isNotDelete) {
-//                            break;
-//                        }
-//                    } elseif (!empty($cityFromId) && empty($districtFromId)) {
-//                        if ($post->city_from_id == $cityFromId) {
-//                            $isNotDelete = true;
-//                            break;
-//                        }
-//
-//                        foreach($post->schedules as $schedule) {
-//                            if ($schedule->city_from_id == $cityFromId) {
-//                                $isNotDelete = true;
-//                                break;
-//                            }
-//                        }
-//                        if ($isNotDelete) {
-//                            break;
-//                        }
-//                    } elseif (!empty($cityFromId) && !empty($districtFromId)) {
-//                        if ($post->city_from_id == $cityFromId && $post->district_from_id == $districtFromId) {
-//                            $isNotDelete = true;
-//                            break;
-//                        }
-//
-//                        foreach($post->schedules as $schedule) {
-//                            if ($schedule->city_from_id == $cityFromId && $schedule->district_from_id == $districtFromId) {
-//                                $isNotDelete = true;
-//                                break;
-//                            }
-//                        }
-//                        if ($isNotDelete) {
-//                            break;
-//                        }
-//                    }
-//
-//                    if (!$isNotDelete) {
-//                        $posts->forget($key);
-//                    }
-//                }
-//            }
-//        }
-
-        return $posts;
     }
 
-    public function getListByUser($userId, $params = []) 
+    protected function _getListForHomeSearch($params)
     {
-        // Serve pagination
-        if (isset($params['page'])) {
-            unset($params['page']);
-        }
-        // Get data
-        return $this->scopeQuery(function ($query) use ($userId, $params) {
-            $query = $query->where('user_id', '=', $userId)->orderBy($this->getSortField(), $this->getSortType());
+        $postIds = $this->getBuilder()->with(['schedules'])
+        ->select('posts.id')
+        ->leftJoin('schedules', 'posts.id', '=', 'schedules.post_id')
+        ->where(function ($query) use ($params) {
             if (empty($params)) {
                 return $query;
             }
-            // Search
-            foreach ($params as $key => $value) {
-                $query = $query->where($key, 'LIKE', '%' . $value . '%');
+
+            // Cost
+            if (!empty($params['min_cost'])) {
+                $minCost = array_get($params, 'min_cost') * 1000000;
+                $query = $query->where('cost', '>=', $minCost);
             }
+            unset($params['min_cost']);
+
+            if (!empty($params['max_cost'])) {
+                $maxCost = array_get($params, 'max_cost') * 1000000;
+                $query = $query->where('cost', '<=', $maxCost);
+            }
+            unset($params['max_cost']);
+
+            // Date start
+            if (!empty($params['date_start'])) {
+                $dateStart = array_get($params, 'date_start');
+                $query = $query->where('date_start', '>=', $dateStart);
+            }
+            unset($params['date_start']);
+
+            // Seats
+            if (!empty($params['min_seat'])) {
+                $query = $query->where('seats', '>=', (int) $params['min_seat']);
+            }
+            unset($params['min_seat']);
+
+            if (!empty($params['max_seat'])) {
+                $query = $query->where('seats', '<=', (int) $params['max_seat']);
+            }
+            unset($params['max_seat']);
+
+            if (!empty($params['schedule_city_id'])) {
+                $query = $query->where('schedules.city_id', '=', $params['schedule_city_id']);
+            }
+            unset($params['schedule_city_id']);
+
+            if (!empty($params['schedule_district_id'])) {
+                $query = $query->where('schedules.district_id', '=', $params['schedule_district_id']);
+            }
+            unset($params['schedule_district_id']);
+
+            foreach ($params as $key => $value) {
+                if (empty($value)) {
+                    continue;
+                }
+                $query = $query->where('posts.'.$key, '=', $value);
+            }
+
+            $query = $query->where('schedules.del_flag', '=', getConstant('DEL_FLAG.ACTIVE'));
+
             return $query;
         })
-        ->paginate(getConfig('frontend.per_page'));
+        ->groupBy('posts.id')
+        ->get()->keyBy('id')->toArray('id');
+
+        $listPostIds = array_keys($postIds);
+
+        return $this->getBuilder()->with(['schedules', 'user'])
+            ->whereIn('id', $listPostIds)
+            ->orderBy($this->getSortField(), $this->getSortType())
+            ->paginate(getConfig('frontend.per_page'));
     }
 }
