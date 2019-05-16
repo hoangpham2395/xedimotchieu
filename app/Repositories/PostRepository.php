@@ -221,4 +221,84 @@ class PostRepository extends CustomRepository
             ->orderBy($this->getSortField(), $this->getSortType())
             ->paginate(getConfig('frontend.per_page'));
     }
+
+    public function getSuggest($id) 
+    {
+        $post = $this->findById($id);
+
+        if (empty($post)) {
+            return $post;
+        }
+
+        $dateStart = date('Y-m-d', strtotime($post->date_start)) . ' 00:00';
+        $seats = $post->seats;
+
+        if ($post->user->isCarOwner()) {
+            $cityIds = []; $districtIds = [];
+            foreach ($post->schedules as $schedule) {
+                $cityIds[] = $schedule->city_id;
+                $districtIds[] = $schedule->district_id;
+            }
+
+            $params = [
+                'listCityFromId' => array_merge($cityIds, [$post->city_from_id]),
+                'listCityToId' => array_merge($cityIds, [$post->city_to_id]),
+                'listDistrictFromId' => array_merge($districtIds, [$post->district_from_id]),
+                'listDistrictToId' => array_merge($districtIds, [$post->district_to_id]),
+                'date_start' => $dateStart,
+                'seats' => $seats,
+                'type' => getConfig('user_type_passenger'),
+            ]; 
+
+            return $this->getBuilder()->where(function($q) use ($params) {
+                $q = $q->where('date_start', '>=', $params['date_start'])
+                       ->whereIn('city_from_id', $params['listCityFromId'])
+                       ->whereIn('city_to_id', $params['listCityToId'])
+                       ->whereIn('district_from_id', $params['listDistrictFromId'])
+                       ->whereIn('district_to_id', $params['listDistrictToId'])
+                       ->where('seats', '<=', $params['seats'])
+                       ->where('type', '=', $params['type']);
+                return $q;
+            })->orderBy('date_start', 'asc')->limit(3)->get();
+
+        } 
+
+        // Passenger
+        $params = [
+            'date_start' => $dateStart,
+            'seats' => $seats,
+            'city_from_id' => $post->city_from_id,
+            'city_to_id' => $post->city_to_id,
+            'type' => getConfig('user_type_car_owner'),
+        ];
+
+        $postIds = $this->getBuilder()->with(['schedules'])
+        ->select('posts.id')
+        ->leftJoin('schedules', 'posts.id', '=', 'schedules.post_id')
+        ->where(function ($query) use ($params) {
+            $query = $query->where('posts.date_start', '>=', $params['date_start'])
+                           ->where('posts.seats', '>=', (int) $params['seats'])
+                           ->where('posts.type', '=', $params['type']);
+            return $query;
+        })
+        ->where(function($query2) use ($params) {
+            $query2 = $query2->where('schedules.city_id', '=', $params['city_from_id'])
+                             ->orWhere('posts.city_from_id', '=', $params['city_from_id']);
+            return $query2;
+        })
+        ->where(function($query3) use ($params) {
+            $query3 = $query3->where('schedules.city_id', '=', $params['city_to_id'])
+                             ->orWhere('posts.city_to_id', '=', $params['city_to_id']);
+            return $query3;
+        })
+        ->groupBy('posts.id')
+        ->get()->keyBy('id')->toArray('id');
+
+        $listPostIds = array_keys($postIds);
+
+        return $this->getBuilder()->with(['schedules', 'user'])
+            ->whereIn('id', $listPostIds)
+            ->orderBy($this->getSortField(), $this->getSortType())
+            ->limit(3)->get();
+    }
 }

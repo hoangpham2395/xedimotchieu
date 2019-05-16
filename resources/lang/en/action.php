@@ -31,4 +31,5 @@ return [
 	'contact' => 'Liên hệ',
 	'permission' => 'Phân quyền',
     'schedule' => 'Lịch trình',
+    'suggest' => 'Gợi ý',
 ];

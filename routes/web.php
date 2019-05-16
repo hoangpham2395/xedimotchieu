@@ -29,6 +29,10 @@ Route::get('community/{id}', [
 	'as' => 'home.community.detail',
 	'uses' => 'Frontend\HomeController@detail'
 ]);
+Route::get('community/{id}/suggest', [
+	'as' => 'home.community.suggest',
+	'uses' => 'Frontend\HomeController@getSuggest',
+]);
 Route::get('feedbacks', [
 	'as' => 'frontend.feedbacks.create',
 	'uses' => 'Frontend\FeedBacksController@create',

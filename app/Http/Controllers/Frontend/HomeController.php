@@ -93,7 +93,8 @@ class HomeController extends FrontendController
         $entity = $this->getRepository()->findById($id);
         list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);
         $allowRate = $entity->isOwner() ? false : $this->_allowRate($rates);
-        return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate'));
+        $isSuggest = false;
+        return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate', 'isSuggest'));
     }
 
     protected function _allowRate($rates) {
@@ -108,5 +109,16 @@ class HomeController extends FrontendController
         }
 
         return true;
+    }
+
+    public function getSuggest($id) 
+    {
+        $entity = $this->getRepository()->findById($id);
+        list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);
+        $allowRate = $entity->isOwner() ? false : $this->_allowRate($rates);
+
+        $suggests = $this->getRepository()->getSuggest($id);
+        $isSuggest = true;
+        return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate', 'isSuggest', 'suggests'));
     }
 }

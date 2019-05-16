@@ -40,17 +40,25 @@
 			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
 				<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}
 			</button>
-			@if (frontendGuard()->check())
-				@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
-			@else
-				@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
-			@endif
 		@endif
+		<a href="{{route('home.community.suggest', $entity->id)}}" class="w3-button w3-theme-d2 w3-margin-bottom">
+			<i class="fa fa-lightbulb-o"></i> {{transa('suggest')}}
+		</a>
 		@if(!isMobile())
 			@include('frontend.home._btn_fb_share')
 		@endif
 	</div>
+
+	@if ($isSuggest)
+		@include('frontend.home._suggest', ['suggests' => $suggests])
+	@endif 
+
 	<div id="list_rates">
 		@include('frontend.rates._list_rates')
 	</div>
+	@if (frontendGuard()->check())
+		@include('frontend.rates._modal_add_rate', ['postId' => $entity->id, 'params' => $params])
+	@else
+		@include('frontend.rates._modal_check_login', ['postId' => $entity->id])
+	@endif
 @endsection
