@@ -7,9 +7,13 @@
 					<h4 class="w3-opacity">{{transb('posts.create')}}</h4> 
 				</div>
 				<div class="w3-container w3-padding">
-					{!! Form::open(['route' => 'frontend.posts.store', 'method' => 'POST', 'files' => true]) !!}
-						@include('frontend.posts._form')
-					{!! Form::close() !!}
+					@if (frontendGuard()->user()->isCarOwner() && empty(frontendGuard()->user()->cars->count()))
+						<span class="color-red">Bạn chưa <a href="{{route('frontend.cars.create')}}">đăng ký xe</a> nào trong hệ thống hoặc bạn có thể chuyển sang vai trò là <a href="{{route('frontend.users.edit', ['id' => frontendGuard()->user()->id])}}">Hành khách</a>.</span>
+					@else
+						{!! Form::open(['route' => 'frontend.posts.store', 'method' => 'POST', 'files' => true]) !!}
+							@include('frontend.posts._form')
+						{!! Form::close() !!}
+					@endif
 				</div>
 			</div>
 		</div>

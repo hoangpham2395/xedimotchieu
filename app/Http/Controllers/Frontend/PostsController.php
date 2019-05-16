@@ -104,6 +104,13 @@ class PostsController extends FrontendController
 	protected function _prepareStore()
     {
         $params['user_id'] = frontendGuard()->user()->id;
+        $data = Input::all();
+        if (!empty($data['car_id'])) {
+        	$car = $this->getCarRepository()->findById($data['car_id']);
+        	if (!empty($car)) {
+        		$params['car_type'] = $car->car_type;
+        	}
+        }
         $params = array_merge($params, parent::_prepareStore());
         return $params;
     }
@@ -111,6 +118,13 @@ class PostsController extends FrontendController
     protected function _prepareUpdate()
     {
         $params['user_id'] = frontendGuard()->user()->id;
+        $data = Input::all();
+        if (!empty($data['car_id'])) {
+        	$car = $this->getCarRepository()->findById($data['car_id']);
+        	if (!empty($car)) {
+        		$params['car_type'] = $car->car_type;
+        	}
+        }
         $params = array_merge($params, parent::_prepareUpdate());
         return $params;
     }
