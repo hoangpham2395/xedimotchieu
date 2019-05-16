@@ -212,7 +212,7 @@ var PostsController = {
 			showInputs: false,
 			showMeridian: false
 		});
-		$('.select2').select2();
+		$('.model_schedule_list .new_model_schedule:last .select2').select2();
 	},
 	removeSchedule: function (input) {
         if (PostsController.getTotalRow() <= 1) {
