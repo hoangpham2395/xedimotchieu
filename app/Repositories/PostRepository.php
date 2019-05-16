@@ -71,7 +71,7 @@ class PostRepository extends CustomRepository
             unset($params['page']);
         }
         // Get data
-        return $this->scopeQuery(function ($query) use ($params) {
+        $posts = $this->scopeQuery(function ($query) use ($params) {
             $query = $query->orderBy($this->getSortField(), $this->getSortType());
             if (empty($params)) {
                 return $query;
@@ -108,6 +108,16 @@ class PostRepository extends CustomRepository
             }
             unset($params['max_seat']);
 
+            // Post type
+//            if (!empty($params['type'])) {
+//                if (!empty($params['city_from_id'])) {
+//                    unset($params['city_from_id']);
+//                }
+//                if (!empty($params['district_from_id'])) {
+//                    unset($params['district_from_id']);
+//                }
+//            }
+
             foreach ($params as $key => $value) {
                 if (empty($value)) {
                     continue;
@@ -117,6 +127,68 @@ class PostRepository extends CustomRepository
             return $query;
         })
         ->paginate(getConfig('frontend.per_page'));
+
+//        if (!empty($params['type'])) {
+//            $cityFromId = array_get($params, 'city_from_id');
+//            $districtFromId = array_get($params, 'district_from_id');
+//            if (!empty($cityFromId) || !empty($districtFromId)) {
+//                foreach ($posts as $key => $post) {
+//                    $isNotDelete = false;
+//                    if (empty($cityFromId) && !empty($districtFromId)) {
+//                        if ($post->district_from_id == $districtFromId) {
+//                            $isNotDelete = true;
+//                            break;
+//                        }
+//
+//                        foreach($post->schedules as $schedule) {
+//                            if ($schedule->district_from_id == $districtFromId) {
+//                                $isNotDelete = true;
+//                                break;
+//                            }
+//                        }
+//                        if ($isNotDelete) {
+//                            break;
+//                        }
+//                    } elseif (!empty($cityFromId) && empty($districtFromId)) {
+//                        if ($post->city_from_id == $cityFromId) {
+//                            $isNotDelete = true;
+//                            break;
+//                        }
+//
+//                        foreach($post->schedules as $schedule) {
+//                            if ($schedule->city_from_id == $cityFromId) {
+//                                $isNotDelete = true;
+//                                break;
+//                            }
+//                        }
+//                        if ($isNotDelete) {
+//                            break;
+//                        }
+//                    } elseif (!empty($cityFromId) && !empty($districtFromId)) {
+//                        if ($post->city_from_id == $cityFromId && $post->district_from_id == $districtFromId) {
+//                            $isNotDelete = true;
+//                            break;
+//                        }
+//
+//                        foreach($post->schedules as $schedule) {
+//                            if ($schedule->city_from_id == $cityFromId && $schedule->district_from_id == $districtFromId) {
+//                                $isNotDelete = true;
+//                                break;
+//                            }
+//                        }
+//                        if ($isNotDelete) {
+//                            break;
+//                        }
+//                    }
+//
+//                    if (!$isNotDelete) {
+//                        $posts->forget($key);
+//                    }
+//                }
+//            }
+//        }
+
+        return $posts;
     }
 
     public function getListByUser($userId, $params = []) 

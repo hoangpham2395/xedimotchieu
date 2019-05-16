@@ -63,6 +63,14 @@
 				</div>
 				<div class="w3-col m8">
 					<p>{!! nl2br($entity->note) !!}</p>
+					@php $schedules = $entity->schedules; @endphp
+					@if (!empty($schedules->count()))
+						<p>Các địa điểm đi qua: &nbsp;
+						@foreach($schedules as $key => $schedule)
+							{{($key < $schedules->count() - 1) ?  $schedule->getPlace() . ', ' : $schedule->getPlace()}}
+						@endforeach
+						</p>
+					@endif
 					{!! $entity->showImage() !!}
 				</div>
 			</div>

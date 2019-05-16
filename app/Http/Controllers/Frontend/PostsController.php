@@ -131,6 +131,9 @@ class PostsController extends FrontendController
 
     public function getSchedules($id) 
     {
+        if (!frontendGuard()->user()->isCarOwner()) {
+            return redirect()->route('frontend.posts.index');
+        }
     	$params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
 		$params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
 		$params['post_id'] = $id;

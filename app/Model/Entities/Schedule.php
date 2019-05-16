@@ -2,6 +2,7 @@
 namespace App\Model\Entities;
 
 use App\Model\Base\Base;
+use App\Model\Presenters\PSchedule;
 use App\Model\Scopes\Base\BaseScope;
 
 class Schedule extends Base 
@@ -10,6 +11,8 @@ class Schedule extends Base
 	protected $primaryKey = 'id';
 	protected $fillable = ['post_id', 'city_id', 'district_id', 'time', 'del_flag'];
 	protected $_alias = 'schedules';
+
+	use PSchedule;
 
 	// Add global scope
     protected static function boot()

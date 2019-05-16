@@ -47,7 +47,17 @@
                 {!! Form::label('type', transm('posts.type')) !!}
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-bullseye"></i></span>
-                    {!! Form::select('type', getConfig('post_type'), Request::get('type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+                    @if (frontendGuard()->check())
+                        @php
+                            $postType = frontendGuard()->user()->isCarOwner() ? getConfig('user_type_passenger') : getConfig('user_type_car_owner');
+                            if (!empty(Request::get('type'))) {
+                                $postType =  Request::get('type');
+                            }
+                        @endphp
+                        {!! Form::select('type', getConfig('post_type'), $postType, ['class' => 'form-control']) !!}
+                    @else
+                        {!! Form::select('type', getConfig('post_type'), Request::get('type'), ['class' => 'form-control', 'placeholder' => getConfig('select_default')]) !!}
+                    @endif
                 </div>
             </div>
         </div>

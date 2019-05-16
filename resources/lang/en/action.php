@@ -30,4 +30,5 @@ return [
 	'terms_of_service' => 'Chính sách',
 	'contact' => 'Liên hệ',
 	'permission' => 'Phân quyền',
+    'schedule' => 'Lịch trình',
 ];

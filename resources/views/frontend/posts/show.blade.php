@@ -11,7 +11,9 @@
 						<a href="{{route('frontend.posts.index')}}" class="btn btn-sm btn-default" title="{{transa('list')}}"><i class="fa fa-list-ul"></i></a>
 						<a href="{{route('frontend.posts.create')}}" class="btn btn-sm btn-success" title="{{transa('add')}}"><i class="fa fa-plus"></i></a>
 						<a href="{{route('frontend.posts.edit', ['id' => $entity->id])}}" class="btn btn-sm btn-primary" title="{{transa('edit')}}"><i class="fa fa-pencil"></i></a>
+						@if (frontendGuard()->user()->isCarOwner())
 						<a href="{{route('frontend.posts.schedules', ['id' => $entity->id])}}" class="btn btn-sm btn-warning" title="Lịch trình"><i class="fa fa-map"></i></a>
+						@endif
 						<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_del_{{$entity->id}}" title="{{transa('delete')}}">
                             <i class="fa fa-trash"></i>
                         </button>
