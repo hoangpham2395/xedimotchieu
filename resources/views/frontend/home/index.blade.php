@@ -54,10 +54,10 @@
                         <div class="top-header-content">
                             <!-- Top Social Area -->
                             <div class="top-social-area ml-auto">
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                                <a href="{{getConfig('link_fb_group')}}" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="javascript::void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="javascript::void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="javascript::void(0)"><i class="fa fa-google" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
@@ -445,10 +445,10 @@
                     <div class="col-12 col-md-4">
                         <!-- Social Info -->
                         <div class="social-info">
-                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="#"><i class="fa fa-google" aria-hidden="true"></i></a>
+                            <a href="{{getConfig('link_fb_group')}}" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="javascript::void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="javascript::void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            <a href="javascript::void(0)"><i class="fa fa-google" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
