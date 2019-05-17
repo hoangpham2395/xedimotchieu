@@ -24,6 +24,7 @@ return [
     ],
 
     'link_messager' => 'https://www.facebook.com/messages/t/',
+    'link_fb_group' => 'https://www.facebook.com/Cộng-đồng-xe-một-chiều-Việt-Nam-300898897509678',
 
     // Admin
     'role_type' => [

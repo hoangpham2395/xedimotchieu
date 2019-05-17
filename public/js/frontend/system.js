@@ -11,7 +11,7 @@ $(function () {
 		showMeridian: false
 	});
 	// Jquery select2
-	$('.select2').select2();
+    $('.select-fake').select2(); // not use class select2 for select box
 	// slider
 	var minCost = SystemController.getUrlVars()['min_cost'] ? SystemController.getUrlVars()['min_cost'] : 0;
 	var maxCost = SystemController.getUrlVars()['max_cost'] ? SystemController.getUrlVars()['max_cost'] : 10;
@@ -195,26 +195,29 @@ var PostsController = {
             html = $('#model_schedule_template').html();
 
         // append new model
-        $('.model_schedule_list').append(html);
+        $('.model_schedule_list').append($(html));
+        $('.model_schedule_list .model_schedule_info:last .select-fake').select2();
+
         // change data-id
-    	$('.model_schedule_list .new_model_schedule:last').attr('data-id', total);
-    	$('.model_schedule_list .new_model_schedule:last .model_schedule_info').attr('data-id', total);
+        $('.model_schedule_list .model_schedule_info:last').attr('data-id', total);
+        $('.model_schedule_list .model_schedule_info:last .model_schedule_info').attr('data-id', total);
         // change panel heading
-        $('.model_schedule_list .new_model_schedule:last').find('.panel_heading').empty().text(total + 1);
-        $('.model_schedule_template .new_model_schedule').find('.panel_heading').empty().text(prefix);
+        $('.model_schedule_list .model_schedule_info:last').find('.panel_heading').empty().text(total + 1);
+        $('.model_schedule_template .model_schedule_info').find('.panel_heading').empty().text(prefix);
         // change data-id for selectbox city
-        $('.model_schedule_list .new_model_schedule:last').find('.select-city').attr('data-id', 'district_id_' + total);
-        $('.model_schedule_list .new_model_schedule:last').find('.select-district').attr('id', 'district_id_' + total);
+        $('.model_schedule_list .model_schedule_info:last').find('.select-city').attr('data-id', 'district_id_' + total);
+        $('.model_schedule_list .model_schedule_info:last').find('.select-district').attr('id', 'district_id_' + total);
+
         // change tag name, id, class
         PostsController.replacePrefix('.model_shop_media_list .new_model_shop_media:last', prefix, newName);
         PostsController.bindDeleteBtn();
-		// Load package
+        // Load package
         $('.timepicker').timepicker({
-			showInputs: false,
-			showMeridian: false
-		});
-		$('.model_schedule_list .new_model_schedule:last .select2').select2();
-	},
+            showInputs: false,
+            showMeridian: false
+        });
+
+    },
 	removeSchedule: function (e) {
         if (PostsController.getTotalRow() <= 1) {
             return false;

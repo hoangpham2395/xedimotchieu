@@ -35,9 +35,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="model_schedule_template" class="hidden">
-	    <div class="new_model_schedule">
-	        @include('frontend.posts._schedule', ['idx' => '_prefix_'])
-	    </div>
-	</div>
+	<script id="model_schedule_template" class="hidden" type="text/plain">
+		@include('frontend.posts._schedule', ['idx' => '_prefix'])
+	</script>
 @endsection

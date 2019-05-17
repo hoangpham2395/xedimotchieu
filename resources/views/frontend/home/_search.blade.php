@@ -5,7 +5,7 @@
                 {!! Form::label('city_from_id', transm('posts.city_from_id')) !!}
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                    {!! Form::select('city_from_id', array_get($params, 'listCities'), Request::get('city_from_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.city_from_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_from_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
+                    {!! Form::select('city_from_id', array_get($params, 'listCities'), Request::get('city_from_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.city_from_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_from_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 {!! Form::label('district_from_id', transm('posts.district_from_id')) !!}
                 <div class="input-group" id="district_from_id">
                     <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                    {!! Form::select('district_from_id', array_get($params, 'listDistrictsFrom'), Request::get('district_from_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.district_from_id')]) !!}
+                    {!! Form::select('district_from_id', array_get($params, 'listDistrictsFrom'), Request::get('district_from_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.district_from_id')]) !!}
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 {!! Form::label('city_to_id', transm('posts.city_to_id')) !!}
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                    {!! Form::select('city_to_id', array_get($params, 'listCities'), Request::get('city_to_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_to_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
+                    {!! Form::select('city_to_id', array_get($params, 'listCities'), Request::get('city_to_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_to_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                 {!! Form::label('district_to_id', transm('posts.district_to_id')) !!}
                 <div class="input-group" id="district_to_id">
                     <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                    {!! Form::select('district_to_id', array_get($params, 'listDistrictsTo'), Request::get('district_to_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.district_to_id')]) !!}
+                    {!! Form::select('district_to_id', array_get($params, 'listDistrictsTo'), Request::get('district_to_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.district_to_id')]) !!}
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 <label>Tỉnh/Thành phố đi qua (lịch trình)</label>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                    {!! Form::select('schedule_city_id', array_get($params, 'listCities'), Request::get('schedule_city_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'schedule_district_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
+                    {!! Form::select('schedule_city_id', array_get($params, 'listCities'), Request::get('schedule_city_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.city_to_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'schedule_district_id', 'onchange' => 'PostsController.getDistricts(this);']) !!}
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                 <label>Huyện/Quận đi qua (lịch trình)</label>
                 <div class="input-group" id="schedule_district_id">
                     <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                    {!! Form::select('schedule_district_id', array_get($params, 'listDistrictsTo'), Request::get('schedule_district_id'), ['class' => 'form-control select2', 'placeholder' => transm('posts.district_to_id')]) !!}
+                    {!! Form::select('schedule_district_id', array_get($params, 'listDistrictsTo'), Request::get('schedule_district_id'), ['class' => 'form-control select-fake', 'placeholder' => transm('posts.district_to_id')]) !!}
                 </div>
             </div>
         </div>

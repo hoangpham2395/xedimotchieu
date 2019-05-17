@@ -1,5 +1,5 @@
 <!-- jQuery 3 -->
-<script src="{{asset('js/vendor/jquery.min.js')}}"></script>
+
 <script src="{{asset('js/vendor/jquery-ui.min.js')}}"></script>
 <!-- Moment for datetime picker -->
 <script src="{{asset('js/vendor/moment.min.js')}}"></script>
@@ -12,7 +12,7 @@
 <!-- Jasny bootstrap -->
 <script src="{{asset('js/vendor/jasny-bootstrap.min.js')}}"></script>
 <!-- Jquery select2 -->
-<script src="{{asset('js/vendor/select2.min.js')}}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{asset('js/vendor/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

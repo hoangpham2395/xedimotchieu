@@ -17,7 +17,7 @@
 							{!! Form::label('city_from_id', transm('schedules.city_id')) !!} <span class="required"></span> 	
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-building"></i></span>
-								{!! Form::select('city_id[]', array_get($params, 'listCities'), array_get($item, 'city_id'), ['class' => 'form-control select2 select-city', 'required' => true, 'placeholder' => transm('schedules.city_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_id_'. $id, 'data-field' => 'district_id[]', 'onchange' => 'PostsController.getDistricts(this);']) !!}
+								{!! Form::select('city_id[]', array_get($params, 'listCities'), array_get($item, 'city_id'), ['class' => 'form-control select2 select-fake select-city', 'required' => true, 'placeholder' => transm('schedules.city_id'), 'data-action' => route('frontend.districts.get_districts_by_city'), 'data-token' => csrf_token(), 'data-id' => 'district_id_'. $id, 'data-field' => 'district_id[]', 'onchange' => 'PostsController.getDistricts(this);']) !!}
 							</div>
 						</div>
 					</div>
@@ -26,7 +26,7 @@
 							{!! Form::label('district_id', transm('schedules.district_id')) !!} <span class="required"></span>
 							<div class="input-group select-district" id="district_id_{{$id}}">
 								<span class="input-group-addon"><i class="fa fa-map"></i></span>
-								{!! Form::select('district_id[]', array_get($params, 'listDistricts'), array_get($item, 'district_id'), ['class' => 'form-control select2', 'required' => true, 'placeholder' => transm('schedules.district_id')]) !!}
+								{!! Form::select('district_id[]', array_get($params, 'listDistricts'), array_get($item, 'district_id'), ['class' => 'form-control select2  select-fake', 'required' => true, 'placeholder' => transm('schedules.district_id')]) !!}
 							</div>
 						</div>
 					</div>

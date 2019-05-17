@@ -35,3 +35,6 @@
 <link rel="stylesheet" href="{{asset('css/vendor/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/vendor/jquery-ui.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/frontend/style.css')}}">
+
+<script src="{{asset('js/vendor/jquery.min.js')}}"></script>
+<script src="{{asset('js/vendor/select2.min.js')}}"></script>
