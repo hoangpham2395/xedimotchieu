@@ -85,4 +85,9 @@ trait PPost
     {
     	return (!empty($this->car)) ? $this->car->car_name : '';
     }
+
+    public function isTypeCarOwner() 
+    {
+    	return $this->type == getConfig('user_type_car_owner');
+    }
 }

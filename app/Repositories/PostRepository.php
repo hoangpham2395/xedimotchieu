@@ -233,7 +233,7 @@ class PostRepository extends CustomRepository
         $dateStart = date('Y-m-d', strtotime($post->date_start)) . ' 00:00';
         $seats = $post->seats;
 
-        if ($post->user->isCarOwner()) {
+        if ($post->isTypeCarOwner()) {
             $cityIds = []; $districtIds = [];
             foreach ($post->schedules as $schedule) {
                 $cityIds[] = $schedule->city_id;
