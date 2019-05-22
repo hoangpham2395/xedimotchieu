@@ -114,7 +114,7 @@ class LoginController extends FrontendController
                         $this->getRepository()->create($data);
                         DB::commit();
                         Session::flash('success', getMessage('create_account_success'));
-                        return redirect()->route('frontend.register');
+                        return redirect()->route('frontend.login');
                     } catch (\Exception $e) {
                         DB::rollback();
                         return redirect()->route('frontend.register')->withErrors(['error_system' => getMessage('system_error')]);
