@@ -12,6 +12,8 @@ class PostRepository extends CustomRepository
         return Post::class;
     }
 
+    protected $_sortField = 'date_start';
+
     public function getDataForDashboard()
     {
     	$posts = $this->all();
@@ -43,7 +45,6 @@ class PostRepository extends CustomRepository
         // Get data
         $result = $this->getBuilder()->with(['user'])->join('users', 'posts.user_id', '=', 'users.id')
             ->where(function ($query) use ($params) {
-                $query = $query->orderBy($this->getSortField(), $this->getSortType());
                 if (empty($params)) {
                     return $query;
                 }
@@ -59,7 +60,8 @@ class PostRepository extends CustomRepository
                 }
 
                 return $query;
-            });
+            })
+            ->orderBy($this->getSortField(), $this->getSortType());
 
         return $result->paginate($this->getPerPage());
     }

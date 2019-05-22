@@ -1,6 +1,7 @@
 @extends('layouts.backend.structure.main')
 @section('content')
 	@include('layouts.backend.breadcrumb', ['object' => 'posts', 'action' => 'index'])
+    @include('layouts.backend.notify')
 	<!-- Main content -->
     <section class="content">
         <div class="row">
