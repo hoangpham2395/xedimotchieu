@@ -97,3 +97,16 @@
 		};
 	</script>
 @endpush
+
+@push('tag_header')
+	<meta name="description" content="Cộng đồng chia sẻ thông tin những chuyến đi một chiều" />
+	<meta name="keywords" content="Xe một chiều" />
+	<meta property="og:site_name" content="Xe một chiều" />
+	<meta property="og:type" content="article" />
+	<meta property="og:locale" content="vi_VN" />
+	<meta property="fb:app_id" content="{{env('FACEBOOK_APP_ID')}}" />
+	<meta property="fb:pages" content="{{env('FACEBOOK_APP_SECRET')}}" />
+	<meta property="og:title" itemprop="name" content="Cộng đồng xe một chiều" />
+	<meta property="og:description" content="Cộng đồng chia sẻ thông tin những chuyến đi một chiều" />
+	<meta property="og:image" content="{{asset('images/')}}" itemprop="thumbnailUrl" />
+@endpush
