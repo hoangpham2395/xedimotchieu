@@ -303,6 +303,7 @@ var RatesController = {
 				$(formId + ' input[name="rate"]').val(0);
 				$(formId + ' .filled-stars').css('width', '0%');
 				$(formId + ' textarea[name="comment"]').val('');
+				$('button.button-add-rate').addClass('hidden');
 			}).fail(function() {
 				alert(SystemController.systemError);
 			});

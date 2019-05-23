@@ -37,7 +37,7 @@
 		</div>
 		<a href="{{$entity->getUrlChat()}}" target="blank" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-commenting-o"></i> &nbsp;{{transa('chat')}}</a> 
 		@if ($allowRate)
-			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom" data-toggle="modal" data-target="#modal_add_rate">
+			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom button-add-rate" data-toggle="modal" data-target="#modal_add_rate">
 				<i class="fa fa-thumbs-up"></i> &nbsp;{{transa('rate')}}
 			</button>
 		@endif
