@@ -66,7 +66,7 @@
 	                                            <td>{{ $entity->id }}</td>
 	                                            <td>{{ $entity->getUsername() }}</td>
 	                                            <td style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                    {!! nl2br($entity->note) !!}
+                                                    {!! ebr($entity->note) !!}
                                                 </td>
                                                 <td>{{ $entity->date_start }}</td>
                                                 <td class="text-center">

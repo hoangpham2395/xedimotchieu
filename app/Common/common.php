@@ -265,3 +265,16 @@ if (!function_exists('isMobile')) {
         return false;
     }
 }
+
+if (!function_exists('ebr')) {
+
+    function ebr($html, $showWhiteSpace = false)
+    {
+        $string = nl2br(e($html));
+        if (!$showWhiteSpace) {
+            return $string;
+        }
+        $string = str_replace(' ', '&nbsp;', $string);
+        return str_replace('　', '&nbsp;', $string);
+    }
+}

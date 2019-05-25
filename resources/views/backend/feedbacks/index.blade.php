@@ -25,7 +25,7 @@
 	                                            <td>{{ $entity->id }}</td>
 	                                            <td>{{ $entity->email }}</td>
 	                                            <td style="max-width: 500px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                                    {!! nl2br($entity->content) !!}
+                                                    {!! ebr($entity->content) !!}
                                                 </td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_show_{{$entity->id}}"><i class="fa fa-info-circle"></i></button>

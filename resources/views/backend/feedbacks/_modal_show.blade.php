@@ -22,7 +22,7 @@
 				    <div class="col-md-12">
 				        <div class="form-group">
 				        	<label>{{transm('feedbacks.content')}}: </label>
-				        	<p>{!! nl2br($entity->content) !!}</p>
+				        	<p>{!! ebr($entity->content) !!}</p>
 				        </div>
 				    </div>
 				</div>
