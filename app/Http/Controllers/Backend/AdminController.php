@@ -134,7 +134,7 @@ class AdminController extends BackendController
         }
 
         // Check permission
-        if (!$this->_checkPermission() && !$entity->isOwner()) {
+        if (!$this->_checkPermission() || $entity->isOwner()) {
         	return $this->_redirectToIndex();
         }
 
