@@ -48,7 +48,7 @@
                 this.messages.push(message);
             },
             hanleIncoming(message) {
-                if (this.selectedContact && message.from == this.selectedContact.id) {
+                if (this.selectedContact && message.from_contact.id == this.selectedContact.id) {
                     this.saveNewMessage(message);
                     return;
                 }
