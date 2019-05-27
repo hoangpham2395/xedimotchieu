@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class PostsController extends FrontendController 
 {
@@ -185,5 +186,96 @@ class PostsController extends FrontendController
             logError($e);            
             return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['create_failed' => getMessage('add_schedule_failed')]);
         } 	
+    }
+
+    public function edit($id)
+    {
+        $params = $this->_prepareEdit();
+        $entity = $this->getRepository()->findById($id);
+
+        // Check post is owner
+        if (!$entity->isOwner()) {
+            throw new HttpException('404');
+        }
+
+        // Check id
+        if (empty($entity)) {
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+
+        return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Check id
+        $entity = $this->getRepository()->findById($id);
+        if (empty($entity)) {
+            return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+
+        // Check is owner
+        if (!$entity->isOwner()) {
+            throw new HttpException('404');
+        }
+
+        $data = $request->all();
+
+        // Upload file to tmp folder if exist
+        $this->_uploadToTmpIfExist($request);
+
+        // Validate
+        $valid = $this->getValidator()->validateUpdate($data, $id);
+        if (!$valid) {
+            return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
+        }
+
+        // Update
+        $data = array_merge($data, $this->_prepareUpdate());
+        DB::beginTransaction();
+        try {
+            $this->getRepository()->update($data, $id);
+            // Move file to medias if exist
+            $this->_moveToMediasIfExist($data);
+            DB::commit();
+            Session::flash('success', getMessage('update_success'));
+            return redirect()->route('frontend.' . $this->getAlias() . '.index');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            logError($e);
+        }
+        // Update failed
+        $this->_deleteFileInTmpIfExist();
+        return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
+    }
+
+    public function destroy($id)
+    {
+        // Check id
+        $entity = $this->getRepository()->findById($id);
+        if (empty($entity)) {
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+
+        // Check is owner
+        if (!$entity->isOwner()) {
+            throw new HttpException('404');
+        }
+
+        // Delete
+        $data['del_flag'] = getConstant('DEL_FLAG.DELETED', 1);
+        DB::beginTransaction();
+        try {
+            $this->getRepository()->update($data, $id);
+            //$this->_deleteFileIfExist();
+            DB::commit();
+            Session::flash('success', getMessage('delete_success'));
+            return redirect()->route('frontend.' . $this->getAlias() . '.index');
+        } catch(\Exception $e) {
+            DB::rollBack();
+            logError($e);
+        }
+        // Delete failed
+        return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 }
