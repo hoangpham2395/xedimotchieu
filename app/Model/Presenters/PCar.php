@@ -20,4 +20,13 @@ trait PCar
 		}
 		return '<img src="'. $this->getUrlImage() .'" style="max-width: 200px"; max-height: 100px;">';
 	}
+
+	public function isOwner() 
+	{
+		if (!frontendGuard()->check()) {
+    		return false;
+    	}
+
+    	return $this->user_id == frontendGuard()->user()->id;
+	}
 }

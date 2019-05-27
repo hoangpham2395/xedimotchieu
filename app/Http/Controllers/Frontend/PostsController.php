@@ -219,34 +219,7 @@ class PostsController extends FrontendController
             throw new HttpException('404');
         }
 
-        $data = $request->all();
-
-        // Upload file to tmp folder if exist
-        $this->_uploadToTmpIfExist($request);
-
-        // Validate
-        $valid = $this->getValidator()->validateUpdate($data, $id);
-        if (!$valid) {
-            return redirect()->back()->withErrors($this->getValidator()->errors())->withInput();
-        }
-
-        // Update
-        $data = array_merge($data, $this->_prepareUpdate());
-        DB::beginTransaction();
-        try {
-            $this->getRepository()->update($data, $id);
-            // Move file to medias if exist
-            $this->_moveToMediasIfExist($data);
-            DB::commit();
-            Session::flash('success', getMessage('update_success'));
-            return redirect()->route('frontend.' . $this->getAlias() . '.index');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            logError($e);
-        }
-        // Update failed
-        $this->_deleteFileInTmpIfExist();
-        return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
+        return parent::update($request, $id);
     }
 
     public function destroy($id)
@@ -262,20 +235,6 @@ class PostsController extends FrontendController
             throw new HttpException('404');
         }
 
-        // Delete
-        $data['del_flag'] = getConstant('DEL_FLAG.DELETED', 1);
-        DB::beginTransaction();
-        try {
-            $this->getRepository()->update($data, $id);
-            //$this->_deleteFileIfExist();
-            DB::commit();
-            Session::flash('success', getMessage('delete_success'));
-            return redirect()->route('frontend.' . $this->getAlias() . '.index');
-        } catch(\Exception $e) {
-            DB::rollBack();
-            logError($e);
-        }
-        // Delete failed
-        return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
+        return parent::destroy($id);
     }
 }

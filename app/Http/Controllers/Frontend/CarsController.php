@@ -7,6 +7,7 @@ use App\Repositories\CarRepository;
 use App\Validators\VCar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class CarsController extends FrontendController
 {
@@ -48,7 +49,18 @@ class CarsController extends FrontendController
         if (!$user->isCarOwner()) {
             return redirect()->route('home.index');
         }
-        return parent::edit($id);
+        $params = $this->_prepareEdit();
+        $entity = $this->getRepository()->findById($id);
+        // Check id
+        if (empty($entity)) {
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+
+        if (!$entity->isOwner()) {
+            throw new HttpException("404");
+        }
+
+        return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
     protected function _prepareStore()
@@ -80,6 +92,32 @@ class CarsController extends FrontendController
         if (!$user->isCarOwner()) {
             return redirect()->route('home.index');
         }
+
+        // Check id
+        $entity = $this->getRepository()->findById($id);
+        if (empty($entity)) {
+            return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+
+        if (!$entity->isOwner()) {
+            throw new HttpException("404");
+        }
+
         return parent::update($request, $id);
+    }
+
+    public function destroy($id)
+    {
+        // Check id
+        $entity = $this->getRepository()->findById($id);
+        if (empty($entity)) {
+            return redirect()->route($this->getAlias() . '.index')->withErrors(['id_invalid' => getMessage('id_invalid')]);
+        }
+        
+        if (!$entity->isOwner()) {
+            throw new HttpException("404");
+        }
+
+        return parent::destroy($id);
     }
 }
