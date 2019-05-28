@@ -45,6 +45,7 @@ return [
     'account_not_exist' => 'Tài khoản không tồn tại.',
     'send_mail_success' => 'Gửi email thành công. Bạn hãy kiểm tra lại email để xem mật khẩu mới của bạn.',
     'send_mail_fail' => 'Gửi email thất bại.',
+    'send_feedback_success' => 'Gửi email trả lời phản hồi thành công',
     'account_block' => 'Tài khoản của bạn đã bị chặn.',
     'not_connect_fb' => 'Không thể kết nối với facebook',
     'not_have_account' => 'Bạn chưa có tài khoản. Vui lòng hãy đăng ký!',

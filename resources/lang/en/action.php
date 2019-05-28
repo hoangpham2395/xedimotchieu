@@ -32,4 +32,5 @@ return [
 	'permission' => 'Phân quyền',
     'schedule' => 'Lịch trình',
     'suggest' => 'Gợi ý',
+    'reply' => 'Trả lời',
 ];

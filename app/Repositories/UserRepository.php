@@ -44,4 +44,9 @@ class UserRepository extends CustomRepository
     {
         return $this->getBuilder()->where('id', '!=', frontendGuard()->user()->id)->get();
     }
+
+    public function findByEmail($email) 
+    {
+        return $this->findWhere(['email' => $email])->first();
+    }
 }

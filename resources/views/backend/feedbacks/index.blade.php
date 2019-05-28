@@ -1,6 +1,9 @@
 @extends('layouts.backend.structure.main')
 @section('content')
 	@include('layouts.backend.breadcrumb', ['object' => 'feedbacks', 'action' => 'index'])
+
+    @include('layouts.backend.notify')
+
 	<!-- Main content -->
 	<section class="content">
 		<div class="row">
@@ -18,6 +21,7 @@
 	                                    <th width="300">{{transm('feedbacks.email')}}</th>
 	                                    <th>{{transm('feedbacks.content')}}</th>
                                         <th width="80" class="text-center">{{transa('show')}}</th>
+                                        <th width="80" class="text-center">{{transa('reply')}}</th>
                                     </thead>
                                     <tbody>
 	                                    @foreach ($entities as $entity)
@@ -30,7 +34,11 @@
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal_show_{{$entity->id}}"><i class="fa fa-info-circle"></i></button>
                                                 </td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal_reply_{{$entity->id}}"><i class="fa fa-share"></i></button>
+                                                </td>
                                                 @include('backend.feedbacks._modal_show')
+                                                @include('backend.feedbacks._modal_reply')
 	                                        </tr>
 	                                    @endforeach
                                     </tbody>

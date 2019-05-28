@@ -55,6 +55,7 @@ return [
         'id' => 'ID',
         'email' => 'Email',
         'content' => 'Nội dung phản hồi',
+        'reply' => 'Nội dung trả lời phản hồi',
     ],
     'cities' => [
         'id' => 'ID',

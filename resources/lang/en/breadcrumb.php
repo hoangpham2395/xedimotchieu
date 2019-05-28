@@ -47,6 +47,7 @@ return [
         'index' => 'Danh sách phản hồi',
         'create' => 'Phản hồi',
         'show' => 'Chi tiết phản hồi',
+        'reply' => 'Trả lời phản hồi',
     ],
     'rates' => [
         'create' => 'Đánh giá bài đăng',
