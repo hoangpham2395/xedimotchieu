@@ -294,7 +294,7 @@
                             <div class="rating-title">
                                 <h4 style="color: #f5b917;"><i class="fa fa-hand-paper-o"></i> &nbsp; <span style="color: #1cc3b2;">Nói không với ép giá</span></h4>
                             </div>
-                            <h6>Bạn hoàn toàn không phải lo lắng về việc bị áp giá. Mỗi chuyến đi do chính bạn quyết định về giá.</h6>
+                            <h6>Bạn hoàn toàn không phải lo lắng về việc bị ép giá. Mỗi chuyến đi do chính bạn quyết định về giá.</h6>
                         </div>
 
                         <!-- Single Testimonial Slide -->
