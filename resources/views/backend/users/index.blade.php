@@ -80,7 +80,6 @@
                                         <th>{{transm('users.user_type')}}</th>
                                         <th>{{transm('users.email')}}</th>
                                         <th>{{transm('users.fb_id')}}</th>
-                                        <th>{{transm('users.gg_id')}}</th>
                                         <th class="text-center">{{transm('users.open_flag')}}</th>
                                         <th width="50" class="text-center">{{ transa('delete') }}</th>
                                     </thead>
@@ -92,36 +91,13 @@
                                             <td>{{ $entity->getUserType() }}</td>
                                             <td>{{ $entity->email }}</td>
                                             <td>{{ $entity->fb_id }}</td>
-                                            <td>{{ $entity->gg_id }}</td>
                                             <td class="text-center">{!! $entity->getOpenFlag() !!}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal_del_{{$entity->id}}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </td>
-                                            {!! Form::open(['route' => ['users.destroy', $entity->id], 'method' => 'DELETE']) !!}
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="modal_del_{{$entity->id}}" tabindex="-1" role="dialog"
-                                                     aria-labelledby="myModalLabel">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                                <h4 class="modal-title" id="myModalLabel">Delete</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Are you sure?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                                <button type="submit" class="btn btn-danger">Delete</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {!! Form::close() !!}
+                                            @include('backend.users._modal_del', ['id' => $entity->id])
                                         </tr>
                                     @endforeach
                                     </tbody>

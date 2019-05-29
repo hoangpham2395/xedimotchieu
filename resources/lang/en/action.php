@@ -20,7 +20,7 @@ return [
 	'scroll_to_top' => 'Lên đầu trang',
 	'chat' => 'Chat',
 	'rate' => 'Đánh giá',
-	'cancel' => 'Cancel',
+	'cancel' => 'Hủy',
 	'close' => 'Đóng',
 	'discover' => 'Khám phá',
 	'feedback' => 'Phản hồi',
