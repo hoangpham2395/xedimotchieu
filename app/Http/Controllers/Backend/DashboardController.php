@@ -12,45 +12,82 @@ use App\Model\Entities\Admin;
 use Illuminate\Http\Request;
 
 /**
- * 
+ * Class DashboardController
+ * @package App\Http\Controllers\Backend
  */
 class DashboardController extends BackendController
 {
-	protected $_userRepository;
-	protected $_postRepository;
-	protected $_carRepository;
+    /**
+     * @var
+     */
+    protected $_userRepository;
+    /**
+     * @var
+     */
+    protected $_postRepository;
+    /**
+     * @var
+     */
+    protected $_carRepository;
 
-	public function setUserRepository($userRepository) 
+    /**
+     * @param $userRepository
+     */
+    public function setUserRepository($userRepository)
 	{
 		$this->_userRepository = $userRepository;
 	}
 
-	public function getUserRepository() 
+    /**
+     * @return mixed
+     */
+    public function getUserRepository()
 	{
 		return $this->_userRepository;
 	}
 
-	public function setCarRepository($carRepository) 
+    /**
+     * @param $carRepository
+     */
+    public function setCarRepository($carRepository)
 	{
 		$this->_carRepository = $carRepository;
 	}
 
-	public function getCarRepository() 
+    /**
+     * @return mixed
+     */
+    public function getCarRepository()
 	{
 		return $this->_carRepository;
 	}
 
-	public function setPostRepository($postRepository) 
+    /**
+     * @param $postRepository
+     */
+    public function setPostRepository($postRepository)
 	{
 		$this->_postRepository = $postRepository;
 	}
 
-	public function getPostRepository() 
+    /**
+     * @return mixed
+     */
+    public function getPostRepository()
 	{
 		return $this->_postRepository;
 	}
 
-	public function __construct(
+    /**
+     * DashboardController constructor.
+     * @param AdminRepository $adminRepository
+     * @param VAdmin $adminValidator
+     * @param Admin $admin
+     * @param UserRepository $userRepository
+     * @param PostRepository $postRepository
+     * @param CarRepository $carRepository
+     */
+    public function __construct(
 		AdminRepository $adminRepository, 
 		VAdmin $adminValidator, 
 		Admin $admin,
@@ -67,7 +104,10 @@ class DashboardController extends BackendController
 		parent::__construct();
 	}
 
-	public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
 	{
 		$users = $this->getUserRepository()->getDataForDashboard();
 		$posts = $this->getPostRepository()->getDataForDashboard();

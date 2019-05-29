@@ -7,8 +7,17 @@ use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers\Backend
+ */
 class UsersController extends BackendController
 {
+    /**
+     * UsersController constructor.
+     * @param UserRepository $userRepository
+     * @param User $user
+     */
     public function __construct(
         UserRepository $userRepository,
         User $user)
@@ -18,7 +27,11 @@ class UsersController extends BackendController
         parent::__construct();
     }
 
-    public function updateOpenFlag(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateOpenFlag(Request $request)
     {
     	$data = $request->all();
     	$id = array_get($data, 'id');

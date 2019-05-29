@@ -12,11 +12,18 @@ use Session;
 use Storage;
 
 /**
- * 
+ * Class AdminController
+ * @package App\Http\Controllers\Backend
  */
 class AdminController extends BackendController
 {
-	public function __construct(
+    /**
+     * AdminController constructor.
+     * @param AdminRepository $adminRepository
+     * @param VAdmin $adminValidator
+     * @param Admin $admin
+     */
+    public function __construct(
 		AdminRepository $adminRepository, 
 		VAdmin $adminValidator, 
 		Admin $admin) 
@@ -27,14 +34,20 @@ class AdminController extends BackendController
 		parent::__construct();
 	}
 
-	protected function _prepareData()
+    /**
+     * @return array|mixed
+     */
+    protected function _prepareData()
     {
         $params['role_type'] = getConfig('role_type');
         $params = array_merge($params, parent::_prepareData());
         return $params;
     }
 
-    public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function index()
     {
         // Check permission
         if (!$this->_checkPermission()) {
@@ -44,7 +57,10 @@ class AdminController extends BackendController
         return parent::index();
     }
 
-    public function create() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function create()
     {
     	// Check permission
     	if (!$this->_checkPermission()) {
@@ -54,7 +70,11 @@ class AdminController extends BackendController
     	return parent::create();
     }
 
-    public function store(Request $request) 
+    /**
+     * @param Request $request
+     * @return BackendController|\Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
     {
     	// Check permission
     	if (!$this->_checkPermission()) {
@@ -64,7 +84,11 @@ class AdminController extends BackendController
     	return parent::store($request);
     }
 
-    public function edit($id) 
+    /**
+     * @param $id
+     * @return BackendController|\Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit($id)
     {
     	$params = $this->_prepareEdit();
         $entity = $this->getRepository()->findById($id);
@@ -82,7 +106,12 @@ class AdminController extends BackendController
         return view('backend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
-    public function update(Request $request, $id) 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return BackendController|\Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
     {
         // Check id
         $entity = $this->getRepository()->findById($id);
@@ -98,7 +127,11 @@ class AdminController extends BackendController
         return parent::update($request, $id);
     }
 
-    public function destroy($id) 
+    /**
+     * @param $id
+     * @return BackendController|\Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
     {
         // Check id
         $entity = $this->getRepository()->findById($id);
@@ -114,17 +147,26 @@ class AdminController extends BackendController
         return parent::destroy($id);
     }
 
-    protected function _checkPermission() 
+    /**
+     * @return mixed
+     */
+    protected function _checkPermission()
     {
     	return getCurrentAdmin()->isSuperAdmin();
     }
 
-    protected function _redirectToIndex() 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function _redirectToIndex()
     {
     	return redirect()->route('admin.permission')->withErrors(['permission' => getMessage('permission')]);
     }
 
-    public function permission() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function permission()
     {
         return view('backend.admin.permission');
     }

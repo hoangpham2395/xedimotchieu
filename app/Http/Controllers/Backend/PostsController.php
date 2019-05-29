@@ -8,9 +8,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
-class PostsController extends BackendController 
+/**
+ * Class PostsController
+ * @package App\Http\Controllers\Backend
+ */
+class PostsController extends BackendController
 {
-	public function __construct(
+    /**
+     * PostsController constructor.
+     * @param PostRepository $postRepository
+     * @param Post $post
+     */
+    public function __construct(
 		PostRepository $postRepository,
 		Post $post
 	) 
@@ -20,6 +29,10 @@ class PostsController extends BackendController
 		parent::__construct();
 	}
 
+    /**
+     * @param $id
+     * @return BackendController|\Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         // Check id
@@ -51,6 +64,10 @@ class PostsController extends BackendController
         return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 
+    /**
+     * @param $data
+     * @return bool
+     */
     protected function _sendMail($data)
     {
         try {

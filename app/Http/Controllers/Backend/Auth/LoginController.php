@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\MessageBag;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Backend\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -41,7 +45,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function getLogin() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function getLogin()
     {
         if (Auth::guard('web')->check()) {
             return redirect()->route('backend.dashboard');
@@ -49,7 +56,11 @@ class LoginController extends Controller
         return view('backend.auth.login');
     }
 
-    public function postLogin(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postLogin(Request $request)
     {
         $rules = [
             'email' => ['required', 'email'],
@@ -76,7 +87,10 @@ class LoginController extends Controller
         return redirect()->back()->withErrors($errors)->withInput();
     }
 
-    public function logout() 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout()
     {
         Auth::guard('web')->logout();
         return redirect()->route('admin.login');

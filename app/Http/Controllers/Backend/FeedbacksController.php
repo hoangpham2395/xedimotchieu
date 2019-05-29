@@ -9,21 +9,40 @@ use Illuminate\Support\Facades\Input;
 use Mail;
 use Session;
 
-class FeedbacksController extends BackendController 
+/**
+ * Class FeedbacksController
+ * @package App\Http\Controllers\Backend
+ */
+class FeedbacksController extends BackendController
 {
-	protected $_userRepository;
+    /**
+     * @var
+     */
+    protected $_userRepository;
 
-	public function setUserRepository($userRepository) 
+    /**
+     * @param $userRepository
+     */
+    public function setUserRepository($userRepository)
 	{
 		$this->_userRepository = $userRepository;
 	}
 
-	public function getUserRepository() 
+    /**
+     * @return mixed
+     */
+    public function getUserRepository()
 	{
 		return $this->_userRepository;
 	}
 
-	public function __construct(
+    /**
+     * FeedbacksController constructor.
+     * @param FeedbackRepository $feedbackRepository
+     * @param Feedback $feedback
+     * @param UserRepository $userRepository
+     */
+    public function __construct(
 		FeedbackRepository $feedbackRepository,
 		Feedback $feedback,
 		UserRepository $userRepository
@@ -35,7 +54,10 @@ class FeedbacksController extends BackendController
 		parent::__construct();
 	}
 
-	public function reply() 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function reply()
 	{
 		$data = Input::all();
 
