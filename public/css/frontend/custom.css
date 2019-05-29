@@ -404,3 +404,34 @@ img.footer-logo-index {
 .btn-delete-schedule {
     padding: 28px 0 0 15px;
 }
+
+/* Static page */
+.static-page {
+    padding-bottom: 30px;
+}
+
+.static-page .w3-card {
+    padding-bottom: 50px;
+}
+
+.static-page .w3-container {
+    padding: 10px 20px !important;
+    text-align: justify;
+}
+
+.static-page .w3-container span {
+    font-size: 18px;
+}
+
+.static-page .w3-container ul {
+    font-size: 16px;
+}
+
+.static-page .w3-container ul li {
+    margin-left: 35px;
+    list-style: circle;
+}
+
+.static-page a {
+    color: #3c8dbc !important;
+}

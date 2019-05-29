@@ -56,4 +56,9 @@ return [
         'name' => 'Chat',
         'index' => 'Trò chuyện',
     ],
+    'home' => [
+        'introduction' => 'Giới thiệu',
+        'guide' => 'Hướng dẫn sử dụng',
+        'policy' => 'Chính sách',
+    ],
 ];

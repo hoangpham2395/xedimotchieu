@@ -12,7 +12,7 @@
 	@include('layouts.frontend.structure.navbar')
 	
 	<!-- Main content -->
-	<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
+	<div class="w3-container w3-content" style="max-width:950px;margin-top:120px">
   		@yield('content')
 	</div>
 	<br>

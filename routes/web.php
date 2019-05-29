@@ -70,6 +70,20 @@ Route::middleware(['isLoginFrontend'])->group(function() {
 		
 });
 
+// Static page
+Route::get('introduction', [
+    'as' => 'home.introduction',
+    'uses' => 'Frontend\HomeController@introduction'
+]);
+Route::get('guide', [
+    'as' => 'home.guide',
+    'uses' => 'Frontend\HomeController@guide'
+]);
+Route::get('policy', [
+    'as' => 'home.policy',
+    'uses' => 'Frontend\HomeController@policy'
+]);
+
 // Socialite
 Route::get('login/redirect/{social}', 'Frontend\Auth\LoginController@redirect');
 Route::get('login/callback/{social}', 'Frontend\Auth\LoginController@callback');

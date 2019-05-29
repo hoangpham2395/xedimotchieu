@@ -46,9 +46,9 @@
 
                         <!-- Footer Nav -->
                         <ul class="footer-nav">
-                        	<li><a href="#">{{transa('introduce')}}</a></li>
-                        	<li><a href="#">{{transa('use')}}</a></li>
-                        	<li><a href="#">{{transa('terms_of_service')}}</a></li>
+                        	<li><a href="{{route('home.introduction')}}">{{transb('home.introduction')}}</a></li>
+                            <li><a href="{{route('home.policy')}}">{{transb('home.policy')}}</a></li>
+{{--                            <li><a href="{{route('home.guide')}}">{{transb('home.guide')}}</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -63,16 +63,13 @@
                 <div class="col-12 col-md-8">
                     <!-- Copywrite Text -->
                     <div class="copywrite-text">
-                        <p>Copyright © 2019 <a href="https://colorlib.com" target="_blank" style="color: #1cc3b2;">{{getConstant('BACKEND_NAME')}}</a>. All rights reserved.</p>
+                        <p>Copyright © 2019 <a href="{{route('home.index')}}" target="_blank" style="color: #1cc3b2;">{{getConstant('BACKEND_NAME')}}</a>. All rights reserved.</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-4">
                     <!-- Social Info -->
                     <div class="social-info">
-                        <a href="{{getConfig('link_fb_group')}}" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="javascript::void(0)"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="javascript::void(0)"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="javascript::void(0)"><i class="fa fa-google" aria-hidden="true"></i></a>
+                        <span style="color: #fff;">Liên kết với <a href="{{getConfig('link_fb_group')}}" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></span>
                     </div>
                 </div>
             </div>

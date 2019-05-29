@@ -182,4 +182,28 @@ class HomeController extends FrontendController
         $isSuggest = true;
         return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate', 'isSuggest', 'suggests'));
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function introduction()
+    {
+        return view('frontend.home.introduction');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function guide()
+    {
+        return view('frontend.home.guide');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function policy()
+    {
+        return view('frontend.home.policy');
+    }
 }
