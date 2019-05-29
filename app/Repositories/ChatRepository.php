@@ -4,14 +4,25 @@ namespace App\Repositories;
 use App\Model\Entities\Chat;
 use App\Repositories\Base\CustomRepository;
 
+/**
+ * Class ChatRepository
+ * @package App\Repositories
+ */
 class ChatRepository extends CustomRepository
 {
+    /**
+     * @return string
+     */
     public function model()
     {
         return Chat::class;
     }
 
-    public function getListForChat($userId) 
+    /**
+     * @param $userId
+     * @return mixed
+     */
+    public function getListForChat($userId)
     {
     	$currentUserId = frontendGuard()->user()->id;
     	return $this->getBuilder()->where(function($q) use($currentUserId, $userId) {
@@ -23,7 +34,10 @@ class ChatRepository extends CustomRepository
     	})->get();
     }
 
-    public function getListUnreadIds() 
+    /**
+     * @return mixed
+     */
+    public function getListUnreadIds()
     {
         return $this->getBuilder()
             ->select(\DB::raw('`user_from_id` as sender_id, count(`user_from_id`) as messages_count'))
@@ -33,7 +47,11 @@ class ChatRepository extends CustomRepository
             ->get();
     }
 
-    public function getListForUpdateRead($userFromId) 
+    /**
+     * @param $userFromId
+     * @return mixed
+     */
+    public function getListForUpdateRead($userFromId)
     {
         return $this->getBuilder()
             ->where('user_from_id', $userFromId)

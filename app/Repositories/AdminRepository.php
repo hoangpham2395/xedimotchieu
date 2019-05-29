@@ -7,16 +7,23 @@ use App\Model\Entities\Admin;
 use App\Validators\VAdmin;
 
 /**
- * 
+ * Class AdminRepository
+ * @package App\Repositories
  */
 class AdminRepository extends CustomRepository
 {
-	function model() 
+    /**
+     * @return string
+     */
+    function model()
 	{
 		return Admin::class;
 	}
 
-	public function validator() 
+    /**
+     * @return string|null
+     */
+    public function validator()
 	{
 		return VAdmin::class;
 	}

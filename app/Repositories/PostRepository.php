@@ -5,15 +5,28 @@ use App\Model\Entities\Post;
 use App\Repositories\Base\CustomRepository;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class PostRepository
+ * @package App\Repositories
+ */
 class PostRepository extends CustomRepository
 {
+    /**
+     * @return string
+     */
     public function model()
     {
         return Post::class;
     }
 
+    /**
+     * @var string
+     */
     protected $_sortField = 'date_start';
 
+    /**
+     * @return array
+     */
     public function getDataForDashboard()
     {
     	$posts = $this->all();
@@ -36,6 +49,10 @@ class PostRepository extends CustomRepository
     	];
     }
 
+    /**
+     * @param array $params
+     * @return mixed
+     */
     public function getListForBackend($params = [])
     {
         // Serve pagination
@@ -66,7 +83,11 @@ class PostRepository extends CustomRepository
         return $result->paginate($this->getPerPage());
     }
 
-    public function getListForHome($params = []) 
+    /**
+     * @param array $params
+     * @return mixed
+     */
+    public function getListForHome($params = [])
     {
         // Serve pagination
         if (isset($params['page'])) {
@@ -80,7 +101,12 @@ class PostRepository extends CustomRepository
         return $this->_getListForHomeSearch($params);
     }
 
-    public function getListByUser($userId, $params = []) 
+    /**
+     * @param $userId
+     * @param array $params
+     * @return mixed
+     */
+    public function getListByUser($userId, $params = [])
     {
         // Serve pagination
         if (isset($params['page'])) {
@@ -101,7 +127,11 @@ class PostRepository extends CustomRepository
         ->paginate(getConfig('frontend.per_page'));
     }
 
-    protected function _getListForHomeDefault($params) 
+    /**
+     * @param $params
+     * @return mixed
+     */
+    protected function _getListForHomeDefault($params)
     {
         return $this->scopeQuery(function ($query) use ($params) {
             $query = $query->orderBy($this->getSortField(), $this->getSortType());
@@ -151,6 +181,10 @@ class PostRepository extends CustomRepository
         ->paginate(getConfig('frontend.per_page'));
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
     protected function _getListForHomeSearch($params)
     {
         $postIds = $this->getBuilder()->with(['schedules'])
@@ -224,7 +258,11 @@ class PostRepository extends CustomRepository
             ->paginate(getConfig('frontend.per_page'));
     }
 
-    public function getSuggest($id) 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getSuggest($id)
     {
         $post = $this->findById($id);
 

@@ -4,13 +4,23 @@ namespace App\Repositories;
 use App\Model\Entities\Car;
 use App\Repositories\Base\CustomRepository;
 
+/**
+ * Class CarRepository
+ * @package App\Repositories
+ */
 class CarRepository extends CustomRepository
 {
+    /**
+     * @return string
+     */
     public function model()
     {
         return Car::class;
     }
 
+    /**
+     * @return array
+     */
     public function getDataForDashboard()
     {
         return [
@@ -19,7 +29,11 @@ class CarRepository extends CustomRepository
         ];
     }
 
-    public function getListForSelectByUser($userId) 
+    /**
+     * @param $userId
+     * @return array
+     */
+    public function getListForSelectByUser($userId)
     {
         $cars = $this->findWhere(['user_id' => $userId]);
         $r = [];
@@ -32,7 +46,12 @@ class CarRepository extends CustomRepository
         return $r;
     }
 
-    public function getListByUser($userId, $params = []) 
+    /**
+     * @param $userId
+     * @param array $params
+     * @return mixed
+     */
+    public function getListByUser($userId, $params = [])
     {
         // Serve pagination
         if (isset($params['page'])) {

@@ -4,16 +4,30 @@ namespace App\Repositories;
 use App\Model\Entities\Rate;
 use App\Repositories\Base\CustomRepository;
 
+/**
+ * Class RateRepository
+ * @package App\Repositories
+ */
 class RateRepository extends CustomRepository
 {
+    /**
+     * @return string
+     */
     public function model()
     {
         return Rate::class;
     }
 
+    /**
+     * @var string
+     */
     protected $_sortField = 'created_at';
 
-    public function getListByPost($postId) 
+    /**
+     * @param $postId
+     * @return array
+     */
+    public function getListByPost($postId)
     {
     	$rates = $this->scopeQuery(function ($query) use ($postId) {
 			return $query->orderBy($this->getSortField(), $this->getSortType())->where('post_id', '=', $postId);
@@ -41,7 +55,12 @@ class RateRepository extends CustomRepository
         return [$rates, $dataRates];
     }
 
-    protected function _getCount($postId, $rate) 
+    /**
+     * @param $postId
+     * @param $rate
+     * @return int
+     */
+    protected function _getCount($postId, $rate)
     {
         return count($this->findWhere(['post_id' => $postId, 'rate' => $rate]));
     }

@@ -7,55 +7,93 @@ use Prettus\Repository\Events\RepositoryEntityCreated;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
 
 /**
- * 
+ * Class CustomRepository
+ * @package App\Repositories\Base
  */
 class CustomRepository extends BaseRepository
 {
-	function model() 
+    /**
+     * @return string
+     */
+    function model()
 	{
 		return "";
 	}
 
-    public function getModel() 
+    /**
+     * @return mixed
+     */
+    public function getModel()
     {
         return new $this->model();
     }
 
-	protected $_sortField = 'id';
+    /**
+     * @var string
+     */
+    protected $_sortField = 'id';
+    /**
+     * @var string
+     */
     protected $_sortType = 'DESC';
+    /**
+     * @var int
+     */
     protected $_perPage = 10;
-    
-	public function setSortField($sortField) 
+
+    /**
+     * @param $sortField
+     */
+    public function setSortField($sortField)
 	{
 		$this->_sortField = $sortField;
 	}
 
-	public function getSortField() 
+    /**
+     * @return string
+     */
+    public function getSortField()
 	{
 		return $this->_sortField;
 	}
 
-	public function setSortType($sortType) 
+    /**
+     * @param $sortType
+     */
+    public function setSortType($sortType)
 	{
 		$this->_sortType = $sortType;
 	}
 
-	public function getSortType() 
+    /**
+     * @return string
+     */
+    public function getSortType()
 	{
 		return $this->_sortType;
 	}
 
-	public function setPerPage($perPage) 
+    /**
+     * @param $perPage
+     */
+    public function setPerPage($perPage)
 	{
 		$this->_perPage = $perPage;
 	}
 
-	public function getPerPage() 
+    /**
+     * @return int
+     */
+    public function getPerPage()
 	{
 		return $this->_perPage;
 	}
 
-	public function getListForBackend($params = [])
+    /**
+     * @param array $params
+     * @return mixed
+     */
+    public function getListForBackend($params = [])
 	{
 		// Serve pagination
 		if (isset($params['page'])) {
@@ -76,6 +114,10 @@ class CustomRepository extends BaseRepository
 		->paginate($this->getPerPage());
 	}
 
+    /**
+     * @param array $params
+     * @return mixed
+     */
     public function getListForFrontend($params = [])
     {
         // Serve pagination
@@ -97,12 +139,22 @@ class CustomRepository extends BaseRepository
         ->paginate(getConfig('frontend.per_page'));
     }
 
-	public function findById($id)
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findById($id)
     {
         return $this->findWhere(['id' => $id])->first();
     }
 
 	// Custom create form BaseRepository in L5
+
+    /**
+     * @param array $attributes
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
     public function create(array $attributes)
     {
         $model = $this->model->newInstance($attributes);
@@ -115,6 +167,13 @@ class CustomRepository extends BaseRepository
     }
 
     // Custom update form BaseRepository in L5
+
+    /**
+     * @param array $attributes
+     * @param $id
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
     public function update(array $attributes, $id)
     {
         $model = $this->model->findOrFail($id);
@@ -127,6 +186,11 @@ class CustomRepository extends BaseRepository
         return $this->parserResult($model);
     }
 
+    /**
+     * @param $id
+     * @return int|mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
     public function delete($id)
     {
 	    $attributes = [
@@ -135,11 +199,19 @@ class CustomRepository extends BaseRepository
 	    return $this->update($attributes, $id);
     }
 
+    /**
+     * @return mixed
+     */
     public function getList()
     {
         return $this->all();
     }
 
+    /**
+     * @param $columnId
+     * @param $columnName
+     * @return array
+     */
     public function getListForSelect($columnId, $columnName)
     {
         $list = $this->all([$columnId, $columnName]);
@@ -152,11 +224,18 @@ class CustomRepository extends BaseRepository
     }
 
     // Custom builder by laravel core
+
+    /**
+     * @return mixed
+     */
     public function getBuilder()
     {
         return $this->model()::select('*');
     }
 
+    /**
+     * @return array
+     */
     public function statisticalByMonthInYear()
     {
         $r = [];

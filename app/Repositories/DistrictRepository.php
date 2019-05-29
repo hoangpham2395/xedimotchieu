@@ -4,20 +4,34 @@ namespace App\Repositories;
 use App\Model\Entities\District;
 use App\Repositories\Base\CustomRepository;
 
+/**
+ * Class DistrictRepository
+ * @package App\Repositories
+ */
 class DistrictRepository extends CustomRepository
 {
+    /**
+     * @return string
+     */
     public function model()
     {
         return District::class;
     }
 
-    public function getListForPosts() 
+    /**
+     * @return array
+     */
+    public function getListForPosts()
     {
     	$districts = $this->all();
     	return $this->_filterDistrict($districts);
     }
 
-    public function getListForSearch($cityId = null) 
+    /**
+     * @param null $cityId
+     * @return array
+     */
+    public function getListForSearch($cityId = null)
     {
         $districts = $this->scopeQuery(function($q) use ($cityId) {
             if (!empty($cityId)) {
@@ -28,7 +42,11 @@ class DistrictRepository extends CustomRepository
         return $this->_filterDistrict($districts);    
     }
 
-    protected function _filterDistrict($districts) 
+    /**
+     * @param $districts
+     * @return array
+     */
+    protected function _filterDistrict($districts)
     {
         $r = [];
         if (empty($districts)) {
