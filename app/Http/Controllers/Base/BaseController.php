@@ -7,50 +7,85 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 /**
- * 
+ * Class BaseController
+ * @package App\Http\Controllers\Base
  */
 class BaseController extends Controller
 {
+    /**
+     * @var
+     */
     protected $_alias;
+    /**
+     * @var
+     */
     protected $_reposiroty;
+    /**
+     * @var
+     */
     protected $_validator;
 
-    public function setRepository($repository) 
+    /**
+     * @param $repository
+     */
+    public function setRepository($repository)
     {
         $this->_reposiroty = $repository;
     }
 
-    public function getRepository() 
+    /**
+     * @return mixed
+     */
+    public function getRepository()
     {
         return $this->_reposiroty;
     }
 
-    public function setValidator($validator) 
+    /**
+     * @param $validator
+     */
+    public function setValidator($validator)
     {
         $this->_validator = $validator;
     }
 
-    public function getValidator() 
+    /**
+     * @return mixed
+     */
+    public function getValidator()
     {
         return $this->_validator;
     }
 
-    public function setAlias($alias) 
+    /**
+     * @param $alias
+     */
+    public function setAlias($alias)
     {
         $this->_alias = $alias;
     }
 
-    public function getAlias() 
+    /**
+     * @return mixed
+     */
+    public function getAlias()
     {
         return $this->_alias;
     }
 
-    public function uploadToTmp($fileName, $link) 
+    /**
+     * @param $fileName
+     * @param $link
+     */
+    public function uploadToTmp($fileName, $link)
     {
         Storage::disks('tmp')->put($fileName, $link);
     }
 
-    public function getNextId() 
+    /**
+     * @return int
+     */
+    public function getNextId()
     {
         try {
             $statement = DB::select("show table status like '". $this->getAlias() ."'");

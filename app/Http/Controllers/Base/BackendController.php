@@ -10,21 +10,31 @@ use Session;
 use Storage;
 
 /**
- * 
+ * Class BackendController
+ * @package App\Http\Controllers\Base
  */
 class BackendController extends BaseController
 {
+    /**
+     * BackendController constructor.
+     */
     public function __construct()
     {
 
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareData()
     {
         $params['alias'] = $this->getAlias();
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareIndex()
     {
         $params = [];
@@ -32,6 +42,9 @@ class BackendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareCreate()
     {
         $params = [];
@@ -39,6 +52,9 @@ class BackendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareEdit()
     {
         $params['alias'] = $this->getAlias();
@@ -46,6 +62,9 @@ class BackendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareShow()
     {
         $params['alias'] = $this->getAlias();
@@ -53,6 +72,9 @@ class BackendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareStore()
     {
         // Get current admin
@@ -65,6 +87,9 @@ class BackendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareUpdate()
     {
         // Get current admin
@@ -77,14 +102,21 @@ class BackendController extends BaseController
         return $params;
     }
 
-    public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
     {
         $params = $this->_prepareIndex();
         $entities = $this->getRepository()->getListForBackend(Input::all());
         return view('backend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }
 
-    public function show($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function show($id)
     {
         $params = $this->_prepareShow();
         $entity = $this->getRepository()->findById($id);
@@ -95,13 +127,20 @@ class BackendController extends BaseController
         return view('backend.' . $this->getAlias() . '.show', compact('entity', 'params'));
     }
 
-    public function create() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
     {
         $params = $this->_prepareCreate();
         return view('backend.' . $this->getAlias() . '.create', compact('params'));
     }
 
-    public function edit($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit($id)
     {
         $params = $this->_prepareEdit();
         $entity = $this->getRepository()->findById($id);
@@ -112,7 +151,11 @@ class BackendController extends BaseController
         return view('backend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
-    public function store(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
     {
         $data = $request->all();
 
@@ -145,7 +188,12 @@ class BackendController extends BaseController
         return redirect()->route($this->getAlias() . '.index')->withErrors(['create_failed' => getMessage('create_failed')]);
     }
 
-    public function update(Request $request, $id) 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
     {
         // Check id
         $entity = $this->getRepository()->findById($id);
@@ -183,7 +231,11 @@ class BackendController extends BaseController
         return redirect()->route($this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
     }
 
-    public function destroy($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
     {
         // Check id
         $entity = $this->getRepository()->findById($id);
@@ -208,7 +260,10 @@ class BackendController extends BaseController
         return redirect()->route($this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 
-    protected function _uploadToTmpIfExist($request) 
+    /**
+     * @param $request
+     */
+    protected function _uploadToTmpIfExist($request)
     {
         // Get value of file input
         $hiddenName = getConstant('FILE_INPUT_NAME');
@@ -232,7 +287,10 @@ class BackendController extends BaseController
         }
     }
 
-    protected function _moveToMediasIfExist($data) 
+    /**
+     * @param $data
+     */
+    protected function _moveToMediasIfExist($data)
     {
         if (!Session::has('current_file_field') || !$data[Session::get('current_file_field')]) {
             return; 
@@ -248,7 +306,10 @@ class BackendController extends BaseController
         Session::forget('current_file_name');
     }
 
-    protected function _deleteFileInTmpIfExist() 
+    /**
+     *
+     */
+    protected function _deleteFileInTmpIfExist()
     {
         if (!Session::has('current_file_field')) {
             return;
@@ -260,7 +321,11 @@ class BackendController extends BaseController
         Session::forget('current_file_name');
     }
 
-    protected function _deleteFileIfExist($id) 
+    /**
+     * @param $id
+     * @return bool
+     */
+    protected function _deleteFileIfExist($id)
     {
         return true;
     }

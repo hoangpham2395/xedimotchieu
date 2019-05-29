@@ -10,21 +10,31 @@ use Session;
 use Storage;
 
 /**
- * 
+ * Class FrontendController
+ * @package App\Http\Controllers\Base
  */
 class FrontendController extends BaseController
 {
+    /**
+     * FrontendController constructor.
+     */
     public function __construct()
     {
 
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareData()
     {
         $params['alias'] = $this->getAlias();
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareIndex()
     {
         $params = [];
@@ -32,6 +42,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareCreate()
     {
         $params = [];
@@ -39,6 +52,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareEdit()
     {
         $params['alias'] = $this->getAlias();
@@ -46,6 +62,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return array
+     */
     protected function _prepareShow()
     {
         $params['alias'] = $this->getAlias();
@@ -53,6 +72,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareStore()
     {
         // Get current admin
@@ -65,6 +87,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return mixed
+     */
     protected function _prepareUpdate()
     {
         // Get current admin
@@ -77,6 +102,9 @@ class FrontendController extends BaseController
         return $params;
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $params = $this->_prepareIndex();
@@ -84,6 +112,10 @@ class FrontendController extends BaseController
         return view('frontend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function show($id)
     {
         $params = $this->_prepareShow();
@@ -95,12 +127,19 @@ class FrontendController extends BaseController
         return view('frontend.' . $this->getAlias() . '.show', compact('entity', 'params'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         $params = $this->_prepareCreate();
         return view('frontend.' . $this->getAlias() . '.create', compact('params'));
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $params = $this->_prepareEdit();
@@ -112,6 +151,10 @@ class FrontendController extends BaseController
         return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -145,6 +188,11 @@ class FrontendController extends BaseController
         return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['create_failed' => getMessage('create_failed')]);
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         // Check id
@@ -183,6 +231,10 @@ class FrontendController extends BaseController
         return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['update_failed' => getMessage('update_failed')]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         // Check id
@@ -208,6 +260,9 @@ class FrontendController extends BaseController
         return redirect()->route('frontend.' . $this->getAlias() . '.index')->withErrors(['delete_failed' => getMessage('delete_failed')]);
     }
 
+    /**
+     * @param $request
+     */
     protected function _uploadToTmpIfExist($request)
     {
         // Get value of file input
@@ -232,6 +287,9 @@ class FrontendController extends BaseController
         }
     }
 
+    /**
+     * @param $data
+     */
     protected function _moveToMediasIfExist($data)
     {
         if (!Session::has('current_file_field') || !$data[Session::get('current_file_field')]) {
@@ -248,6 +306,9 @@ class FrontendController extends BaseController
         Session::forget('current_file_name');
     }
 
+    /**
+     *
+     */
     protected function _deleteFileInTmpIfExist()
     {
         if (!Session::has('current_file_field')) {
@@ -260,6 +321,10 @@ class FrontendController extends BaseController
         Session::forget('current_file_name');
     }
 
+    /**
+     * @param $id
+     * @return bool
+     */
     protected function _deleteFileIfExist($id)
     {
         return true;
