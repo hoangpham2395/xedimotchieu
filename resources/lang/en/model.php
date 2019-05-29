@@ -33,7 +33,7 @@ return [
         'date_start' => 'Ngày đi',
         'cost' => 'Giá đề xuất',
         'phone' => 'Số điện thoại',
-        'image' => 'Ảnh xe',
+        'image' => 'Ảnh hiển thị trong bài đăng',
         'note' => 'Nội dung',
         'tags' => 'Thẻ',
         'place_from' => 'Nơi đi',

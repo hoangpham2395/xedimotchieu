@@ -198,14 +198,14 @@ class PostsController extends FrontendController
      */
     public function getSchedules($id)
     {
-        if (!frontendGuard()->user()->isCarOwner()) {
+        $entity = $this->getRepository()->findById($id);
+        if (!$entity->isTypeCarOwner()) {
             return redirect()->route('frontend.posts.index');
         }
     	$params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
 		$params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
 		$params['post_id'] = $id;
-		$params['alias'] = $this->getAlias();
-		$entity = $this->getRepository()->findById($id);
+		$params['alias'] = $this->getAlias();	
 		$schedules = $this->getScheduleRepository()->getListByPostId($id);
     	return view('frontend.posts.schedules', compact('entity', 'params'));
     }

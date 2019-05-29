@@ -25,7 +25,7 @@
                                 <th width="300">{{transm('posts.date_start')}}</th>
                                 <th width="200">{{transm('posts.cost')}}</th>
                                 <th width="200">{{transm('posts.phone')}}</th>
-                                @if (frontendGuard()->user()->isCarOwner()) <th width="80" class="text-center">{{transa('schedule')}}</th> @endif
+                                <th width="80" class="text-center">{{transa('schedule')}}</th>
                                 <th width="80" class="text-center">{{transa('show')}}</th>
                                 <th width="80" class="text-center">{{transa('edit')}}</th>
                                 <th width="50" class="text-center">{{transa('delete')}}</th>
@@ -41,13 +41,13 @@
                                         <td>{{ $entity->getDateStart() }}</td>
                                         <td>{{ $entity->getCost() }}</td>
                                         <td>{{ $entity->phone }}</td>
-                                        @if (frontendGuard()->user()->isCarOwner())
                                         <td class="text-center">
+                                            @if ($entity->isTypeCarOwner())
                                             <a href="{{route('frontend.posts.schedules', $entity->id)}}" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-map"></i>
                                             </a>
+                                            @endif
                                         </td>
-                                        @endif
                                         <td class="text-center">
                                             <a href="{{route('frontend.posts.show', $entity->id)}}" class="btn btn-sm btn-default">
                                                 <i class="fa fa-info-circle"></i>

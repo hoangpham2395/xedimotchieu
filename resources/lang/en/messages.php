@@ -39,7 +39,7 @@ return [
     'login_forgot_password' => 'Quên mật khẩu',
     'login_register' => 'Đăng ký thành viên',
     'register_title' => 'Đăng ký thành viên',
-    'register_agree_term' => 'Tôi đồng ý với các <a href="#">điều khoản</a>',
+    'register_agree_term' => 'Tôi đồng ý với các <a href="'.route('home.policy').'" target="blank">điều khoản chính sách</a>',
     'register_login' => 'Tôi đã có tài khoản',
     'forgot_password_title' => 'Hệ thống sẽ gửi email cho bạn, bạn hãy xác nhận email để nhận lại mật khẩu.',
     'account_not_exist' => 'Tài khoản không tồn tại.',

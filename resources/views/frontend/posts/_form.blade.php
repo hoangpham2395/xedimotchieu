@@ -113,17 +113,15 @@
         </div>
     </div>
 </div>
-@if (!empty(frontendGuard()) && frontendGuard()->user()->isCarOwner()) 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="form-group">
-                {!! Form::label('image', transm('posts.image')) !!} <br>
-                <span class="color-red">{{getMessage('note_posts.image')}}</span>
-                @include('layouts.frontend.upload_image', ['image' => 'image'])
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            {!! Form::label('image', transm('posts.image')) !!} <br>
+            <span class="color-red">{{getMessage('note_posts.image')}}</span>
+            @include('layouts.frontend.upload_image', ['image' => 'image'])
         </div>
     </div>
-@endif
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
