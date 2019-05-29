@@ -34,6 +34,8 @@
                         <li>Chia sẻ bài đăng cho bạn bè</li>
                         <li>Chat với chủ xe qua messenger, trong hệ thống</li>
                     </ul>
+                    <br>
+                    <span>Hãy gia nhập website <a href="{{route('home.index')}}">xemotchieu</a> và group <a href="{{getConfig('link_fb_group')}}">Cộng đồng xe một chiều Việt Nam</a> trên Facebook để cộng đồng xe một chiều tại Việt Nam ngày một phát triển hơn.</span>
                 </div>
             </div>
         </div>
