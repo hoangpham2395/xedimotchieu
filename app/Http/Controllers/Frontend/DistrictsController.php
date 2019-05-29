@@ -6,8 +6,17 @@ use App\Model\Entities\District;
 use App\Repositories\DistrictRepository;
 use Illuminate\Http\Request;
 
+/**
+ * Class DistrictsController
+ * @package App\Http\Controllers\Frontend
+ */
 class DistrictsController extends FrontendController
 {
+    /**
+     * DistrictsController constructor.
+     * @param DistrictRepository $districtRepository
+     * @param District $district
+     */
     public function __construct(
         DistrictRepository $districtRepository,
         District $district
@@ -18,7 +27,11 @@ class DistrictsController extends FrontendController
         parent::__construct();
     }
 
-    public function getDistrictsByCity(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getDistrictsByCity(Request $request)
     {
         $data = $request->all();
         $cityId = array_get($data, 'city_id');

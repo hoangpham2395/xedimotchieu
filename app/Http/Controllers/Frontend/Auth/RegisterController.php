@@ -10,9 +10,19 @@ use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\DB;
 use Session;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers\Frontend\Auth
+ */
 class RegisterController extends FrontendController
 {
-	public function __construct(
+    /**
+     * RegisterController constructor.
+     * @param UserRepository $userRepository
+     * @param VUser $userValidator
+     * @param User $user
+     */
+    public function __construct(
 		UserRepository $userRepository,
 		VUser $userValidator,
 		User $user
@@ -23,7 +33,10 @@ class RegisterController extends FrontendController
 		$this->setAlias($user->getTable());
 		parent::__construct();
 	}
-	
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function getRegister()
     {
         if (frontendGuard()->check()) {
@@ -32,6 +45,10 @@ class RegisterController extends FrontendController
         return view('frontend.auth.register');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postRegister(Request $request)
     {
     	$data = $request->all();

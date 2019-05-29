@@ -9,8 +9,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 
+/**
+ * Class FeedbacksController
+ * @package App\Http\Controllers\Frontend
+ */
 class FeedbacksController extends FrontendController
 {
+    /**
+     * FeedbacksController constructor.
+     * @param FeedbackRepository $feedbackRepository
+     * @param VFeedback $feedbackValidator
+     * @param Feedback $feedback
+     */
     public function __construct(
         FeedbackRepository $feedbackRepository,
         VFeedback $feedbackValidator,
@@ -23,6 +33,10 @@ class FeedbacksController extends FrontendController
         parent::__construct();
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();

@@ -15,54 +15,104 @@ use Illuminate\Support\Facades\DB;
 use Session;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class PostsController extends FrontendController 
+/**
+ * Class PostsController
+ * @package App\Http\Controllers\Frontend
+ */
+class PostsController extends FrontendController
 {
-	protected $_cityRepository;
-	protected $_districtRepository;
-	protected $_carRepository;
-	protected $_scheduleRepository;
+    /**
+     * @var
+     */
+    protected $_cityRepository;
+    /**
+     * @var
+     */
+    protected $_districtRepository;
+    /**
+     * @var
+     */
+    protected $_carRepository;
+    /**
+     * @var
+     */
+    protected $_scheduleRepository;
 
-	public function setCityRepository($cityRepository) 
+    /**
+     * @param $cityRepository
+     */
+    public function setCityRepository($cityRepository)
 	{
 		$this->_cityRepository = $cityRepository;
 	}
 
-	public function getCityRepository() 
+    /**
+     * @return mixed
+     */
+    public function getCityRepository()
 	{
 		return $this->_cityRepository;
 	}
 
-	public function setDistrictRepository($districtRepository) 
+    /**
+     * @param $districtRepository
+     */
+    public function setDistrictRepository($districtRepository)
 	{
 		$this->_districtRepository = $districtRepository;
 	}
 
-	public function getDistrictRepository() 
+    /**
+     * @return mixed
+     */
+    public function getDistrictRepository()
 	{
 		return $this->_districtRepository;
 	}
 
-	public function setCarRepository($carRepository) 
+    /**
+     * @param $carRepository
+     */
+    public function setCarRepository($carRepository)
 	{
 		$this->_carRepository = $carRepository;
 	}
 
-	public function getCarRepository() 
+    /**
+     * @return mixed
+     */
+    public function getCarRepository()
 	{
 		return $this->_carRepository;
 	}
 
-	public function setScheduleRepository($scheduleRepository) 
+    /**
+     * @param $scheduleRepository
+     */
+    public function setScheduleRepository($scheduleRepository)
 	{
 		$this->_scheduleRepository = $scheduleRepository;
 	}
 
-	public function getScheduleRepository() 
+    /**
+     * @return mixed
+     */
+    public function getScheduleRepository()
 	{
 		return $this->_scheduleRepository;
 	}
 
-	public function __construct(
+    /**
+     * PostsController constructor.
+     * @param PostRepository $postRepository
+     * @param VPost $postValidator
+     * @param Post $post
+     * @param CityRepository $cityRepository
+     * @param DistrictRepository $districtRepository
+     * @param CarRepository $carRepository
+     * @param ScheduleRepository $scheduleRepository
+     */
+    public function __construct(
 		PostRepository $postRepository,
 		VPost $postValidator,
 		Post $post,
@@ -82,7 +132,10 @@ class PostsController extends FrontendController
 		parent::__construct();
 	}
 
-	public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
 	{
 		$params = $this->_prepareIndex();
 		$userId = frontendGuard()->user()->id;
@@ -90,7 +143,10 @@ class PostsController extends FrontendController
         return view('frontend.' . $this->getAlias() . '.index', compact('entities', 'params'));
 	}
 
-	protected function _prepareData() 
+    /**
+     * @return array|mixed
+     */
+    protected function _prepareData()
 	{
 		$params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
 		$params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
@@ -102,7 +158,10 @@ class PostsController extends FrontendController
 		return array_merge($params, parent::_prepareData());
 	}
 
-	protected function _prepareStore()
+    /**
+     * @return array|mixed
+     */
+    protected function _prepareStore()
     {
         $params['user_id'] = frontendGuard()->user()->id;
         $data = Input::all();
@@ -116,6 +175,9 @@ class PostsController extends FrontendController
         return $params;
     }
 
+    /**
+     * @return array|mixed
+     */
     protected function _prepareUpdate()
     {
         $params['user_id'] = frontendGuard()->user()->id;
@@ -130,7 +192,11 @@ class PostsController extends FrontendController
         return $params;
     }
 
-    public function getSchedules($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function getSchedules($id)
     {
         if (!frontendGuard()->user()->isCarOwner()) {
             return redirect()->route('frontend.posts.index');
@@ -144,7 +210,11 @@ class PostsController extends FrontendController
     	return view('frontend.posts.schedules', compact('entity', 'params'));
     }
 
-    public function postSchedules(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postSchedules(Request $request)
     {
     	$data = $request->all();
 
@@ -188,6 +258,10 @@ class PostsController extends FrontendController
         } 	
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function edit($id)
     {
         $params = $this->_prepareEdit();
@@ -206,6 +280,11 @@ class PostsController extends FrontendController
         return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         // Check id
@@ -222,6 +301,10 @@ class PostsController extends FrontendController
         return parent::update($request, $id);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         // Check id

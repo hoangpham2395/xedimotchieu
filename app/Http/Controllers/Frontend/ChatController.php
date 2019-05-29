@@ -9,21 +9,40 @@ use App\Repositories\UserRepository;
 use App\Model\Entities\Chat;
 use App\Events\NewMessage;
 
+/**
+ * Class ChatController
+ * @package App\Http\Controllers\Frontend
+ */
 class ChatController extends FrontendController
 {
-	protected $_userRepository;
+    /**
+     * @var
+     */
+    protected $_userRepository;
 
-	public function setUserRepository($userRepository) 
+    /**
+     * @param $userRepository
+     */
+    public function setUserRepository($userRepository)
 	{
 		$this->_userRepository = $userRepository;
 	}
 
-	public function getUserRepository() 
+    /**
+     * @return mixed
+     */
+    public function getUserRepository()
 	{
 		return $this->_userRepository;
 	}
-	
-	public function __construct(
+
+    /**
+     * ChatController constructor.
+     * @param ChatRepository $chatRepository
+     * @param UserRepository $userRepository
+     * @param Chat $chat
+     */
+    public function __construct(
 		ChatRepository $chatRepository,
 		UserRepository $userRepository,
 		Chat $chat
@@ -35,12 +54,18 @@ class ChatController extends FrontendController
 		parent::__construct();
 	}
 
-	public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
 	{
 		return view('frontend.chat.index');
 	}
 
-	public function get() 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function get()
 	{
 		$contacts = $this->getUserRepository()->getListForChat();
 
@@ -59,14 +84,22 @@ class ChatController extends FrontendController
 		return response()->json($contacts);
 	}
 
-	public function getMessagesFor($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getMessagesFor($id)
 	{
 		$messages = $this->getRepository()->getListForChat($id);
 
 		return response()->json($messages); 
 	}
 
-	public function send(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function send(Request $request)
 	{
 		$data = [
 			'user_from_id' => frontendGuard()->user()->id,
@@ -89,7 +122,11 @@ class ChatController extends FrontendController
 		return response()->json($message);
 	}
 
-	public function updateRead(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateRead(Request $request)
 	{
 		$userFromId = $request->user_from_id;
 		$messages = $this->getRepository()->getListForUpdateRead($userFromId);

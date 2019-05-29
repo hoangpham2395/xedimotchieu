@@ -10,42 +10,82 @@ use App\Repositories\RateRepository;
 use App\Validators\VPost;
 use Illuminate\Support\Facades\Input;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers\Frontend
+ */
 class HomeController extends FrontendController
 {
+    /**
+     * @var
+     */
     protected $_cityRepository;
+    /**
+     * @var
+     */
     protected $_districtRepository;
+    /**
+     * @var
+     */
     protected $_rateRepository;
 
-    public function setCityRepository($cityRepository) 
+    /**
+     * @param $cityRepository
+     */
+    public function setCityRepository($cityRepository)
     {
         $this->_cityRepository = $cityRepository;
     }
 
-    public function getCityRepository() 
+    /**
+     * @return mixed
+     */
+    public function getCityRepository()
     {
         return $this->_cityRepository;
     }
 
-    public function setDistrictRepository($districtRepository) 
+    /**
+     * @param $districtRepository
+     */
+    public function setDistrictRepository($districtRepository)
     {
         $this->_districtRepository = $districtRepository;
     }
 
-    public function getDistrictRepository() 
+    /**
+     * @return mixed
+     */
+    public function getDistrictRepository()
     {
         return $this->_districtRepository;
     }
 
-    public function setRateRepository($rateRepository) 
+    /**
+     * @param $rateRepository
+     */
+    public function setRateRepository($rateRepository)
     {
         $this->_rateRepository = $rateRepository;
     }
 
-    public function getRateRepository() 
+    /**
+     * @return mixed
+     */
+    public function getRateRepository()
     {
         return $this->_rateRepository;
     }
 
+    /**
+     * HomeController constructor.
+     * @param PostRepository $postRepository
+     * @param VPost $postValidator
+     * @param Post $post
+     * @param CityRepository $cityRepository
+     * @param DistrictRepository $districtRepository
+     * @param RateRepository $rateRepository
+     */
     public function __construct(
         PostRepository $postRepository,
         VPost $postValidator,
@@ -64,12 +104,18 @@ class HomeController extends FrontendController
         parent::__construct();
     }
 
-    public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
     {
         return view('frontend.home.index');
     }
 
-    public function community() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function community()
     {
         $data = Input::all();
         $params['listDistrictsFrom'] = $this->getDistrictRepository()->getListForSearch(array_get($data, 'city_from_id'));
@@ -81,14 +127,21 @@ class HomeController extends FrontendController
         return view('frontend.home.community', compact('entities', 'params'));
     }
 
-    protected function _prepareData() 
+    /**
+     * @return array|mixed
+     */
+    protected function _prepareData()
     {
         $params['listCities'] = $this->getCityRepository()->getListForSelect('id', 'city_name');
         $params['listDistricts'] = $this->getDistrictRepository()->getListForPosts();
         return array_merge($params, parent::_prepareData());
     }
 
-    public function detail($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function detail($id)
     {
         $entity = $this->getRepository()->findById($id);
         list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);
@@ -97,6 +150,10 @@ class HomeController extends FrontendController
         return view('frontend.home.detail', compact('entity', 'params', 'rates', 'allowRate', 'isSuggest'));
     }
 
+    /**
+     * @param $rates
+     * @return bool
+     */
     protected function _allowRate($rates) {
         if (!frontendGuard()->check() || empty($rates)) {
             return true;
@@ -111,7 +168,11 @@ class HomeController extends FrontendController
         return true;
     }
 
-    public function getSuggest($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getSuggest($id)
     {
         $entity = $this->getRepository()->findById($id);
         list($rates, $params['rates']) = $this->getRateRepository()->getListByPost($id);

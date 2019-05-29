@@ -11,10 +11,20 @@ use Session;
 use Storage;
 use Illuminate\Http\Request;
 
+/**
+ * Class UsersController
+ * @package App\Http\Controllers\Frontend
+ */
 class UsersController extends FrontendController
 {
-	
-	public function __construct(
+
+    /**
+     * UsersController constructor.
+     * @param UserRepository $userRepository
+     * @param VUser $userValidator
+     * @param User $user
+     */
+    public function __construct(
 		UserRepository $userRepository,
 		VUser $userValidator,
 		User $user
@@ -26,7 +36,11 @@ class UsersController extends FrontendController
 		parent::__construct();
 	}
 
-	public function edit($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit($id)
 	{
 		$params = $this->_prepareShow();
         $entity = $this->getRepository()->findById($id);
@@ -44,7 +58,12 @@ class UsersController extends FrontendController
         return view('frontend.' . $this->getAlias() . '.edit', compact('entity', 'params'));
 	}
 
-	public function update(Request $request, $id)
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
     {
         // Check id
         $entity = $this->getRepository()->findById($id);
@@ -87,7 +106,11 @@ class UsersController extends FrontendController
         return redirect()->route('frontend.' . $this->getAlias() . '.edit', ['id' => $id])->withErrors(['update_failed' => getMessage('update_failed')]);
     }
 
-    protected function _filterData($data) 
+    /**
+     * @param $data
+     * @return array
+     */
+    protected function _filterData($data)
     {
     	$r = [];
     	if (empty($data)) {

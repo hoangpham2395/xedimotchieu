@@ -11,9 +11,18 @@ use Session;
 use Illuminate\Support\Facades\DB;
 use Mail;
 
+/**
+ * Class ForgotPasswordController
+ * @package App\Http\Controllers\Frontend\Auth
+ */
 class ForgotPasswordController extends FrontendController
 {
-	public function __construct(
+    /**
+     * ForgotPasswordController constructor.
+     * @param UserRepository $userRepository
+     * @param User $user
+     */
+    public function __construct(
 		UserRepository $userRepository,
 		User $user
 	) 
@@ -23,7 +32,10 @@ class ForgotPasswordController extends FrontendController
 		parent::__construct();
 	}
 
-	public function forgotPassword() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
+    public function forgotPassword()
 	{
 		if (frontendGuard()->check()) {
             return redirect('/');
@@ -31,7 +43,11 @@ class ForgotPasswordController extends FrontendController
 		return view('frontend.auth.forgot_password');
 	}
 
-	public function postForgotPassword(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postForgotPassword(Request $request)
 	{
 		$data = [
 			'email' => $request->input('email'),
@@ -73,7 +89,11 @@ class ForgotPasswordController extends FrontendController
         return redirect()->back()->withErrors(new MessageBag(['update_failed' => getMessage('system_error')]))->withInput(); 
 	}
 
-	protected function _sendMail($data) 
+    /**
+     * @param $data
+     * @return bool
+     */
+    protected function _sendMail($data)
 	{
 		try {
 			Mail::send('frontend.auth.mail', $data, function($message) use ($data) {

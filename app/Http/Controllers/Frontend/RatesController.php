@@ -7,8 +7,17 @@ use App\Repositories\RateRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class RatesController
+ * @package App\Http\Controllers\Frontend
+ */
 class RatesController extends FrontendController
 {
+    /**
+     * RatesController constructor.
+     * @param RateRepository $rateRepository
+     * @param Rate $rate
+     */
     public function __construct(
         RateRepository $rateRepository,
         Rate $rate
@@ -19,7 +28,11 @@ class RatesController extends FrontendController
         parent::__construct();
     }
 
-    public function store(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function store(Request $request)
     {
     	$data = $request->all();
         // Create

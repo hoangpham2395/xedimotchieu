@@ -9,8 +9,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
+/**
+ * Class CarsController
+ * @package App\Http\Controllers\Frontend
+ */
 class CarsController extends FrontendController
 {
+    /**
+     * CarsController constructor.
+     * @param CarRepository $carRepository
+     * @param VCar $carValidator
+     * @param Car $car
+     */
     public function __construct(
         CarRepository $carRepository,
         VCar $carValidator,
@@ -23,7 +33,10 @@ class CarsController extends FrontendController
         parent::__construct();
     }
 
-    public function index() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function index()
     {
         $user = frontendGuard()->user();
         if (!$user->isCarOwner()) {
@@ -34,7 +47,10 @@ class CarsController extends FrontendController
         return view('frontend.' . $this->getAlias() . '.index', compact('entities', 'params'));
     }
 
-    public function create() 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function create()
     {
         $user = frontendGuard()->user();
         if (!$user->isCarOwner()) {
@@ -43,7 +59,11 @@ class CarsController extends FrontendController
         return parent::create();
     }
 
-    public function edit($id) 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit($id)
     {
         $user = frontendGuard()->user();
         if (!$user->isCarOwner()) {
@@ -63,6 +83,9 @@ class CarsController extends FrontendController
         return view('frontend.' . $this->getAlias() . '.edit', compact(['entity', 'params']));
     }
 
+    /**
+     * @return array|mixed
+     */
     protected function _prepareStore()
     {
         $params['user_id'] = frontendGuard()->user()->id;
@@ -70,6 +93,9 @@ class CarsController extends FrontendController
         return $params;
     }
 
+    /**
+     * @return array|mixed
+     */
     protected function _prepareUpdate()
     {
         $params['user_id'] = frontendGuard()->user()->id;
@@ -77,7 +103,11 @@ class CarsController extends FrontendController
         return $params;
     }
 
-    public function store(Request $request) 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(Request $request)
     {
         $user = frontendGuard()->user();
         if (!$user->isCarOwner()) {
@@ -86,7 +116,12 @@ class CarsController extends FrontendController
         return parent::store($request);
     }
 
-    public function update(Request $request, $id) 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(Request $request, $id)
     {
         $user = frontendGuard()->user();
         if (!$user->isCarOwner()) {
@@ -106,6 +141,10 @@ class CarsController extends FrontendController
         return parent::update($request, $id);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         // Check id

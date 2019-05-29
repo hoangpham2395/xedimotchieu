@@ -14,12 +14,23 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Session;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Frontend\Auth
+ */
 class LoginController extends FrontendController
 {
     use AuthenticatesUsers;
 
+    /**
+     * @var string
+     */
     protected $redirectTo = '/';
 
+    /**
+     * LoginController constructor.
+     * @param UserRepository $userRepository
+     */
     public function __construct(
         UserRepository $userRepository
     )
@@ -28,6 +39,9 @@ class LoginController extends FrontendController
         parent::__construct();
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function getLogin()
     {
         if (frontendGuard()->check()) {
@@ -36,6 +50,10 @@ class LoginController extends FrontendController
         return view('frontend.auth.login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postLogin(Request $request)
     {
         $rules = [
@@ -72,13 +90,20 @@ class LoginController extends FrontendController
         return redirect()->back()->withErrors($errors)->withInput();
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function logout()
     {
         Auth::guard('frontend')->logout();
         return redirect()->route('frontend.login');
     }
 
-    public function redirect($social) 
+    /**
+     * @param $social
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function redirect($social)
     {
         try {
             // Check register
@@ -91,6 +116,10 @@ class LoginController extends FrontendController
         }
     }
 
+    /**
+     * @param $social
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function callback($social)
     {
         try {
@@ -169,7 +198,12 @@ class LoginController extends FrontendController
         }
     }
 
-    protected function _checkValidate($data, $id = null) 
+    /**
+     * @param $data
+     * @param null $id
+     * @return bool
+     */
+    protected function _checkValidate($data, $id = null)
     {
         $rules = [
             'name' => 'required',
