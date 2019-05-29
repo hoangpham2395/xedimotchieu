@@ -5,7 +5,11 @@ use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 use App\Model\Presenters\PCar;
 
-class Car extends Base 
+/**
+ * Class Car
+ * @package App\Model\Entities
+ */
+class Car extends Base
 {
 	protected $table = 'cars';
 	protected $primaryKey = 'id';

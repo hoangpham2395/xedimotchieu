@@ -4,7 +4,11 @@ namespace App\Model\Entities;
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 
-class Comment extends Base 
+/**
+ * Class Comment
+ * @package App\Model\Entities
+ */
+class Comment extends Base
 {
 	protected $table = 'comments';
 	protected $primaryKey = 'id';

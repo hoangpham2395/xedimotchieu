@@ -5,8 +5,16 @@ use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
+/**
+ * Class BaseScope
+ * @package App\Model\Scopes\Base
+ */
 class BaseScope implements Scope
 {
+    /**
+     * @param Builder $builder
+     * @param Model $model
+     */
     public function apply(Builder $builder, Model $model)
     {
     	$table = $model->getTable();

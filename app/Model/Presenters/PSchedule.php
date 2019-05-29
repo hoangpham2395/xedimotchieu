@@ -1,6 +1,10 @@
 <?php
 namespace App\Model\Presenters;
 
+/**
+ * Trait PSchedule
+ * @package App\Model\Presenters
+ */
 trait PSchedule
 {
     public function getPlace()

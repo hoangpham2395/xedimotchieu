@@ -1,7 +1,11 @@
 <?php
 namespace App\Model\Presenters;
 
-trait PAdmin 
+/**
+ * Trait PAdmin
+ * @package App\Model\Presenters
+ */
+trait PAdmin
 {
 	public function getRoleType() 
 	{

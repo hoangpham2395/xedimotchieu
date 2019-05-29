@@ -4,7 +4,11 @@ namespace App\Model\Entities;
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 
-class Feedback extends Base 
+/**
+ * Class Feedback
+ * @package App\Model\Entities
+ */
+class Feedback extends Base
 {
 	protected $table = 'feedbacks';
 	protected $primaryKey = 'id';

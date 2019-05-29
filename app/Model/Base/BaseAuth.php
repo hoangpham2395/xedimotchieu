@@ -10,6 +10,10 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/**
+ * Class BaseAuth
+ * @package App\Model\Base
+ */
 class BaseAuth extends Base implements
     AuthenticatableContract,
     AuthorizableContract,

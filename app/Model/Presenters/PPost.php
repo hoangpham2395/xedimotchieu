@@ -1,7 +1,11 @@
 <?php
 namespace App\Model\Presenters;
 
-trait PPost 
+/**
+ * Trait PPost
+ * @package App\Model\Presenters
+ */
+trait PPost
 {
 	public function getPlace() 
 	{

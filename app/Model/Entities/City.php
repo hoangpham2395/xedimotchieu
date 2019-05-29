@@ -4,7 +4,11 @@ namespace App\Model\Entities;
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 
-class City extends Base 
+/**
+ * Class City
+ * @package App\Model\Entities
+ */
+class City extends Base
 {
 	protected $table = 'cities';
 	protected $primaryKey = 'id';

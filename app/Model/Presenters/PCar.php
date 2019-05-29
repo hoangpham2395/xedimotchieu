@@ -1,7 +1,11 @@
 <?php
 namespace App\Model\Presenters;
 
-trait PCar 
+/**
+ * Trait PCar
+ * @package App\Model\Presenters
+ */
+trait PCar
 {
 	public function getCarType() 
 	{

@@ -1,6 +1,10 @@
 <?php
 namespace App\Model\Presenters;
 
+/**
+ * Trait PUser
+ * @package App\Model\Presenters
+ */
 trait PUser
 {
     public function getOpenFlag()

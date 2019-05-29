@@ -1,7 +1,11 @@
 <?php
 namespace App\Model\Presenters;
 
-trait PRate 
+/**
+ * Trait PRate
+ * @package App\Model\Presenters
+ */
+trait PRate
 {
 	public function getTime() 
 	{

@@ -5,7 +5,11 @@ use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 use App\Model\Presenters\PPost;
 
-class Post extends Base 
+/**
+ * Class Post
+ * @package App\Model\Entities
+ */
+class Post extends Base
 {
 	protected $table = 'posts';
 	protected $primaryKey = 'id';

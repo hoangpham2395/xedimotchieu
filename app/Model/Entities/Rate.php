@@ -5,7 +5,11 @@ use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 use App\Model\Presenters\PRate;
 
-class Rate extends Base 
+/**
+ * Class Rate
+ * @package App\Model\Entities
+ */
+class Rate extends Base
 {
 	protected $table = 'rates';
 	protected $primaryKey = 'id';

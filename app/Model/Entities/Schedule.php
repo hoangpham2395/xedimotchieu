@@ -5,7 +5,11 @@ use App\Model\Base\Base;
 use App\Model\Presenters\PSchedule;
 use App\Model\Scopes\Base\BaseScope;
 
-class Schedule extends Base 
+/**
+ * Class Schedule
+ * @package App\Model\Entities
+ */
+class Schedule extends Base
 {
 	protected $table = 'schedules';
 	protected $primaryKey = 'id';

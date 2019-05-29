@@ -4,7 +4,11 @@ namespace App\Model\Entities;
 use App\Model\Base\Base;
 use App\Model\Scopes\Base\BaseScope;
 
-class Chat extends Base 
+/**
+ * Class Chat
+ * @package App\Model\Entities
+ */
+class Chat extends Base
 {
 	protected $table = 'chat';
 	protected $primaryKey = 'id';

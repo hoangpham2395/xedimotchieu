@@ -7,6 +7,10 @@ use App\Model\Scopes\Base\BaseScope;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class User
+ * @package App\Model\Entities
+ */
 class User extends BaseAuth
 {
     use Notifiable;
