@@ -273,6 +273,7 @@ class PostRepository extends CustomRepository
         $dateStart = date('Y-m-d', strtotime($post->date_start)) . ' 00:00';
         $seats = $post->seats;
 
+        // For post is type car owner
         if ($post->isTypeCarOwner()) {
             $cityIds = []; $districtIds = [];
             foreach ($post->schedules as $schedule) {
@@ -288,22 +289,29 @@ class PostRepository extends CustomRepository
                 'date_start' => $dateStart,
                 'seats' => $seats,
                 'type' => getConfig('user_type_passenger'),
-            ]; 
+                'id' => $id,
+            ];
 
-            return $this->getBuilder()->where(function($q) use ($params) {
-                $q = $q->where('date_start', '>=', $params['date_start'])
-                       ->whereIn('city_from_id', $params['listCityFromId'])
-                       ->whereIn('city_to_id', $params['listCityToId'])
-                       ->whereIn('district_from_id', $params['listDistrictFromId'])
-                       ->whereIn('district_to_id', $params['listDistrictToId'])
-                       ->where('seats', '<=', $params['seats'])
-                       ->where('type', '=', $params['type']);
-                return $q;
-            })->orderBy('date_start', 'asc')->limit(3)->get();
+            return $this->getBuilder()
+                ->where(function ($q) use ($params) {
+                    $q = $q->where('date_start', '>=', $params['date_start'])
+                        ->where('seats', '<=', $params['seats'])
+                        ->where('type', '=', $params['type'])
+                        ->where('id', '!=', $params['id']);
+                    return $q;
+                })
+                ->where(function ($q2) use ($params){
+                    $q2 = $q2->whereIn('city_from_id', $params['listCityFromId'])
+                        ->orWhereIn('city_to_id', $params['listCityToId'])
+                        ->orWhereIn('district_from_id', $params['listDistrictFromId'])
+                        ->orWhereIn('district_to_id', $params['listDistrictToId']);
+                    return $q2;
+                })
+                ->orderBy('date_start', 'asc')->limit(3)->get();
 
         } 
 
-        // Passenger
+        // For post is type passenger
         $params = [
             'date_start' => $dateStart,
             'seats' => $seats,
@@ -323,14 +331,12 @@ class PostRepository extends CustomRepository
         })
         ->where(function($query2) use ($params) {
             $query2 = $query2->where('schedules.city_id', '=', $params['city_from_id'])
-                             ->orWhere('posts.city_from_id', '=', $params['city_from_id']);
+                ->orWhere('posts.city_from_id', '=', $params['city_from_id'])
+                ->orWhere('schedules.city_id', '=', $params['city_to_id'])
+                ->orWhere('posts.city_to_id', '=', $params['city_to_id']);
             return $query2;
         })
-        ->where(function($query3) use ($params) {
-            $query3 = $query3->where('schedules.city_id', '=', $params['city_to_id'])
-                             ->orWhere('posts.city_to_id', '=', $params['city_to_id']);
-            return $query3;
-        })
+        ->where('posts.id', '!=', $id)
         ->groupBy('posts.id')
         ->get()->keyBy('id')->toArray('id');
 
