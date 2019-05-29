@@ -12,6 +12,7 @@ return [
 		'create' => 'Thêm mới admin',
 		'edit' => 'Cập nhật thông tin admin',
 		'delete' => 'Xóa admin',
+        'destroy' => 'Xóa admin',
 	],
     'users' => [
     	'name' => 'Users',
@@ -20,6 +21,7 @@ return [
         'profile_management' => 'Quản lý thông tin cá nhân',
         'profile_show' => 'Xem thông tin cá nhân',
         'profile_edit' => 'Thay đổi thông tin cá nhân',
+        'destroy' => 'Xóa tài khoản người dùng',
     ],
     'posts' => [
     	'name' => 'Posts',
