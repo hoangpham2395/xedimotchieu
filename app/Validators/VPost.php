@@ -4,6 +4,10 @@ namespace App\Validators;
 use App\Validators\Base\BaseValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
+/**
+ * Class VPost
+ * @package App\Validators
+ */
 class VPost extends BaseValidator
 {
     protected $rules = [

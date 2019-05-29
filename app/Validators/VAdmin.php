@@ -4,8 +4,12 @@ namespace App\Validators;
 use \Prettus\Validator\Contracts\ValidatorInterface;
 use App\Validators\Base\BaseValidator;
 
-class VAdmin extends BaseValidator {
-
+/**
+ * Class VAdmin
+ * @package App\Validators
+ */
+class VAdmin extends BaseValidator
+{
     protected $rules = [
         ValidatorInterface::RULE_CREATE => [
             'username' => 'required',

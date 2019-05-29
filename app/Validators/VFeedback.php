@@ -4,6 +4,10 @@ namespace App\Validators;
 use App\Validators\Base\BaseValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
+/**
+ * Class VFeedback
+ * @package App\Validators
+ */
 class VFeedback extends BaseValidator
 {
     protected $rules = [

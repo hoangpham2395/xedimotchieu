@@ -4,6 +4,10 @@ namespace App\Validators;
 use App\Validators\Base\BaseValidator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 
+/**
+ * Class VUser
+ * @package App\Validators
+ */
 class VUser extends BaseValidator
 {
     protected $rules = [

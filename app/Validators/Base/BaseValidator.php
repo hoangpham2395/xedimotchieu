@@ -6,12 +6,17 @@ use \Prettus\Validator\Contracts\ValidatorInterface;
 use \Prettus\Validator\Exceptions\ValidatorException;
 
 /**
- * 
+ * Class BaseValidator
+ * @package App\Validators\Base
  */
 class BaseValidator extends LaravelValidator
 {
-	
-	public function validateCreate($params) 
+
+    /**
+     * @param $params
+     * @return bool
+     */
+    public function validateCreate($params)
 	{
 		try {
             return $this->with($params)->passes(ValidatorInterface::RULE_CREATE);
@@ -21,7 +26,12 @@ class BaseValidator extends LaravelValidator
 		
 	}
 
-	public function validateUpdate($params, $id) 
+    /**
+     * @param $params
+     * @param $id
+     * @return bool
+     */
+    public function validateUpdate($params, $id)
 	{
 		try {
             return $this->with($params)->setId($id)->passes(ValidatorInterface::RULE_UPDATE);
