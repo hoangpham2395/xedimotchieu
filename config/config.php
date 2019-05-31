@@ -18,12 +18,12 @@ return [
     'url_facebook_image' => 'https://graph.facebook.com',
 
     'contact' => [
-        'phone' => '(+84) 123-456-789',
+        'phone' => '(+84) 388-732-282',
         'email' => 'hoangpham2395@gmail.com',
         'address' => 'Số 1, Đại Cồ Việt, Hai Bà Trưng, Hà Nội, Việt Nam.',
     ],
 
-    'link_messager' => 'https://www.facebook.com/messages/t/',
+    'link_messager' => 'https://www.facebook.com/messages/t/?app_id=',
     'link_fb_group' => 'https://www.facebook.com/Cộng-đồng-xe-một-chiều-Việt-Nam-300898897509678',
 
     // Admin
