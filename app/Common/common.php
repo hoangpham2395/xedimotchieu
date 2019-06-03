@@ -159,11 +159,7 @@ if (! function_exists('logError')) {
      */
     function logError($message, array $context = [])
     {
-        // try {
-        // 	ChannelLog::error('error', $message, $context);
-        // } catch (\Exception $e) {
-
-        // }
+        \Illuminate\Support\Facades\Log::error($message, $context);
     }
 }
 
