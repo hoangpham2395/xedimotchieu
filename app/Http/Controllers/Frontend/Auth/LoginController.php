@@ -193,7 +193,7 @@ class LoginController extends FrontendController
 
             return redirect()->back()->withErrors(['account_block' => getMessage('account_block')]);
         } catch (\Exception $e) {
-            dd($e);
+            logError($e);
             return redirect()->back()->withErrors(['not_connect_fb' => getMessage('not_connect_fb')]);
         }
     }
