@@ -307,6 +307,7 @@ class PostRepository extends CustomRepository
                         ->orWhereIn('district_to_id', $params['listDistrictToId']);
                     return $q2;
                 })
+                ->where('user_id', '!=', $post->user_id)
                 ->orderBy('date_start', 'asc')->limit(3)->get();
 
         } 
@@ -337,6 +338,7 @@ class PostRepository extends CustomRepository
             return $query2;
         })
         ->where('posts.id', '!=', $id)
+        ->where('posts.user_id', '!=', $post->user_id)
         ->groupBy('posts.id')
         ->get()->keyBy('id')->toArray('id');
 

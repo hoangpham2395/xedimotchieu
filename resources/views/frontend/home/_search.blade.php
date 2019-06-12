@@ -41,7 +41,7 @@
         </div>
     </div>
 
-    <div id="search_schedule" class="row {{ frontendGuard()->check() && frontendGuard()->user()->isCarOwner() ? 'hidden' : '' }}">
+    <div id="search_schedule" class="row {{ !frontendGuard()->check() || frontendGuard()->user()->isCarOwner() ? 'hidden' : '' }}">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Tỉnh/Thành phố đi qua (lịch trình)</label>
